@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zWbu3xqXjcK4gEChp+nCG3Kt96i3w1oKqxRz9UY6Lczr0wY8sa6jzNQ4Y8umjJpUhcRTL+Q5+sJX/+mdBBbKUA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\VC\\Desktop\\Visual Studio\\Day3demo\\Day3demo\\Day3demo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\VC\\.nuget\\packages\\sonaranalyzer.csharp\\9.23.1.88495\\sonaranalyzer.csharp.9.23.1.88495.nupkg.sha512"
+  ],
+  "logs": []
+}

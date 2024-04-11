@@ -1,0 +1,14 @@
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\bin\Debug\net8.0\Averageofnumbers.exe
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\bin\Debug\net8.0\Averageofnumbers.deps.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\bin\Debug\net8.0\Averageofnumbers.runtimeconfig.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\bin\Debug\net8.0\Averageofnumbers.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\bin\Debug\net8.0\Averageofnumbers.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.AssemblyInfoInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.AssemblyInfo.cs
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.csproj.CoreCompileInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\refint\Averageofnumbers.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\Averageofnumbers.genruntimeconfig.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Averageofnumbers\obj\Debug\net8.0\ref\Averageofnumbers.dll

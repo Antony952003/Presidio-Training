@@ -1,0 +1,14 @@
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\bin\Debug\net8.0\repeatingvowels.exe
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\bin\Debug\net8.0\repeatingvowels.deps.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\bin\Debug\net8.0\repeatingvowels.runtimeconfig.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\bin\Debug\net8.0\repeatingvowels.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\bin\Debug\net8.0\repeatingvowels.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.AssemblyInfoInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.AssemblyInfo.cs
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.csproj.CoreCompileInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\refint\repeatingvowels.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\repeatingvowels.genruntimeconfig.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\repeatingvowels\obj\Debug\net8.0\ref\repeatingvowels.dll

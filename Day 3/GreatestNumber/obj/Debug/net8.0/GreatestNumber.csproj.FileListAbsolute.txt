@@ -1,0 +1,14 @@
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\bin\Debug\net8.0\GreatestNumber.exe
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\bin\Debug\net8.0\GreatestNumber.deps.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\bin\Debug\net8.0\GreatestNumber.runtimeconfig.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\bin\Debug\net8.0\GreatestNumber.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\bin\Debug\net8.0\GreatestNumber.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.AssemblyInfoInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.AssemblyInfo.cs
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.csproj.CoreCompileInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\refint\GreatestNumber.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\GreatestNumber.genruntimeconfig.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\GreatestNumber\obj\Debug\net8.0\ref\GreatestNumber.dll

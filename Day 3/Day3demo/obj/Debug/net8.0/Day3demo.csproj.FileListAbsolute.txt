@@ -1,0 +1,15 @@
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\bin\Debug\net8.0\Day3demo.exe
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\bin\Debug\net8.0\Day3demo.deps.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\bin\Debug\net8.0\Day3demo.runtimeconfig.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\bin\Debug\net8.0\Day3demo.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\bin\Debug\net8.0\Day3demo.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.AssemblyInfoInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.AssemblyInfo.cs
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.csproj.CoreCompileInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\refint\Day3demo.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\Day3demo.genruntimeconfig.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\obj\Debug\net8.0\ref\Day3demo.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\Day3demo\bin\Debug\net8.0\Program.cs

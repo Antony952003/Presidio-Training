@@ -1,0 +1,14 @@
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\bin\Debug\net8.0\lengthofname.exe
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\bin\Debug\net8.0\lengthofname.deps.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\bin\Debug\net8.0\lengthofname.runtimeconfig.json
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\bin\Debug\net8.0\lengthofname.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\bin\Debug\net8.0\lengthofname.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.AssemblyInfoInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.AssemblyInfo.cs
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.csproj.CoreCompileInputs.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\refint\lengthofname.dll
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.pdb
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\lengthofname.genruntimeconfig.cache
+C:\Users\VC\Desktop\Visual Studio\Day3demo\lengthofname\obj\Debug\net8.0\ref\lengthofname.dll
