@@ -1,0 +1,10 @@
+1) Lets do something boring.
+2) Lets do something interesting.
+Cars do not have 3 wheels..
+Car has four wheels do u know that...
+
+
+lesson 2 : https://app.codility.com/demo/results/trainingNWNHM3-57K/
+https://app.codility.com/demo/results/trainingX2GQAJ-E8Z/
+lesson 3 :
+https://app.codility.com/demo/results/training3R4V2E-XE6/
