@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovtRules", "GovtRules\GovtRules.csproj", "{ADEC6B5F-8352-4145-A14B-48A99D796EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovtRulesModelLibrary", "GovtRulesModelLibrary\GovtRulesModelLibrary.csproj", "{AFD48A89-FF32-4ADA-882B-510B5CEC832E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADEC6B5F-8352-4145-A14B-48A99D796EA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEC6B5F-8352-4145-A14B-48A99D796EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEC6B5F-8352-4145-A14B-48A99D796EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEC6B5F-8352-4145-A14B-48A99D796EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD48A89-FF32-4ADA-882B-510B5CEC832E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD48A89-FF32-4ADA-882B-510B5CEC832E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD48A89-FF32-4ADA-882B-510B5CEC832E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD48A89-FF32-4ADA-882B-510B5CEC832E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59BEF311-C34E-40CC-BD47-F51FAF1FB53C}
+	EndGlobalSection
+EndGlobal
