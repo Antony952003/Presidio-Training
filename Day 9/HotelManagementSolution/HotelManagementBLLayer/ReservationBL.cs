@@ -3,6 +3,7 @@ using HotelManagementModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace HotelManagementBLLayer
             _reservationRepository = new ReservationRepository();
             guestRepository = new GuestRepository();
         }
-        int IReservationService.AddReservation(Reservation reservation)
+        public int AddReservation(Reservation reservation)
         {
             var result = _reservationRepository.AddReservation(reservation);
             if (result != null)
@@ -27,7 +28,17 @@ namespace HotelManagementBLLayer
             throw new DuplicateReservationException();
         }
 
-        Reservation IReservationService.DeleteReservationById(int reservationId)
+        public List<Reservation> GetAllReservations()
+        {
+            var result = _reservationRepository.GetAllReservations();
+            if(result != null)
+            {
+                return result;
+            }
+            throw new NoReservationFoundException();
+        }
+
+        public Reservation DeleteReservationById(int reservationId)
         {
             var result = _reservationRepository.DeleteReservationById(reservationId);
             if (result != null)
@@ -37,7 +48,7 @@ namespace HotelManagementBLLayer
             throw new NoReservationFoundException();
         }
 
-        Reservation IReservationService.GetReservationByGuestName(string guestName)
+        public Reservation GetReservationByGuestName(string guestName)
         {
             var reservs = _reservationRepository.GetAllReservations();
             foreach (var reservation in reservs)
@@ -49,7 +60,7 @@ namespace HotelManagementBLLayer
             throw new NoReservationFoundException();
         }
 
-        Reservation IReservationService.GetReservationById(int reservationId)
+        public Reservation GetReservationById(int reservationId)
         {
             var reservs = _reservationRepository.GetAllReservations();
             var ans = reservs.Find(r => r.Id == reservationId);
@@ -58,7 +69,7 @@ namespace HotelManagementBLLayer
             throw new NoReservationFoundException();
         }
 
-        Reservation IReservationService.GetReservationByRoomId(int roomId)
+        public Reservation GetReservationByRoomId(int roomId)
         {
             var reservs = _reservationRepository.GetAllReservations();
             var ans = reservs.Find(r => r.RoomId == roomId);
@@ -67,7 +78,7 @@ namespace HotelManagementBLLayer
             throw new NoReservationFoundException();
         }
 
-        Reservation IReservationService.UpdateReservation(Reservation reservation)
+        public Reservation UpdateReservation(Reservation reservation)
         {
             var currreservation = _reservationRepository.GetReservationById(reservation.Id);
             if(currreservation != null)

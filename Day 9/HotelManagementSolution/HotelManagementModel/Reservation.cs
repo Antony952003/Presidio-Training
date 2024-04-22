@@ -15,14 +15,14 @@ namespace HotelManagementModel
         public int GuestId { get; set; } 
         public decimal TotalCost { get; set; } 
         public string CancellationPolicy { get; set; }
-        public Reservation(DateTime checkInDate, DateTime checkOutDate, int roomId, int guestId, decimal totalCost, string cancellationPolicy)
+        public Reservation(DateTime checkInDate, DateTime checkOutDate, int roomId, int guestId, decimal totalCost)
         {
             CheckInDate = checkInDate;
             CheckOutDate = checkOutDate;
             RoomId = roomId;
             GuestId = guestId;
             TotalCost = totalCost;
-            CancellationPolicy = cancellationPolicy;
+            CancellationPolicy = "Active";
         }
 
     }

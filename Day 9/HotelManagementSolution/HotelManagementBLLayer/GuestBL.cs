@@ -80,5 +80,11 @@ namespace HotelManagementBLLayer
             result = guest;
             return result;
         }
+        public Guest UpdateGuest(Guest guest)
+        {
+            var result = _guestRepository.UpdateGuest(guest);
+            if (result != null) return result;
+            throw new NoGuestFoundException();
+        }
     }
 }
