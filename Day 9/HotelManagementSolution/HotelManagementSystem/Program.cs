@@ -92,7 +92,7 @@ namespace HotelManagementSystem
             Console.WriteLine("---------------------------------------------------");
             Console.WriteLine($"Room Id : {room.RoomId}");
             Console.WriteLine($"Room Type : {room.Type}");
-            Console.WriteLine($"Room Features : {(room.Features).ToString()}");
+            Console.WriteLine($"Room Features : {string.Join(",", (room.Features))}");
             Console.WriteLine($"Room NightlyRate : {room.NightlyRate}");
             Console.WriteLine($"Room MaxOccupancy : {room.OccupancyCapacity}");
             Console.WriteLine("----------------------------------------------------");
@@ -103,7 +103,7 @@ namespace HotelManagementSystem
             Console.WriteLine($"Guest First Name : {guest.FirstName}");
             Console.WriteLine($"Guest Last Name : {guest.LastName}");
             Console.WriteLine($"Guest Phone Number : {guest.PhoneNumber}");
-            Console.WriteLine($"Guest Preferences : {guest.Preferences}");
+            Console.WriteLine($"Guest Preferences : {string.Join(",", guest.Preferences)}");
             Console.WriteLine($"Guest Reservation History : ");
             ViewReservation(guest.ReservationHistory);
 
@@ -166,7 +166,7 @@ namespace HotelManagementSystem
                 Console.WriteLine("---------------------------------------------------");
                 Console.WriteLine($"Room Id : {room.RoomId}");
                 Console.WriteLine($"Room Type : {room.Type}");
-                Console.WriteLine($"Room Features : {(room.Features).ToString()}");
+                Console.WriteLine($"Room Features : {string.Join(",", (room.Features))}");
                 Console.WriteLine($"Room NightlyRate : {room.NightlyRate}");
                 Console.WriteLine($"Room MaxOccupancy : {room.OccupancyCapacity}");
                 Console.WriteLine("----------------------------------------------------");
