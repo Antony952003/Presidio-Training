@@ -15,7 +15,7 @@ namespace HotelManagementDALLayer
         {
             _rooms = new Dictionary<int, Room>();
         }
-        Room IRoomRepository.AddRoom(Room room)
+        public Room AddRoom(Room room)
         {
             if (_rooms.ContainsValue(room))
             {
@@ -27,7 +27,7 @@ namespace HotelManagementDALLayer
             return room;
         }
 
-        Room IRoomRepository.DeleteRoom(int roomId)
+        public Room DeleteRoom(int roomId)
         {
             if (_rooms.ContainsKey(roomId))
             {
@@ -38,12 +38,12 @@ namespace HotelManagementDALLayer
             return null;
         }
 
-        List<Room> IRoomRepository.GetAllRooms()
+        public List<Room> GetAllRooms()
         {
             return (_rooms.Count == 0) ? null : _rooms.Values.ToList();
         }
 
-        Room IRoomRepository.GetRoomById(int roomId)
+        public Room GetRoomById(int roomId)
         {
             if (_rooms.ContainsKey(roomId))
             {
@@ -52,7 +52,7 @@ namespace HotelManagementDALLayer
             return null;
         }
 
-        Room IRoomRepository.UpdateRoom(Room room)
+        public Room UpdateRoom(Room room)
         {
             if (_rooms.ContainsKey(room.RoomId))
             {

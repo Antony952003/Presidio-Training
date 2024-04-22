@@ -16,7 +16,7 @@ namespace HotelManagementDALLayer
             _guests = new Dictionary<int, Guest>();
         }
 
-        Guest IGuestRepository.AddGuest(Guest guest)
+        public Guest AddGuest(Guest guest)
         {
             if (_guests.ContainsValue(guest))
             {
@@ -28,7 +28,7 @@ namespace HotelManagementDALLayer
             return guest;
         }
 
-        Guest IGuestRepository.DeleteGuest(int guestId)
+        public Guest DeleteGuest(int guestId)
         {
             if (_guests.ContainsKey(guestId))
             {
@@ -39,12 +39,12 @@ namespace HotelManagementDALLayer
             return null;
         }
 
-        List<Guest> IGuestRepository.GetAllGuests()
+        public List<Guest> GetAllGuests()
         {
             return (_guests.Count == 0) ? null : _guests.Values.ToList();
         }
 
-        Guest IGuestRepository.GetGuestById(int guestId)
+        public Guest GetGuestById(int guestId)
         {
             if (_guests.ContainsKey(guestId))
             {
@@ -53,7 +53,7 @@ namespace HotelManagementDALLayer
             return null;
         }
 
-        Guest IGuestRepository.UpdateGuest(Guest guest)
+        public Guest UpdateGuest(Guest guest)
         {
             if (_guests.ContainsKey(guest.Id))
             {

@@ -15,9 +15,8 @@ namespace HotelManagementModel
         public int GuestId { get; set; } 
         public decimal TotalCost { get; set; } 
         public string CancellationPolicy { get; set; }
-        public Reservation(int id, DateTime checkInDate, DateTime checkOutDate, int roomId, int guestId, decimal totalCost, string cancellationPolicy)
+        public Reservation(DateTime checkInDate, DateTime checkOutDate, int roomId, int guestId, decimal totalCost, string cancellationPolicy)
         {
-            Id = id;
             CheckInDate = checkInDate;
             CheckOutDate = checkOutDate;
             RoomId = roomId;

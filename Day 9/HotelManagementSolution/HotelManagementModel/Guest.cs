@@ -16,6 +16,14 @@ namespace HotelManagementModel
         {
             return Id + " - " + FirstName + " " + LastName;
         }
+        public Guest(string firstName, string lastName, string phoneNumber, List<Reservation> reservationHistory, string preferences)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            ReservationHistory = reservationHistory;
+            Preferences = preferences.Split(',').ToList();
+        }
     }
 
 //    Id: int (unique identifier)

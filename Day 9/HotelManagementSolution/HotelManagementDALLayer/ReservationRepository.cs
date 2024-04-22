@@ -15,7 +15,7 @@ namespace HotelManagementDALLayer
         {
             _reservations = new Dictionary<int, Reservation>();
         }
-        Reservation IReservationRepository.AddReservation(Reservation reservation)
+        public Reservation AddReservation(Reservation reservation)
         {
             if (_reservations.ContainsValue(reservation))
             {
@@ -27,7 +27,7 @@ namespace HotelManagementDALLayer
             return reservation;
         }
 
-        Reservation IReservationRepository.DeleteReservationById(int reservationId)
+        public Reservation DeleteReservationById(int reservationId)
         {
             if (_reservations.ContainsKey(reservationId))
             {
@@ -38,12 +38,12 @@ namespace HotelManagementDALLayer
             return null;
         }
 
-        List<Reservation> IReservationRepository.GetAllReservations()
+        public List<Reservation> GetAllReservations()
         {
             return (_reservations.Count == 0) ? null : _reservations.Values.ToList();
         }
 
-        Reservation IReservationRepository.GetReservationById(int reservationId)
+        public Reservation GetReservationById(int reservationId)
         {
             if (_reservations.ContainsKey(reservationId))
             {
@@ -52,7 +52,7 @@ namespace HotelManagementDALLayer
             return null;
         }
 
-        Reservation IReservationRepository.UpdateReservation(Reservation reservation)
+        public Reservation UpdateReservation(Reservation reservation)
         {
             if (_reservations.ContainsKey(reservation.Id))
             {

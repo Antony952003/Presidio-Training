@@ -15,7 +15,16 @@ namespace HotelManagementModel
         public int OccupancyCapacity { get; set; } 
         public decimal NightlyRate { get; set; } 
         public bool AvailabilityStatus { get; set; }
+        public Room(string type, string features, int maxoccupancy, decimal nightlyrate)
+        {
+            Type = type;
+            Features = features.Split(',').ToList();
+            OccupancyCapacity = maxoccupancy;
+            NightlyRate = nightlyrate;
+            AvailabilityStatus = true;
+        }
     }
+    
 }
 
 //RoomNumber: string or int(depends on your room numbering system)
