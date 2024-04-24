@@ -1,0 +1,90 @@
+using ShoppingBLLibrary;
+using ShoppingDALLibrary;
+using ShoppingModelLibrary;
+
+namespace ShoppingBLTests
+{
+    public class CartBlTests
+    {
+        ICartService shoppingServices;
+        CartRepository cartRepository;
+
+        [SetUp]
+        public void Setup()
+        {
+            cartRepository = new CartRepository();
+            shoppingServices = new CartBl(cartRepository);
+        }
+
+        [Test]
+        public void CalculateTotalPriceTest()
+        {
+            List<Product> products = new List<Product>
+            {
+                new Product { Id = 1, Name = "Product1", Price = 100.0, QuantityInHand = 1 },
+                new Product { Id = 2, Name = "Product2", Price = 200.0, QuantityInHand = 1 },
+                new Product { Id = 3, Name = "Product3", Price = 300.0, QuantityInHand = 1 }
+            };
+            
+
+            double totalPrice = shoppingServices.TotalAmountForCartItems(products);
+            Assert.That(totalPrice, Is.EqualTo(600.0));
+        }
+
+        [Test]
+        public void CalculateTotalPriceSuccess()
+        {
+            List<Product> products = new List<Product>
+            {
+                new Product { Id = 1, Name = "Product1", Price = 1000.0, QuantityInHand = 1 },
+                new Product { Id = 2, Name = "Product2", Price = 375.0, QuantityInHand = 1 },
+                new Product { Id = 3, Name = "Product3", Price = 1000.0, QuantityInHand = 1 }
+            };
+
+            double totalPrice = shoppingServices.TotalAmountForCartItems(products);
+            Assert.That(totalPrice, Is.EqualTo(2375.0));
+        }
+
+        [Test]
+        public void calculateTotalPriceFailure()
+        {
+            List<Product> products = new List<Product>
+            {
+                new Product { Id = 1, Name = "Product1", Price = 10.0, QuantityInHand = 1 },
+                new Product { Id = 2, Name = "Product2", Price = 20.0, QuantityInHand = 1 },
+                new Product { Id = 3, Name = "Product3", Price = 30.0, QuantityInHand = 1 }
+            };
+
+            double totalPrice = shoppingServices.TotalAmountForCartItems(products);
+            Assert.That(totalPrice, Is.EqualTo(160.0));
+        }
+
+        [Test]
+        public void ValidateCartSuccessTest()
+        {
+            List<CartItem> cartItems = new List<CartItem>
+            {
+                new CartItem { ProductId = 1, Quantity = 2 },
+                new CartItem { ProductId = 2, Quantity = 3 },
+                new CartItem { ProductId = 3, Quantity = 4 }
+            };
+
+            bool result = shoppingServices.ValidateCart(cartItems);
+            Assert.That(result, Is.True);
+        }
+
+        [Test]
+        public void ValidateCartFailTest()
+        {
+            List<CartItem> cartItems = new List<CartItem>
+            {
+                new CartItem { ProductId = 1, Quantity = 2 },
+                new CartItem { ProductId = 2, Quantity = 6 },
+                new CartItem { ProductId = 3, Quantity = 4 }
+            };
+
+            bool result = shoppingServices.ValidateCart(cartItems);
+            Assert.That(result, Is.False);
+        }
+    }
+}
