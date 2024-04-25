@@ -1,8 +1,10 @@
 ﻿using ShoppingBLLibrary.Exceptions;
 using ShoppingDALLibrary;
 using ShoppingModelLibrary;
+using ShoppingModelLibrary.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,78 +13,111 @@ namespace ShoppingBLLibrary
 {
     public class CartBl : ICartService
     {
-        CartRepository _cartrepository;
-        public CartBl(CartRepository cartrepository) {
+        IRepository<int, Cart> _cartrepository;
+        IRepository<int, Product> _productrepository;
+        public CartBl(IRepository<int, Cart> cartrepository, IRepository<int, Product> productrepository) {
             _cartrepository = cartrepository;
+            _productrepository = productrepository;
+
         }
-        public int AddCartItem(Cart cart, CartItem cartItem)
+
+        public int AddCartItem(int cartId, CartItem cartItem)
         {
-            if(cartItem.Quantity < 5)
+            var foundCart = _cartrepository.GetByKey(cartId);
+            var productfound = _productrepository.GetByKey(cartItem.ProductId);
+            if((productfound.QuantityInHand - cartItem.Quantity) < 0)
             {
-                cart.CartItems.Add(cartItem);
+                throw new RequiredQuantityNotAvailableException();
             }
-            throw new MaximumQuantityExceededException();
+            productfound.QuantityInHand -= cartItem.Quantity;
+            foundCart.CartItems.Add(cartItem);
+            var cartItemAdded = _cartrepository.Update(foundCart);
+            _productrepository.Update(productfound);
+            return cartId;
+        }
+        public int AddCart(Cart cart)
+        {
+            _cartrepository.Add(cart);
+            return cart.Id;
+        }
+
+        public Cart GetCartByCustomerID(int customerId)
+        {
+                var foundCart = _cartrepository.GetAll().ToList().Find((cart) => cart.CustomerId == customerId);
+                if (foundCart != null)
+                    return foundCart;
+
+                throw new NoCartWithGiveIdException();
+
+        }
+
+        public Cart GetCartById(int cartId)
+        {
+            try
+            {
+                var foundCart = _cartrepository.GetByKey(cartId);
+                return foundCart;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public CartItem RemoveItem(int cartid, CartItem cartItem)
         {
-            Cart cart = _cartrepository.GetByKey(cartid);
-            if(cart.CartItems.Contains(cartItem))
+            var foundCart = _cartrepository.GetByKey(cartid);
+            if (foundCart.CartItems.Contains(cartItem))
             {
-                cart.CartItems.Remove(cartItem);
-                _cartrepository.Update(cart);
+                foundCart.CartItems.Remove(cartItem);
+                var updatedcart = _cartrepository.Update(foundCart);
                 return cartItem;
             }
             throw new CartItemNotFoundException();
         }
+
+        public double TotalAmountForCartItems(int cartId)
+        {
+            var foundcart = _cartrepository.GetByKey(cartId);
+            double total = 0;
+            foreach (var item in foundcart.CartItems)
+            {
+                total += item.Quantity * item.Price;
+            }
+            return total;
+        }
+
+        public CartItem UpdateQuantity(int quantity, CartItem cartItem, int cartId)
+        {
+            var foundcart = _cartrepository.GetByKey(cartId);
+            for(int i = 0; i < foundcart.CartItems.Count; i++)
+            {
+                if (foundcart.CartItems[i].ProductId == cartItem.ProductId)
+                {
+                    if(quantity > ((cartItem.Product.QuantityInHand) + (cartItem.Quantity)))
+                        throw new MaximumQuantityExceededException();
+                    foundcart.CartItems[i].Quantity = quantity;
+                }
+            }
+            _cartrepository.Update(foundcart);
+            return cartItem;
+        }
+        public CartItem GetCartItem(int cartId, int productId)
+        {
+            var foundcart = _cartrepository.GetByKey(cartId);
+            var foundItem = foundcart.CartItems.ToList().Find((item) => item.ProductId == productId);
+            return foundItem;
+        }
+
         public bool ValidateCart(List<CartItem> cartitems)
         {
-            bool ans = true;
-            cartitems.ForEach((cartitem) =>
-            {
-                if(cartitem.Quantity > 5) {
-                    ans = false;
-                }
-            });
-            return ans;
+            var ispresent = cartitems.Count > 0;
+            if (!ispresent) throw new NoItemsInCartException();
+            return true;
         }
-        public CartItem UpdateQuantity(int quantity, CartItem cartItem,int cartid)
+        public List<CartItem> GetAllCartItems(int cartId)
         {
-            Cart cart = _cartrepository.GetByKey(cartid);
-            if (cart.CartItems.Contains(cartItem))
-            {
-                var founditem = cart.CartItems.Find((item) => item.ProductId == cartItem.ProductId);
-                if(founditem != null)
-                {
-                    founditem.Quantity = quantity;
-                    _cartrepository.Update(cart);
-                    return founditem;
-                }
-            }
-            throw new CartItemNotFoundException();
-
-        }
-        public CartItem GetCartItem(int cartid, CartItem cartItem)
-        {
-            Cart cart = _cartrepository.GetByKey(cartid);
-            CartItem foundItem = cart.CartItems.Find(item => item.ProductId == cartItem.ProductId);
-            if(foundItem != null)
-            {
-                return foundItem;
-            }
-            throw new CartItemNotFoundException();
-        }
-        public double TotalAmountForCartItems(List<Product> products)
-        {
-            double total = 0;
-            products.ForEach((cartItem) => {
-
-                total += cartItem.Price * cartItem.QuantityInHand;
-                
-            });
-            total += (total < 100) ? 100 : 0;
-            total *= ((products.Count == 3) && (total == 1500)) ? 0.95 : 1;
-            return total;
+            return _cartrepository.GetByKey(cartId).CartItems.ToList();
         }
     }
 }

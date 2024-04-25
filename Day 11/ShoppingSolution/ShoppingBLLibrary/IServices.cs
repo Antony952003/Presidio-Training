@@ -4,7 +4,6 @@ namespace ShoppingBLLibrary
 {
     public interface IProductService
     {
-
         int AddProduct(Product product);
         Product UpdateProduct(Product product);
         Product DeleteProduct(Product product);
@@ -16,16 +15,23 @@ namespace ShoppingBLLibrary
     {
         int AddCustomer(Customer customer);
         Customer GetCustomerById(int id);
-        List<CartItem> GetCustomerCarItems(int Custid);
-        double GetCartTotalWithDiscount(int cartId, int CustId);
+        List<CartItem> GetCustomerCartItems(int Custid);
+        Customer UpdateDetails(Customer customer);
+        Customer DeleteCustomer(Customer customer);
+        double GetCartTotalWithDiscount(int CustId);
+        List<Customer> GetAllCustomers();
     }
     public interface ICartService
     {
-        int AddCartItem(Cart cart , CartItem cartItem);
+        int AddCartItem(int cartId , CartItem cartItem);
+        public int AddCart(Cart cart);
         CartItem RemoveItem(int cartid, CartItem cartItem);
-        CartItem GetCartItem(int cartid, CartItem cartItem);
+        Cart GetCartById(int cartId);
+        Cart GetCartByCustomerID(int customerId);
         CartItem UpdateQuantity(int quantity, CartItem cartItem, int cartid);
-        double TotalAmountForCartItems(List<Product> products);
+        double TotalAmountForCartItems(int cartId);
         bool ValidateCart(List<CartItem> cartitems);
+        List<CartItem> GetAllCartItems(int cartId);
+        CartItem GetCartItem(int cartId, int productId);
     }
 }

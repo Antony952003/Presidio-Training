@@ -1,4 +1,5 @@
 using ShoppingDALLibrary;
+using ShoppingDALLibrary.Exceptions;
 using ShoppingModelLibrary;
 using ShoppingModelLibrary.Exceptions;
 
@@ -43,8 +44,8 @@ namespace ShoppingDALTest
             Customer customer = new Customer { Id = 1, Phone = "1234567890", Age = 20 };
             customerRepository.Add(customer);
             customerRepository.Delete(1);
-            var result = customerRepository.GetAll();
-            Assert.That(result.Count, Is.EqualTo(0));
+            var exception = Assert.Throws<NoCustomerInException>(() => customerRepository.GetAll());
+            Assert.AreEqual(exception.Message, "No Customer in the database add customer");
         }
 
         [Test]

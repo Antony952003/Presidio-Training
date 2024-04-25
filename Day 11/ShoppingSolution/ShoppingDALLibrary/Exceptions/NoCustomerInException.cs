@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingModelLibrary.Exceptions
+namespace ShoppingDALLibrary.Exceptions
 {
-    public class NoCartWithGiveIdException : Exception
+    public class NoCustomerInException : Exception
     {
         string msg;
-        public NoCartWithGiveIdException()
+        public NoCustomerInException()
         {
-            msg = "No cart for the given Id";
+            msg = "No Customer in the database add customer";
         }
         public override string Message => msg; 
     }
-
 }

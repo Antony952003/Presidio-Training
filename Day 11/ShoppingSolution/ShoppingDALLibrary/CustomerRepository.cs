@@ -1,4 +1,5 @@
-﻿using ShoppingModelLibrary;
+﻿using ShoppingDALLibrary.Exceptions;
+using ShoppingModelLibrary;
 using ShoppingModelLibrary.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,16 @@ namespace ShoppingDALLibrary
 {
     public class CustomerRepository : AbstractRepository<int, Customer>
     {
+
+        public override Customer Add(Customer item)
+        {
+            if (!items.Contains(item)) { 
+                items.Add(item);
+                return item;
+            }
+            throw new DuplicateCustomerException();
+                
+        }
         public override Customer Delete(int key)
         {
             Customer customer = GetByKey(key);
@@ -18,6 +29,11 @@ namespace ShoppingDALLibrary
                 items.Remove(customer);
             }
             return customer;
+        }
+        public override List<Customer> GetAll()
+        {
+            if(items.Count == 0)    throw new NoCustomerInException();
+            return items.ToList();
         }
 
         public override Customer GetByKey(int key)
@@ -32,14 +48,15 @@ namespace ShoppingDALLibrary
 
         public override Customer Update(Customer item)
         {
-            Customer customer = GetByKey(item.Id);
-            if (customer != null)
+            for(int i = 0; i < items.Count; i++)
             {
-                    items.Remove(customer);
-                    items.Add(item);
-                    customer = item;
+                if (items[i].Id == item.Id)
+                {
+                    items[i] = item;
+                    return item;
+                }
             }
-            return customer;
+            throw new NoCustomerWithGiveIdException();
         }
     }
 }

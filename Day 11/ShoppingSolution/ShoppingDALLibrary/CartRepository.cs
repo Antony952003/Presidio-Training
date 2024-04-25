@@ -13,10 +13,7 @@ namespace ShoppingDALLibrary
         public override Cart Delete(int key)
         {
             Cart cart = GetByKey(key);
-            if (cart != null)
-            {
-                items.Remove(cart);
-            }
+            items.Remove(cart);
             return cart;
         }
 
@@ -32,12 +29,16 @@ namespace ShoppingDALLibrary
 
         public override Cart Update(Cart item)
         {
-            Cart cart = GetByKey(item.Id);
-            if (cart != null)
+            for(int i = 0; i < items.Count; i++)
             {
-                cart = item;
+                if (items[i].Id == item.Id)
+                {
+                    items[i] = item;
+                    return item;
+                }
             }
-            return cart;
+            throw new NoCartWithGiveIdException();
+            
         }
     }
 }
