@@ -2,7 +2,7 @@
 {
     public class Program
     {
-        public bool hasCycle(Node head)
+        public async Task<bool> hasCycle(Node head)
         {
             if(head == null || head.next == null) return false;
             Node slow = head;
@@ -15,7 +15,7 @@
             }
             return true;
         }
-        public Node calculateHasCycle()
+        public async Task<Node> calculateHasCycle()
         {
             Node head = new Node(1);
             head.next = new Node(2);
@@ -24,11 +24,11 @@
             head.next.next.next.next = head.next.next;
             return head;
         }
-        static void Main(string[] args)
+        static async void Main(string[] args)
         {
             Program program = new Program();
-            Node head = program.calculateHasCycle();
-            bool ans = program.hasCycle(head);
+            Node head = await program.calculateHasCycle();
+            bool ans = await program.hasCycle(head);
         }
     }
     public class Node

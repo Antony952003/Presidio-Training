@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinDepthTree", "LeetcodeProblems\MinDepthTree.csproj", "{7BA8BB28-F576-4508-BF67-87F5A0CF9F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HasCycle", "HasCycle\HasCycle.csproj", "{922A9C2F-4FE3-4DD5-B57E-03CE5250E235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HasCycle", "HasCycle\HasCycle.csproj", "{922A9C2F-4FE3-4DD5-B57E-03CE5250E235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelName", "ExcelName\ExcelName.csproj", "{230F8079-D593-40E3-A36F-F057E247D5ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelName", "ExcelName\ExcelName.csproj", "{230F8079-D593-40E3-A36F-F057E247D5ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinDepth", "MinDepth\MinDepth.csproj", "{9DA4A008-882E-4C38-BE3C-A18334B91946}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7BA8BB28-F576-4508-BF67-87F5A0CF9F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BA8BB28-F576-4508-BF67-87F5A0CF9F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BA8BB28-F576-4508-BF67-87F5A0CF9F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BA8BB28-F576-4508-BF67-87F5A0CF9F05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{922A9C2F-4FE3-4DD5-B57E-03CE5250E235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{922A9C2F-4FE3-4DD5-B57E-03CE5250E235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{922A9C2F-4FE3-4DD5-B57E-03CE5250E235}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{230F8079-D593-40E3-A36F-F057E247D5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{230F8079-D593-40E3-A36F-F057E247D5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{230F8079-D593-40E3-A36F-F057E247D5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA4A008-882E-4C38-BE3C-A18334B91946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA4A008-882E-4C38-BE3C-A18334B91946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA4A008-882E-4C38-BE3C-A18334B91946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA4A008-882E-4C38-BE3C-A18334B91946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
