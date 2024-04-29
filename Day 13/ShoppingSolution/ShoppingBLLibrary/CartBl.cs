@@ -21,10 +21,10 @@ namespace ShoppingBLLibrary
 
         }
 
-        public int AddCartItem(int cartId, CartItem cartItem)
+        public async Task<int> AddCartItem(int cartId, CartItem cartItem)
         {
-            var foundCart = _cartrepository.GetByKey(cartId);
-            var productfound = _productrepository.GetByKey(cartItem.ProductId);
+            var foundCart = await _cartrepository.GetByKey(cartId);
+            var productfound = await _productrepository.GetByKey(cartItem.ProductId);
             if((productfound.QuantityInHand - cartItem.Quantity) < 0)
             {
                 throw new RequiredQuantityNotAvailableException();
@@ -35,15 +35,16 @@ namespace ShoppingBLLibrary
             _productrepository.Update(productfound);
             return cartId;
         }
-        public int AddCart(Cart cart)
+        public async Task<int> AddCart(Cart cart)
         {
-            _cartrepository.Add(cart);
-            return cart.Id;
+            Cart addedcart = await _cartrepository.Add(cart);
+            return addedcart.Id;
         }
 
-        public Cart GetCartByCustomerID(int customerId)
+        public async Task<Cart> GetCartByCustomerID(int customerId)
         {
-                var foundCart = _cartrepository.GetAll().ToList().Find((cart) => cart.CustomerId == customerId);
+            var AllCarts = await _cartrepository.GetAll();
+            var foundCart = AllCarts.Find((cart) => cart.CustomerId == customerId);
                 if (foundCart != null)
                     return foundCart;
 
@@ -51,11 +52,11 @@ namespace ShoppingBLLibrary
 
         }
 
-        public Cart GetCartById(int cartId)
+        public async Task<Cart> GetCartById(int cartId)
         {
             try
             {
-                var foundCart = _cartrepository.GetByKey(cartId);
+                var foundCart = await _cartrepository.GetByKey(cartId);
                 return foundCart;
             }
             catch(Exception ex)
@@ -64,21 +65,21 @@ namespace ShoppingBLLibrary
             }
         }
 
-        public CartItem RemoveItem(int cartid, CartItem cartItem)
+        public async Task<CartItem> RemoveItem(int cartid, CartItem cartItem)
         {
-            var foundCart = _cartrepository.GetByKey(cartid);
+            var foundCart = await _cartrepository.GetByKey(cartid);
             if (foundCart.CartItems.Contains(cartItem))
             {
                 foundCart.CartItems.Remove(cartItem);
-                var updatedcart = _cartrepository.Update(foundCart);
+                var updatedcart = await _cartrepository.Update(foundCart);
                 return cartItem;
             }
             throw new CartItemNotFoundException();
         }
 
-        public double TotalAmountForCartItems(int cartId)
+        public async Task<double> TotalAmountForCartItems(int cartId)
         {
-            var foundcart = _cartrepository.GetByKey(cartId);
+            var foundcart = await _cartrepository.GetByKey(cartId);
             double total = 0;
             foreach (var item in foundcart.CartItems)
             {
@@ -87,9 +88,9 @@ namespace ShoppingBLLibrary
             return total;
         }
 
-        public CartItem UpdateQuantity(int quantity, CartItem cartItem, int cartId)
+        public async Task<CartItem> UpdateQuantity(int quantity, CartItem cartItem, int cartId)
         {
-            var foundcart = _cartrepository.GetByKey(cartId);
+            var foundcart = await _cartrepository.GetByKey(cartId);
             for(int i = 0; i < foundcart.CartItems.Count; i++)
             {
                 if (foundcart.CartItems[i].ProductId == cartItem.ProductId)
@@ -105,22 +106,23 @@ namespace ShoppingBLLibrary
             _cartrepository.Update(foundcart);
             return cartItem;
         }
-        public CartItem GetCartItem(int cartId, int productId)
+        public async Task<CartItem> GetCartItem(int cartId, int productId)
         {
-            var foundcart = _cartrepository.GetByKey(cartId);
-            var foundItem = foundcart.CartItems.ToList().Find((item) => item.ProductId == productId);
+            var foundcart = await _cartrepository.GetByKey(cartId);
+            var foundItem = foundcart.CartItems.Find((item) => item.ProductId == productId);
             return foundItem;
         }
 
-        public bool ValidateCart(List<CartItem> cartitems)
+        public async Task<bool> ValidateCart(List<CartItem> cartitems)
         {
             var ispresent = cartitems.Count > 0;
             if (!ispresent) throw new NoItemsInCartException();
             return true;
         }
-        public List<CartItem> GetAllCartItems(int cartId)
+        public async Task<List<CartItem>> GetAllCartItems(int cartId)
         {
-            return _cartrepository.GetByKey(cartId).CartItems.ToList();
+            Cart foundcart = await _cartrepository.GetByKey(cartId);
+            return foundcart.CartItems;
         }
     }
 }

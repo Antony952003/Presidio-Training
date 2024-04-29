@@ -4,35 +4,35 @@ namespace ShoppingBLLibrary
 {
     public interface IProductService
     {
-        int AddProduct(Product product);
-        Product UpdateProduct(Product product);
-        Product DeleteProduct(Product product);
-        Product ChangeProductStatus(Product product,string status);
-        Product GetProductById(int id);
-        Product GetProductByName(string name);
-        List<Product> GetAllProducts();
+        Task<int> AddProduct(Product product);
+        Task<Product> UpdateProduct(Product product);
+        Task<Product> DeleteProduct(Product product);
+        Task<Product> ChangeProductStatus(Product product,string status);
+        Task<Product> GetProductById(int id);
+        Task<Product> GetProductByName(string name);
+        Task<List<Product>> GetAllProducts();
     }
     public interface ICustomerService
     {
-        int AddCustomer(Customer customer);
-        Customer GetCustomerById(int id);
-        List<CartItem> GetCustomerCartItems(int Custid);
-        Customer UpdateDetails(Customer customer);
-        Customer DeleteCustomer(Customer customer);
-        double GetCartTotalWithDiscount(int CustId);
-        List<Customer> GetAllCustomers();
+        Task<int> AddCustomer(Customer customer);
+        Task<Customer> GetCustomerById(int id);
+        Task<List<CartItem>> GetCustomerCartItems(int Custid);
+        Task<Customer> UpdateDetails(Customer customer);
+        Task<Customer> DeleteCustomer(Customer customer);
+        Task<double> GetCartTotalWithDiscount(int CustId);
+        Task<List<Customer>> GetAllCustomers();
     }
     public interface ICartService
     {
-        int AddCartItem(int cartId , CartItem cartItem);
-        public int AddCart(Cart cart);
-        CartItem RemoveItem(int cartid, CartItem cartItem);
-        Cart GetCartById(int cartId);
-        Cart GetCartByCustomerID(int customerId);
-        CartItem UpdateQuantity(int quantity, CartItem cartItem, int cartid);
-        double TotalAmountForCartItems(int cartId);
-        bool ValidateCart(List<CartItem> cartitems);
-        List<CartItem> GetAllCartItems(int cartId);
-        CartItem GetCartItem(int cartId, int productId);
+        Task<int> AddCartItem(int cartId , CartItem cartItem);
+        public Task<int> AddCart(Cart cart);
+        Task<CartItem> RemoveItem(int cartid, CartItem cartItem);
+        Task<Cart> GetCartById(int cartId);
+        Task<Cart> GetCartByCustomerID(int customerId);
+        Task<CartItem> UpdateQuantity(int quantity, CartItem cartItem, int cartid);
+        Task<double> TotalAmountForCartItems(int cartId);
+        Task<bool> ValidateCart(List<CartItem> cartitems);
+        Task<List<CartItem>> GetAllCartItems(int cartId);
+        Task<CartItem> GetCartItem(int cartId, int productId);
     }
 }

@@ -12,7 +12,7 @@ namespace ShoppingDALLibrary
     public class CustomerRepository : AbstractRepository<int, Customer>
     {
 
-        public override Customer Add(Customer item)
+        public override async Task<Customer> Add(Customer item)
         {
             if (!items.Contains(item)) { 
                 items.Add(item);
@@ -21,32 +21,35 @@ namespace ShoppingDALLibrary
             throw new DuplicateCustomerException();
                 
         }
-        public override Customer Delete(int key)
+        public override async Task<Customer> Delete(int key)
         {
-            Customer customer = GetByKey(key);
+            Customer customer = await GetByKey(key);
             if (customer != null)
             {
                 items.Remove(customer);
             }
             return customer;
         }
-        public override List<Customer> GetAll()
+        public override async Task<List<Customer>> GetAll()
         {
             if(items.Count == 0)    throw new NoCustomerInException();
-            return items.ToList();
+            return items;
         }
 
-        public override Customer GetByKey(int key)
+        public override async Task<Customer> GetByKey(int key)
         {
-            for (int i = 0; i < items.Count; i++)
+            try
             {
-                if (items[i].Id == key)
-                    return items[i];
+                Customer foundcustomer = items.Find((customer) => customer.Id == key);
+                return foundcustomer;
             }
-            throw new NoCustomerWithGiveIdException();
+            catch
+            {
+                throw new NoCustomerWithGiveIdException();
+            }
         }
 
-        public override Customer Update(Customer item)
+        public override async Task<Customer> Update(Customer item)
         {
             for(int i = 0; i < items.Count; i++)
             {

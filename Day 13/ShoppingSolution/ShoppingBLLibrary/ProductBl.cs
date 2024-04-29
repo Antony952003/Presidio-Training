@@ -15,11 +15,11 @@ namespace ShoppingBLLibrary
         {
             _productrepository = productrepository;
         }
-        public int AddProduct(Product product)
+        public async Task<int> AddProduct(Product product)
         {
             try
             {
-                var addedProduct = _productrepository.Add(product);
+                var addedProduct = await _productrepository.Add(product);
                 return addedProduct.Id;
             }
             catch(Exception ex)
@@ -27,11 +27,11 @@ namespace ShoppingBLLibrary
                 throw;
             }
         }
-        public Product ChangeProductStatus(Product product, string status)
+        public async Task<Product> ChangeProductStatus(Product product, string status)
         {
             try
             {
-                var foundproduct = _productrepository.GetByKey(product.Id);
+                var foundproduct = await _productrepository.GetByKey(product.Id);
                 foundproduct.ProductStatus = status;
                 _productrepository.Update(foundproduct);
                 return foundproduct;
@@ -42,22 +42,23 @@ namespace ShoppingBLLibrary
             }
         }
 
-        public Product DeleteProduct(Product product)
+        public async Task<Product> DeleteProduct(Product product)
         {
-            var deletedProduct = _productrepository.Delete(product.Id);
+            var deletedProduct = await _productrepository.Delete(product.Id);
             return deletedProduct;
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProducts()
         {
-            return _productrepository.GetAll().ToList().FindAll((p) => p.ProductStatus.Equals("Available"));
+            var allproducts = await _productrepository.GetAll();
+            return allproducts.FindAll((p) => p.ProductStatus.Equals("Available"));
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductById(int id)
         {
             try
             {
-                var foundProduct = _productrepository.GetByKey(id);
+                var foundProduct = await _productrepository.GetByKey(id);
                 return foundProduct;
             }
             catch (Exception ex)
@@ -66,11 +67,12 @@ namespace ShoppingBLLibrary
             }
         }
 
-        public Product GetProductByName(string name)
+        public async Task<Product> GetProductByName(string name)
         {
             try
             {
-                var foundProduct = _productrepository.GetAll().ToList().Find((product) => product.Name == name);
+                var allproducts = await _productrepository.GetAll();
+                var foundProduct = allproducts.Find((product) => product.Name == name);
                 return foundProduct;
             }
             catch (Exception ex)
@@ -79,9 +81,9 @@ namespace ShoppingBLLibrary
             }
         }
 
-        public Product UpdateProduct(Product product)
+        public async Task<Product> UpdateProduct(Product product)
         {
-            var UpdatedProduct = _productrepository.Update(product);
+            var UpdatedProduct = await _productrepository.Update(product);
             return UpdatedProduct;
         }
     }

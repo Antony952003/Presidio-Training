@@ -2,10 +2,10 @@
 {
     public interface IRepository<K, T>
     {
-        T Add(T item);
-        T GetByKey(K key);
-        ICollection<T> GetAll();
-        T Update(T item);
-        T Delete(K key);
+        Task<T> Add(T item);
+        Task<List<T>> GetAll();
+        Task<T> GetByKey(K id);
+        Task<T> Update(T item);
+        Task<T> Delete(K key);
     }
 }

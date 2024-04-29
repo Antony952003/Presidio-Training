@@ -18,11 +18,11 @@ namespace ShoppingBLLibrary
             _customerrepository = customerrepository;
             _cartrepository = cartrepository;
         }
-        public int AddCustomer(Customer customer)
+        public async Task<int> AddCustomer(Customer customer)
         {
             try
             {
-                Customer AddedCustomer = _customerrepository.Add(customer);
+                Customer AddedCustomer = await _customerrepository.Add(customer);
                 return AddedCustomer.Id;
             }
             catch (Exception ex)
@@ -31,11 +31,11 @@ namespace ShoppingBLLibrary
             } 
         }
 
-        public Customer DeleteCustomer(Customer customer)
+        public async Task<Customer> DeleteCustomer(Customer customer)
         {
             try
             {
-                Customer foundcustomer = _customerrepository.Delete(customer.Id);
+                Customer foundcustomer = await _customerrepository.Delete(customer.Id);
                 return foundcustomer;
             }
             catch (Exception ex)
@@ -45,11 +45,12 @@ namespace ShoppingBLLibrary
 
         }
 
-        public List<Customer> GetAllCustomers()
+        public async Task<List<Customer>> GetAllCustomers()
         {
             try
             {
-                return _customerrepository.GetAll().ToList();
+                var result = await _customerrepository.GetAll();
+                return result;
             }
             catch
             {
@@ -57,10 +58,11 @@ namespace ShoppingBLLibrary
             }
         }
 
-        public double GetCartTotalWithDiscount(int CustId)
+        public async Task<double> GetCartTotalWithDiscount(int CustId)
         {
-            Cart foundcart = _cartrepository.GetAll().ToList().Find((cart) => cart.CustomerId == CustId);
-            if(foundcart != null)
+            var listcarts = await _cartrepository.GetAll();
+            Cart foundcart = listcarts.Find((cart) => cart.CustomerId == CustId);
+            if (foundcart != null)
             {
                 double total = 0;
                 foreach (var cartItem in foundcart.CartItems) {
@@ -74,11 +76,11 @@ namespace ShoppingBLLibrary
 
         }
 
-        public Customer GetCustomerById(int id)
+        public async Task<Customer> GetCustomerById(int id)
         {
             try
             {
-                Customer foundCustomer = _customerrepository.GetByKey(id);
+                Customer foundCustomer = await _customerrepository.GetByKey(id);
                 return foundCustomer;
             }
             catch(Exception ex)
@@ -88,15 +90,16 @@ namespace ShoppingBLLibrary
 
         }
 
-        public List<CartItem> GetCustomerCartItems(int Custid)
+        public async Task<List<CartItem>> GetCustomerCartItems(int Custid)
         {
-            var foundCart = _cartrepository.GetAll().ToList().Find((cart) => cart.CustomerId == Custid);
+            var listcarts = await _cartrepository.GetAll();
+            Cart foundCart = listcarts.Find((cart) => cart.CustomerId == Custid);
             return foundCart.CartItems;
         }
 
-        public Customer UpdateDetails(Customer customer)
+        public async Task<Customer> UpdateDetails(Customer customer)
         {
-            Customer foundCustomer = _customerrepository.Update(customer);
+            Customer foundCustomer = await _customerrepository.Update(customer);
             return customer;
         }
     }

@@ -10,14 +10,14 @@ namespace ShoppingDALLibrary
 {
     public class CartRepository : AbstractRepository<int, Cart>
     {
-        public override Cart Delete(int key)
+        public override async Task<Cart> Delete(int key)
         {
-            Cart cart = GetByKey(key);
+            Cart cart = await GetByKey(key);
             items.Remove(cart);
             return cart;
         }
 
-        public override Cart GetByKey(int key)
+        public override async Task<Cart> GetByKey(int key)
         {
             for (int i = 0; i < items.Count; i++)
             {
@@ -27,15 +27,14 @@ namespace ShoppingDALLibrary
             throw new NoCartWithGiveIdException();
         }
 
-        public override Cart Update(Cart item)
+        public override async Task<Cart> Update(Cart item)
         {
-            for(int i = 0; i < items.Count; i++)
+            try
             {
-                if (items[i].Id == item.Id)
-                {
-                    items[i] = item;
-                    return item;
-                }
+                Cart foundcart = await GetByKey(item.Id);
+                int index = items.IndexOf(foundcart);
+                items[index] = item;
+                return item;
             }
             throw new NoCartWithGiveIdException();
             
