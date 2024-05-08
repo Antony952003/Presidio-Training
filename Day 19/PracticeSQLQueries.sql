@@ -89,3 +89,30 @@ SELECT OrderID, p.productname, Quantity "Quantity Sold", p.UnitPrice FROM [Order
 JOIN Products p ON p.ProductID = [Order Details].ProductID
 JOIN Categories c ON c.CategoryID = p.CategoryID
 WHERE p.UnitPrice BETWEEN 10 AND 20 AND c.CategoryName LIKE '%Dairy%') as t order by t.UnitPrice desc
+
+select * from Orders
+select * from Customers
+
+with orderDetails_CTE (OrderID, ContactName, ProductName) as
+(
+select od.OrderID, c.ContactName, p.ProductName
+from Orders o
+join [Order Details] od
+on od.OrderID = o.OrderID
+join Products p on p.ProductID = od.ProductID
+join Customers c on c.CustomerID = o.CustomerID
+where c.Country = 'USA'
+union 
+select od.OrderID, c.ContactName, p.ProductName
+from Orders o
+join [Order Details] od
+on od.OrderID = o.OrderID
+join Products p on p.ProductID = od.ProductID
+join Customers c on c.CustomerID = o.CustomerID
+where c.Country = 'France' and Freight < 20
+)
+
+select top 10 * from orderDetails_CTE
+
+
+sp_help categories

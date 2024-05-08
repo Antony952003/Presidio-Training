@@ -4,6 +4,7 @@ select * from authors
 select * from titles
 select * from titleauthor
 select * from sales
+select * from employee
 --1) Create a stored procedure that will take the author firstname and print all the books 
 --polished by him with the publisher's 
 create proc PrintAllBooks_procedure(@authorname varchar(20))
@@ -16,22 +17,25 @@ begin
 	where a.au_fname = @authorname
 end
 
-exec PrintAllBooks_procedure 'Sylvia'
+exec PrintAllBooks_procedure 'Albert'
 
 --2) Create a sp that will take the employee's firtname and print all the titles sold by him/her, 
 --price, quantity and the cost.
  select * from employee
-create proc PrintTitledetails_procedure(@ename varchar(20))
+alter proc PrintTitledetails_procedure(@ename varchar(20))
 as
 begin
-	select title, t.price,s.qty
+	select title, sum(t.price) "Unit price",sum(s.qty) "Quantity",sum(s.qty * t.price) "Total Cost"
 	from employee e
 	join titles t on e.pub_id = t.pub_id
 	join sales s on s.title_id = t.title_id
 	where e.fname = @ename
+	group by title
 end
 
-exec PrintTitledetails_procedure 'Paul'
+select * from employee
+
+exec PrintTitledetails_procedure 'Karin'
 
 drop proc PrintTitledetails_procedure
 --3) Create a query that will print all names from authors and employees
@@ -50,10 +54,11 @@ select * from publishers
 select * from titles
 select * from sales
 
-select top 5 s.ord_num, t.title, p.pub_name, a.au_fname,s.qty, s.qty * t.price 'Total Price'
+select top 5  t.title, p.pub_name, concat(a.au_fname,' ', a.au_lname) "Author Name",sum(s.qty), sum(s.qty * t.price) as TotalPrice
 from titleauthor ta
 join authors a on a.au_id = ta.au_id
 join titles t on t.title_id = ta.title_id
 join publishers p on p.pub_id = t.pub_id
 join sales s on s.title_id = t.title_id
-order by (s.qty * t.price) desc
+order by TotalPrice desc
+
