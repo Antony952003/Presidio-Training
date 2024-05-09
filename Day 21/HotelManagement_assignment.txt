@@ -1,0 +1,48 @@
+Naviagator - Shrish S
+Driver - Antony Jeson J
+
+Entities, Attributes and Relations :
+
+Feature Table:
+	-Feature Id(PK)
+	-Feature Name
+	-Feature Description
+ 
+Room Feature Table:
+	-RoomId(FK from Rooms Table)
+	-Feature ID (FK from Feature Table)
+ 
+Rooms Table:
+	-Room ID(PK)
+	-Room Type
+	-Occupancy Capacity
+	-Nightly Price
+ 
+Guest:
+	-Guest Id(PK)
+	-Guest FName
+	-Guest LName
+	-Guest PhoneNumber
+	-Guest Address
+	-Loyalty Points
+ 
+Reservation Preference:
+	-Reservation ID(FK from Reservation)
+	-Feature ID(FK from Feature Table)
+ 
+Reservation:
+	-Reservation ID(PK)
+	-RoomId(FK From Rooms)
+	-GuestID(FK From Guests)
+	-CheckinDate
+	-CheckOutDate
+	-TotalCost
+	-Status(Cancelled,Checked Out,Checked In,Yet To Checkin)
+ 
+FeedBack:
+	-FeedbackID(PK)
+	-ReservationId(FK From Reservation)
+	-GuestID(FK From Guest)
+	-Feedback Description
+	-Rating
+ 
