@@ -1,4 +1,4 @@
-Naviagator - Shrish S
+Navigator - Shrish S
 Driver - Antony Jeson J
 
 Entities, Attributes and Relations :
