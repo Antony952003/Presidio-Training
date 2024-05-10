@@ -1,4 +1,6 @@
 ﻿using ClientAppointmentDALLibrary.Models;
+using ClientAppointmentDALLibrary;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,62 +11,59 @@ namespace ClientAppointmentDALLibrary
 {
     public class PatientRepository : IRepository<int, Patient>
     {
-        readonly Dictionary<int, Patient> patients;
+        dbDoctorPatientContext _context;
 
-        public PatientRepository()
+        public PatientRepository(dbDoctorPatientContext context)
         {
-            patients = new Dictionary<int, Patient>();
+            _context = context;
         }
         int GenerateId()
         {
-            if (patients.Count == 0)
+            if (_context.Patients.Count() == 0)
                 return 1;
-            int id = patients.Keys.Max();
+            int id = _context.Patients.Max(x => x.Id);
             return ++id;
         }
         public Patient Add(Patient item)
         {
-            if (patients.ContainsValue(item))
+            if (_context.Patients.Contains(item))
             {
                 return null;
             }
             item.Id = GenerateId();
-            patients.Add(item.Id, item);
+            _context.Add(item);
             return item;
         }
 
         public Patient Delete(int key)
         {
-            if (patients.ContainsKey(key))
+            var FoundPatient = _context.Patients.ToList().Find(x => x.Id == key);
+            if (FoundPatient != null)
             {
-                var patient = patients[key];
-                patients.Remove(key);
-                return patient;
+                _context.Patients.Remove(FoundPatient);
+                return FoundPatient;
             }
             return null;
         }
 
         public Patient Get(int key)
         {
-            if (patients.ContainsKey(key))
-            {
-                return patients[key];
-            }
+            var FoundPatient = _context.Patients.ToList().Find(x => x.Id == key);
+            if (FoundPatient != null) { return FoundPatient; }
             return null;
         }
 
         public List<Patient> GetAll()
         {
-            if (patients.Count == 0)
-                return null;
-            return patients.Values.ToList();
+            return _context.Patients.ToList();
         }
 
         public Patient Update(Patient item)
         {
-            if (patients.ContainsKey(item.Id))
+            var FoundPatient = _context.Patients.ToList().Find(x => x.Id == item.Id);
+            if (FoundPatient != null)
             {
-                patients[item.Id] = item;
+                _context.Patients.Update(FoundPatient);
                 return item;
             }
             return null;

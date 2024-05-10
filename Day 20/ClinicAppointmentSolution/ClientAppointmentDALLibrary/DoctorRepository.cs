@@ -1,66 +1,64 @@
 ﻿
+using ClientAppointmentDALLibrary;
 using ClientAppointmentDALLibrary.Models;
 
-namespace ClientAppointmentDALLibrary
+namespace ClientDoctorDALLibrary
 {
     public class DoctorRepository : IRepository<int, Doctor> 
     {
-        readonly Dictionary<int, Doctor> doctors;
+        dbDoctorPatientContext _context;
 
-        public DoctorRepository()
+        public DoctorRepository(dbDoctorPatientContext context)
         {
-            doctors = new Dictionary<int, Doctor>();
+            _context = context;
         }
         int GenerateId()
         {
-            if (doctors.Count == 0)
+            if (_context.Doctors.Count() == 0)
                 return 1;
-            int id = doctors.Keys.Max();
+            int id = _context.Doctors.Max(x => x.Id);
             return ++id;
         }
         public Doctor Add(Doctor item)
         {
-            if (doctors.ContainsValue(item))
+            if (_context.Doctors.Contains(item))
             {
                 return null;
             }
             item.Id = GenerateId();
-            doctors.Add(item.Id, item);
+            _context.Add(item);
             return item;
         }
 
         public Doctor Delete(int key)
         {
-            if(doctors.ContainsKey(key))
+            var FoundDoctor = _context.Doctors.ToList().Find(x => x.Id == key);
+            if (FoundDoctor != null)
             {
-                var doctor = doctors[key];
-                doctors.Remove(key);
-                return doctor;
+                _context.Doctors.Remove(FoundDoctor);
+                return FoundDoctor;
             }
             return null;
         }
 
         public Doctor Get(int key)
         {
-            if(doctors.ContainsKey(key))
-            {
-                return doctors[key];
-            }
+            var FoundDoctor = _context.Doctors.ToList().Find(x => x.Id == key);
+            if (FoundDoctor != null) { return FoundDoctor; }
             return null;
         }
 
         public List<Doctor> GetAll()
         {
-            if (doctors.Count == 0)
-                return null;
-            return doctors.Values.ToList();
+           return _context.Doctors.ToList();
         }
 
         public Doctor Update(Doctor item)
         {
-            if (doctors.ContainsKey(item.Id))
+            var FoundDoctor = _context.Doctors.ToList().Find(x => x.Id == item.Id);
+            if (FoundDoctor != null)
             {
-                doctors[item.Id] = item;
+                _context.Doctors.Update(FoundDoctor);
                 return item;
             }
             return null;

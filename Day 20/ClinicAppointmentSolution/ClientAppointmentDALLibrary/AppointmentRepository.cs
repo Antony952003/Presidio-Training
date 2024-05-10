@@ -1,4 +1,5 @@
 ﻿using ClientAppointmentDALLibrary.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,62 +10,58 @@ namespace ClientAppointmentDALLibrary
 {
     public class AppointmentRepository : IRepository<int, Appointment>
     {
-        readonly Dictionary<int, Appointment> appointments;
-
-        public AppointmentRepository()
+        dbDoctorPatientContext _context;
+        public AppointmentRepository(dbDoctorPatientContext context)
         {
-            appointments = new Dictionary<int, Appointment>();
+            _context = context;
         }
         int GenerateId()
         {
-            if (appointments.Count == 0)
+            if (_context.Appointments.Count() == 0)
                 return 1;
-            int id = appointments.Keys.Max();
+            int id = _context.Appointments.Max(x => x.Id);
             return ++id;
         }
         public Appointment Add(Appointment item)
         {
-            if (appointments.ContainsValue(item))
+            if (_context.Appointments.Contains(item))
             {
                 return null;
             }
             item.Id = GenerateId();
-            appointments.Add(item.Id, item);
+            _context.Add(item);
             return item;
         }
 
         public Appointment Delete(int key)
         {
-            if (appointments.ContainsKey(key))
+            var FoundAppointment = _context.Appointments.ToList().Find(x => x.Id == key);
+            if (FoundAppointment != null)
             {
-                var appointment = appointments[key];
-                appointments.Remove(key);
-                return appointment;
+                _context.Appointments.Remove(FoundAppointment);
+                return FoundAppointment;
             }
             return null;
         }
 
         public Appointment Get(int key)
         {
-            if (appointments.ContainsKey(key))
-            {
-                return appointments[key];
-            }
+            var FoundAppointment = _context.Appointments.ToList().Find(x => x.Id == key);
+            if (FoundAppointment != null) { return FoundAppointment; }
             return null;
         }
 
         public List<Appointment> GetAll()
         {
-            if (appointments.Count == 0)
-                return null;
-            return appointments.Values.ToList();
+           return _context.Appointments.ToList();
         }
 
         public Appointment Update(Appointment item)
         {
-            if (appointments.ContainsKey(item.Id))
+            var FoundAppointment = _context.Appointments.ToList().Find(x => x.Id == item.Id);
+            if (FoundAppointment != null)
             {
-                appointments[item.Id] = item;
+                _context.Appointments.Update(FoundAppointment);
                 return item;
             }
             return null;

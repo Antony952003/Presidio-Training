@@ -13,10 +13,10 @@ namespace ClinicAppointmentBLLibrary
     {
         IRepository<int, Patient> _patientrepository;
         IRepository<int, Appointment> _appointmentrepository;
-        public PatientBl(IRepository<int, Patient> patientrepository, IRepository<int, Appointment> appointmentrepository)
+        public PatientBl()
         {
-            _patientrepository = patientrepository;
-            _appointmentrepository = appointmentrepository;
+            _patientrepository = new PatientRepository(new dbDoctorPatientContext());
+            _appointmentrepository = new AppointmentRepository(new dbDoctorPatientContext());
         }
         public Appointment AddAppointmentWithDoctor(Patient patient, Doctor doctor, DateTime newDateTime)
         {

@@ -14,7 +14,7 @@ namespace ClinicAppointmentBLLibrary
         AppointmentRepository _appointmentRepository;
         public AppointmentBl()
         {
-            _appointmentRepository = new AppointmentRepository();
+            _appointmentRepository = new AppointmentRepository(new dbDoctorPatientContext());
         }
         public Appointment CancelAppointment(int appointmentId)
         {

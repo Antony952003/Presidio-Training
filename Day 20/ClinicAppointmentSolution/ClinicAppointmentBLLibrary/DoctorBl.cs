@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClientDoctorDALLibrary;
 
 namespace ClinicAppointmentBLLibrary
 {
@@ -13,10 +14,10 @@ namespace ClinicAppointmentBLLibrary
     {
         IRepository<int, Doctor> _doctorrepository;
         IRepository<int, Appointment> _appointmentRepository;
-        public DoctorBl(IRepository<int, Doctor> doctorrepository)
+        public DoctorBl()
         {
-            _doctorrepository = doctorrepository;
-            _appointmentRepository = new AppointmentRepository();
+            _doctorrepository = new DoctorRepository(new dbDoctorPatientContext());
+            _appointmentRepository = new AppointmentRepository(new dbDoctorPatientContext());
         }
 
         public int AddDoctor(Doctor doctor)
