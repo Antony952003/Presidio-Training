@@ -32,6 +32,7 @@ namespace ClientAppointmentDALLibrary
             }
             item.Id = GenerateId();
             _context.Add(item);
+            _context.SaveChanges();
             return item;
         }
 
@@ -41,6 +42,7 @@ namespace ClientAppointmentDALLibrary
             if (FoundPatient != null)
             {
                 _context.Patients.Remove(FoundPatient);
+                _context.SaveChanges();
                 return FoundPatient;
             }
             return null;
@@ -64,6 +66,7 @@ namespace ClientAppointmentDALLibrary
             if (FoundPatient != null)
             {
                 _context.Patients.Update(FoundPatient);
+                _context.SaveChanges();
                 return item;
             }
             return null;

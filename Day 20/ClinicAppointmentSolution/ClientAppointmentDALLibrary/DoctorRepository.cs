@@ -27,6 +27,7 @@ namespace ClientDoctorDALLibrary
             }
             item.Id = GenerateId();
             _context.Add(item);
+            _context.SaveChanges();
             return item;
         }
 
@@ -36,6 +37,7 @@ namespace ClientDoctorDALLibrary
             if (FoundDoctor != null)
             {
                 _context.Doctors.Remove(FoundDoctor);
+                _context.SaveChanges();
                 return FoundDoctor;
             }
             return null;
@@ -59,6 +61,7 @@ namespace ClientDoctorDALLibrary
             if (FoundDoctor != null)
             {
                 _context.Doctors.Update(FoundDoctor);
+                _context.SaveChanges();
                 return item;
             }
             return null;
