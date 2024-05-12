@@ -50,7 +50,7 @@ namespace RequestTrackerCFDALLibrary.LazyLoadedRepos
             var feedback = await Get(entity.FeedbackId);
             if (feedback != null)
             {
-                _context.Feedbacks.Update(feedback);
+                _context.Entry<SolutionFeedback>(feedback).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return feedback;
             }

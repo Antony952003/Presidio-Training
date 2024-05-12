@@ -55,7 +55,7 @@ namespace RequestTrackerCFDALLibrary.LazyLoadedRepos
             var request = await Get(entity.RequestNumber);
             if (request != null)
             {
-                _context.Requests.Update(entity);
+                _context.Entry<Request>(request).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return request;
             }

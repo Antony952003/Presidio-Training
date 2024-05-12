@@ -54,7 +54,7 @@ namespace RequestTrackerCFDALLibrary.LazyLoadedRepos
             var requestsolution = await Get(entity.SolutionId);
             if (requestsolution != null)
             {
-                _context.RequestSolutions.Update(entity);
+                _context.Entry<RequestSolution>(requestsolution).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return entity;
             }
