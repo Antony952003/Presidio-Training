@@ -1,0 +1,15 @@
+select Name
+from students where marks > 75
+order by right(Name, 3), id asc;
+
+select h.hacker_id,h.name, sum(max_scores.maxscore) as totalscore
+from hackers h
+join 
+(select hacker_id, challenge_id, max(score) as maxscore
+from submissions 
+ group by hacker_id, challenge_id
+) as max_scores
+on h.hacker_id = max_scores.hacker_id
+group by h.hacker_id, h.name
+having sum(max_scores.maxscore) > 0
+order by totalscore desc, hacker_id asc
