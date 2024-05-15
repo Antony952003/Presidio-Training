@@ -1,0 +1,28 @@
+1.
+select top 2 city, len(city)
+from station 
+where len(city) in
+(
+    select max(len(city))
+    from station
+    union
+    select min(len(city))
+    from station
+)
+order by len(city) desc, city
+
+2.
+with minimumcoins as (select wp.age,w.power, min(coins_needed) min_coins_needed
+from wands w
+join wands_property wp on
+w.code = wp.code
+where is_evil = 0
+group by wp.age, w.power)
+
+select id, wp.age, coins_needed,w.power
+from wands w
+join wands_property wp 
+on wp.code = w.code
+join minimumcoins mc
+on mc.age = wp.age and w.coins_needed = mc.min_coins_needed and w.power = mc.power
+order by w.power desc, wp.age desc
