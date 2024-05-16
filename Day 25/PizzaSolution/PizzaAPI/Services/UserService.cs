@@ -89,5 +89,22 @@ namespace PizzaAPI.Services
             userdetail.Password = hMACSHA.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password));
             return userdetail;
         }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            var allusers = await _userrepo.Get();
+            return allusers.ToList();
+        }
+
+        public async Task<User> GetUserByName(string username)
+        {
+            var allusers = await GetAllUsers();
+            var user = allusers.FirstOrDefault(x => x.Name == username);
+            if(user != null)
+            {
+                return user;
+            }
+            return null;
+        }
     }
 }
