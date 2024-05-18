@@ -55,27 +55,61 @@ namespace EmployeeRequestTrackerAPI.Services
             return true;
         }
 
-        public async Task<Employee> Register(EmployeeUserDTO employeeDTO)
+        public async Task<RegisterOutputDTO> Register(RegisterInputDTO employeeDTO)
         {
             Employee employee = null;
             User user = null;
+            RegisterOutputDTO result = null;
             try
             {
-                employee = employeeDTO;
+                employee = MapRegisterInputToEmployee(employeeDTO);
                 user = MapEmployeeUserDTOToUser(employeeDTO);
                 employee = await _employeeRepo.Add(employee);
-                user.EmployeeId = employee.Id;
-                user = await _userRepo.Add(user);
-                ((EmployeeUserDTO)employee).Password = string.Empty;
-
-                return employee;
+                if (user != null)
+                {
+                    user.EmployeeId = employee.Id;
+                    user = await _userRepo.Add(user);
+                    result = MapEmployeeToRegisterOutputDTO(employee);
+                    // ((EmployeeUserDTO)employee).Password = string.Empty;               
+                    return result;
+                }
+                throw new Exception("Passwords doesn't match");
+                
             }
             catch (Exception) { }
-            if (employee != null)
-                await RevertEmployeeInsert(employee);
             if (user != null && employee == null)
                 await RevertUserInsert(user);
-            throw new UnableToRegisterException("Not able to register at this moment");
+            if (user == null && employee != null)
+                await RevertEmployeeInsert(employee);
+            throw new UnableToRegisterException("Not able to register at this moment Or Check if the both passwords match");
+        }
+
+        private RegisterOutputDTO? MapEmployeeToRegisterOutputDTO(Employee employee)
+        {
+            RegisterOutputDTO result = new RegisterOutputDTO()
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Role = employee.Role,
+                DateOfBirth = employee.DateOfBirth,
+                Image = employee.Image,
+                Phone = employee.Phone,
+            };
+            return result;
+
+        }
+
+        private Employee? MapRegisterInputToEmployee(RegisterInputDTO employeeDTO)
+        {
+            Employee employee = new Employee()
+            {
+                Name = employeeDTO.Name,
+                Phone = employeeDTO.Phone,
+                DateOfBirth = employeeDTO.DateOfBirth,
+                Role = employeeDTO.Role,
+                Image = employeeDTO.Image
+            };
+            return employee;
         }
 
         private LoginReturnDTO MapEmployeeToLoginReturn(Employee employee)
@@ -97,9 +131,14 @@ namespace EmployeeRequestTrackerAPI.Services
             await _employeeRepo.Delete(employee.Id);
         }
 
-        private User MapEmployeeUserDTOToUser(EmployeeUserDTO employeeDTO)
+        private User MapEmployeeUserDTOToUser(RegisterInputDTO employeeDTO)
         {
             User user = new User();
+            if (employeeDTO.Password != employeeDTO.ConfirmPassword)
+            {
+                user = null;
+                return user;
+            }
             user.EmployeeId = employeeDTO.Id;
             user.Status = "Disabled";
             HMACSHA512 hMACSHA = new HMACSHA512();

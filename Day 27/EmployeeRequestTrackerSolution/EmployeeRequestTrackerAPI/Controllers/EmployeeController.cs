@@ -1,6 +1,7 @@
 ﻿using EmployeeRequestTrackerAPI.Exceptions;
 using EmployeeRequestTrackerAPI.Interfaces;
 using EmployeeRequestTrackerAPI.Models;
+using EmployeeRequestTrackerAPI.Models.DTOs;
 using EmployeeRequestTrackerAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -16,13 +17,13 @@ namespace EmployeeRequestTrackerAPI.Controllers
         public EmployeeController(IEmployeeService employeeService) {
              _employeeService = employeeService;
         }
-
+        [Route("GetAllEmployees")]
         [Authorize]
         [HttpGet]
         [ProducesResponseType(typeof(IList<Employee>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status404NotFound)]
         [ProducesErrorResponseType(typeof(ErrorModel))]
-        public async Task<ActionResult<IList<Employee>>> Get()
+        public async Task<ActionResult<IList<RegisterOutputDTO>>> Get()
         {
             try
             {
@@ -34,9 +35,10 @@ namespace EmployeeRequestTrackerAPI.Controllers
                 return NotFound(new ErrorModel(404, nefe.Message));
             }
         }
+        [Route("UpdateEmployeePhone")]
         [HttpPut]
         [Authorize]
-        public async Task<ActionResult<Employee>> Put(int id, string phone)
+        public async Task<ActionResult<RegisterOutputDTO>> Put(int id, string phone)
         {
             try
             {
@@ -51,7 +53,7 @@ namespace EmployeeRequestTrackerAPI.Controllers
         [Route("GetEmployeeByPhone")]
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Employee>> Get([FromBody] string phone)
+        public async Task<ActionResult<RegisterOutputDTO>> Get([FromBody] string phone)
         {
             try
             {

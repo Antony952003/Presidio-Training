@@ -40,7 +40,10 @@ namespace EmployeeRequestTrackerAPI.Repositories
 
         public async Task<IEnumerable<Employee>> Get()
         {
-            var employees = await _context.Employees.ToListAsync();
+            var employees = await _context.Employees
+                .Include(e => e.RequestsRaised)
+                .Include(e => e.RequestsClosed)
+                .ToListAsync();
             return employees;
 
         }

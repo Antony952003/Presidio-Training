@@ -4,6 +4,7 @@ using EmployeeRequestTrackerAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using EmployeeRequestTrackerAPI.Exceptions;
 
 namespace EmployeeRequestTrackerAPI.Controllers
 {
@@ -34,12 +35,20 @@ namespace EmployeeRequestTrackerAPI.Controllers
         [HttpPost("Register")]
         [ProducesResponseType(typeof(Employee), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Employee>> Register(EmployeeUserDTO userDTO)
+        public async Task<ActionResult<RegisterOutputDTO>> Register(RegisterInputDTO userDTO)
         {
             try
             {
-                Employee result = await _userService.Register(userDTO);
+                RegisterOutputDTO result = await _userService.Register(userDTO);
+                if(result == null)
+                {
+                    return Unauthorized(new ErrorModel(400, "Passwords doesn't Match"));
+                }
                 return Ok(result);
+            }
+            catch (UnableToRegisterException ex)
+            {
+                return BadRequest(new ErrorModel(400, ex.Message));
             }
             catch (Exception ex)
             {
