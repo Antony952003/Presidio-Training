@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PORTFOLIO</div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#bio">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#">Contact</a>
+                <a href="#">Interested</a>
+                <i class="fa fa-search"></i>
+                <i class="fa fa-moon-o"></i>
+            </div>
+        </nav>
+        <section class="container">
+            <section class="left">
+                <h1>Hi, I'm Antony</h1>
+                <p>By day, 
+                    I'm a software developer intern, and by night sometimes extending to next day, 
+                    I binge-watch movies, series, and games like it's my second job. I'm an introvert who prefers the company of my code over crowds. If you see me in public,
+                     it's probably because my Wi-Fi is down!</p>
+                     <br>
+                     <br>
+                     <div>
+                        <a href="./Assets/Antony Jeson J - Resume(FBW).pdf" download="Antony Jeson J - Resume(FBW).pdf" id="hire">Resume</a>
+                        <a href="#projects" id="myp">Projects</a>
+                     </div>
+            </section>
+            <section class="right">
+                <img src="./Assets/Images" alt="" height="450px">
+            </section>
+        </section>
+    </header>
+    <section id="bio">
+        <div class="rightbio">
+            <div>
+                <p>About Me</p>
+                <h1>Software Developer</h1>
+                <p>Ever Since I started coding, I've been really passionate about taking on various projects.
+                     I've worked with different tech stacks and done few interesting projects.
+                     Some of which are deployed and available, check it out and give ur thoughts
+                     I'm always eager to learn more and explore new areas in the tech world!!</p>
+                     <hr>
+            </div>
+            <div class="info">
+                <div>
+                    <p><b>Name : </b>Antony Jeson J</p>
+                    <p><b>Email : </b>antonyjeson2003@gmail.com</p>
+                </div>
+                <div>
+                    <p><b>From : </b>Chennai, India</p>
+                    <p><b>Phone : </b>91+ 9080950106</p>
+                </div>
+            </div>
+
+            <div id="follow">
+                <p><b>Follow me on : </b>
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-whatsapp"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-linkedin"></i>
+                </p>
+            </div>
+            <div class="link-h">
+                <a href="#" id="mail">Email me</a>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <div class="intro">
+            <h1>Projects</h1>
+            <div class="card">
+                <div class="cardbody" id="imagegallery">
+                    <h3>Image Gallery</h3>
+                    <p>Image Gallery App Powered By Pixabay API, fetches the images related to the keyword entered in the field
+                        Frameword used for the frontend is React JS along with Tailwind CSS.
+                    </p>
+                </div>
+                <div class="cardbody" id="gmailclone">
+                    <h3>Gmail Clone Frontend</h3>
+                    <p>A React JS app made to mimic the touch and feel of the authentic Gmail website, with material UI Icons,
+                        and react-redux for state managements.
+                    </p>
+                </div>
+                <div class="cardbody">
+                    <h3>Happy Huddle</h3>
+                    <p>A Node Js chatApp which allows users to join a room and communicate using sockets,
+                         HTML and CSS were used for the presentation
+                    </p>
+                </div>
+                <div class="cardbody">
+                    <h3>Online Shopping App</h3>
+                    <p>A E-Commerse WebApp powered by JSP and Servlets, the presentation of the app is done using HTML and CSS.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById("imagegallery").addEventListener("click", function() {
+            window.open("https://image-gallery-fc833.web.app/");
+        });
+        document.getElementById("gmailclone").addEventListener("click", function() {
+            window.open("https://clone-1afee.web.app/");
+        });
+    </script>
+</body>
+</html>
