@@ -1,32 +1,19 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-/* .poppins-light {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  .kalam-bold {
-    font-family: "Kalam", cursive;
-    font-weight: 700;
-    font-style: normal;
-  } */
-  
-
-header  {
+header {
     width: 100%;
     height: 110vh;
-    background: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)),
-                url('./Assets/Images/banner1.jpg');
+    background: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)), url('./Assets/Images/banner1.jpg');
     background-size : 1300px;
     color: white;
 }
 
-nav{
+nav {
     position: fixed;
     width: 100%;
     height: 75px;
@@ -34,46 +21,44 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     padding: 0 70px;
     font-family: "Poppins", sans-serif;
     z-index: 1000;
 }
 
-.logo{
+.logo {
     font-size: 2em;
     letter-spacing: 2px;
     font-weight: bold;
 }
 
-.menu a{
+.menu a {
     text-decoration: none;
-    color : white;
+    color: white;
     font-size: 1.2em;
     padding: 8px 16px;
 }
 
-.menu a:nth-child(5){
+.menu a:nth-child(5) {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,83,121,0.6728816526610644) 37%, rgba(0,212,255,1) 100%);
     border-radius: 8px;
     margin: 0 1rem;
 }
 
-.menu i{
+.menu i {
     font-size: 1.5rem;
-    margin:  0 0.5rem;
+    margin: 0 0.5rem;
     cursor: pointer;
 }
 
-.menu a:hover{
+.menu a:hover {
     color: grey;
     transition: 0.5s ease;
-    -webkit-transition-delay:all 1s ease;
 }
-.menu a:nth-child(5):hover{
+
+.menu a:nth-child(5):hover {
     color: grey;
     transition: 0.5s ease;
-    -webkit-transition-delay:all 1s ease;
 }
 
 .container {
@@ -86,31 +71,32 @@ nav{
     padding: 0 70px;
 }
 
-.left{
+.left {
     flex-basis: 80%;
     position: relative;
     bottom: 100px;
 }
-.right{
+
+.right {
     flex-basis: 20%;
 }
 
-.left h2{
+.left h2 {
     font-family: "Poppins", sans-serif;
-    color:whitesmoke;
+    color: whitesmoke;
 } 
 
-.left h1{
+.left h1 {
     font-family: 'Kalam', cursive;
     font-size: 5em;
 }
 
-.left p{
+.left p {
     font-family: 'Poppins', sans-serif;
     line-height: 2.5rem;
 }
 
-#hire{
+#hire {
     text-decoration: none;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,83,121,0.6728816526610644) 37%, rgba(0,212,255,1) 100%);
     color: whitesmoke;
@@ -120,14 +106,13 @@ nav{
     margin: 0 1.5rem;
 }
 
-#hire:hover{
+#hire:hover {
     color: grey;
     transition: 0.5s ease;
-    -webkit-transition-delay:all 1s ease;
 }
 
-#myp{
-    text-decoration:none;
+#myp {
+    text-decoration: none;
     color: whitesmoke;
     font-size: 1.5rem;
     border-radius: 8px;
@@ -146,12 +131,7 @@ nav{
     align-items: flex-start;
     flex-wrap: wrap;
     font-family: 'Poppins', sans-serif;
-    border: 4px solid aqua;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-left: 1px;
-    margin-right: 1px;
-
+    margin: 2px 1px;
 }
 
 .rightbio {
@@ -162,35 +142,38 @@ nav{
     padding: 0 40px;
 }
 
-.rightbio p{
+.rightbio p {
     margin: 15px 0;
     line-height: 2.5rem;
 }
 
-.rightbio h1{
+.rightbio h1 {
     font-size: 3rem;
 }
 
-.info{
+.info {
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     text-align: left;
 }
+
 #follow {
     text-align: center;
 }
 
-#follow i{
+#follow i {
     color: darkblue;
     font-size: 1.5rem;
     margin: 0 0.5rem;
 }
-.link-h{
-    margin-top : 25px;
+
+.link-h {
+    margin-top: 25px;
 }
-#mail{
+
+#mail {
     background: linear-gradient(90deg, rgba(0,202,255,1) 0%, rgba(202,243,255,0.6000525210084033) 0%, rgba(9,83,121,0.4992121848739496) 100%);
     text-decoration: none;
     color: black;
@@ -201,26 +184,27 @@ nav{
     margin: 0 1.5rem;
 }
 
-#mail:hover{
+#mail:hover {
     color: grey;
     transition: 0.5s ease;
-    -webkit-transition-delay:all 1s ease;
 }
-
-#projects{
+.hamburger{
+    display: none;
+}
+#projects {
     padding: 50px 70px;
     width: 100%;
     height: 100%;
-    background : rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.02);
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
-.intro h1{
+.intro h1 {
     font-size: 3rem;
 }
 
-.card{
+.card {
     width: 100%;
     height: 100%;
     display: flex;
@@ -229,7 +213,7 @@ nav{
     margin-top: 3rem;
 }
 
-.cardbody{
+.cardbody {
     cursor: pointer;
     flex-basis: 45%;
     background: white;
@@ -237,12 +221,96 @@ nav{
     border-radius: 10px;
     margin-bottom: 2rem;
 }
-.cardbody h3{
+
+.cardbody h3 {
     font-size: 1.5rem;
     margin: 0.5rem 0;
 }
 
-.cardbody i{
+.cardbody i {
     font-size: 2.5rem;
     color: blue;
+}
+
+/* Responsive Design */
+@media (max-width: 990px) {
+    nav {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: black;
+        margin-top: 300px;
+        margin-left:60px;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu a {
+        padding: 10px;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 20px;
+    }
+
+    .left {
+        bottom: 0;
+        text-align: center;
+    }
+
+    .left h1 {
+        font-size: 3em;
+    }
+
+    .right {
+        display: none;
+    }
+
+    #bio, #projects {
+        padding: 50px 30px;
+        height: auto;
+    }
+
+    #bio{
+        margin-top: 40px;
+    }
+    .rightbio, .intro {
+        padding: 0;
+    }
+
+    .info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .info p{
+        text-align: center;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cardbody {
+        flex-basis: 100%;
+    }
 }

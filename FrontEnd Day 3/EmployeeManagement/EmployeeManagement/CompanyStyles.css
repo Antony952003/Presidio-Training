@@ -1,0 +1,41 @@
+h1{
+    color: maroon;
+    background-color: pink;
+    text-align: center;
+}
+
+.empcardmain{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex: 100%;
+    gap: 32px;
+}
+.empcard {
+    border: 1px solid grey;
+    border-radius: 20px;
+    flex: 1;
+    height: 550px;
+    /* margin-right: 20px;
+    margin-left: 20px; */
+    text-align: center;
+    box-shadow: 5px 5px 5px 7px grey;
+}
+
+.empcard img{
+    position: relative;
+    border-radius: 100%;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+}
+div:nth-child(2) img{
+    width: 250px;
+    height:250px ;
+}
+@media (max-width : 500px) {
+    .empcard{
+        flex: 100%;
+    }
+}

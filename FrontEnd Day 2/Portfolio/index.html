@@ -9,16 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">PORTFOLIO</div>
-            <div class="menu">
+            <div class="menu" id="menu">
                 <a href="#">Home</a>
                 <a href="#bio">About</a>
                 <a href="#projects">Projects</a>
@@ -26,6 +23,9 @@
                 <a href="#">Interested</a>
                 <i class="fa fa-search"></i>
                 <i class="fa fa-moon-o"></i>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fa fa-bars"></i>
             </div>
         </nav>
         <section class="container">
@@ -119,6 +119,14 @@
         });
         document.getElementById("gmailclone").addEventListener("click", function() {
             window.open("https://clone-1afee.web.app/");
+        });
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById("hamburger");
+        const menu = document.getElementById("menu");
+
+        hamburger.addEventListener("click", () => {
+            menu.classList.toggle("show");
         });
     </script>
 </body>
