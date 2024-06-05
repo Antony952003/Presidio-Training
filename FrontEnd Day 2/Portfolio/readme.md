@@ -6,7 +6,7 @@ Welcome to my portfolio app! This project showcases my work and skills using HTM
 
 The app has been successfully deployed and can be accessed at the following URL:
 
-[https://portfolio-4ss6v51dl-antony952003s-projects.vercel.app/](https://portfolio-4ss6v51dl-antony952003s-projects.vercel.app/)
+[https://portfolio-gbv4qksyg-antony952003s-projects.vercel.app/](https://portfolio-gbv4qksyg-antony952003s-projects.vercel.app/)
 
 ## Technologies Used
 
