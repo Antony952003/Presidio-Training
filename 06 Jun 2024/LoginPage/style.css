@@ -1,0 +1,77 @@
+body{
+    background: url("./Assets/Images/Background.png");
+    background-repeat: no-repeat;
+    background-color: #2148C0;
+}
+
+.image{
+    position: relative;
+    width: 120px;
+    height: 98px;
+    left: 90px;
+}
+
+.userform input{
+    width: 300px;
+    height: 45px;
+    background-color: transparent;
+    color: transparent;
+}
+
+.userform input:focus{
+    padding-left: 50px;
+    background-color: transparent;
+  }
+
+.userform img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 40px;
+    left: 12px;
+}
+
+.userform label{
+    color: #FFFFFF;
+    line-height: 20px;
+    font-size: 14px;
+    padding-top: 45px;
+    left: 36px;
+    font-weight: 200;
+    font-family: "Montserrat",sans-serif;
+}
+
+.forgetpassword{
+    color : white;
+    font-size: 16px;
+}
+
+.userbutton{
+    margin-top: 23px;
+    border: 1px solid white;
+    color: #2148C0;
+    font-size: 16px;
+    font-weight: 600;
+    width: 300px;
+    height: 45px;
+    border-radius: 4px;
+    line-height: 20px;
+    font-family: "Montserrat",sans-serif;
+    position: relative;
+    top: 20px;
+}
+
+.forgetpassword{
+    font-family: "Montserrat",sans-serif;
+    position: relative;
+    top: 20px;
+    left: 156px;
+}
+
+.maindiv{
+    width: 300px;
+    height: 398px;
+    position: relative;
+    left: 490px;
+    top: 161px;
+}
