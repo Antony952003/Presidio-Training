@@ -1,0 +1,257 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0; /* Background color to see the border-radius effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    margin-top: 240px;
+    width: 90%;
+    /* height: 90vh; Adjust height as necessary */
+    /* background-color: white; */
+    border-radius: 30px; /* Adjust the border-radius value as needed */
+    overflow: hidden;
+    position: relative;
+}
+.headermain{
+    width: 100%;
+    height: 66px;
+    background-color: #F4F7FC;
+    display: flex;
+    padding: 16px 20px;
+}
+
+.filterbutton{
+    width: 40px;
+    height: 32px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.textfield{
+    width: 320px;
+    height: 32px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    position: relative;
+    left: 16px;
+    padding: 0px 7px;
+    padding-top: 2px;
+    border: 1px solid lightgray;
+}
+
+.textfield input{
+    border: none;
+    outline: none;
+    width: 270px;
+    height: 20px;
+    font-size: 14px;
+    padding-bottom: 2px;
+
+}
+
+.textfield i{
+    padding:0px 7px;
+    color : grey;
+    font-weight: 200;
+}
+
+
+.addcustomerbtn{
+    position: relative;
+    left: 558px;
+    width: 146px;
+    height: 32px;
+    border: 2px solid darkblue;
+    border-radius: 6px;
+    padding: 0px 12px;
+    padding-bottom: 2px;
+    background-color: #2264E5;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.addcustomerbtn img{
+    margin-right: 5px;
+    margin-bottom: 3px;
+    width: 16px;
+    height: 16px;
+}
+
+
+.table-container {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #F4F7FC;
+    margin-bottom: 50px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: #F4F7FC;
+}
+
+th, td {
+    padding: 15px;
+    height: 60px;
+}
+
+.white td{
+    background-color: white;
+}
+
+.grey td{
+    background-color: #F9FAFC;
+}
+
+td{
+    font-size: 14px;
+}
+
+th {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+td input[type="checkbox"] {
+    margin: 0;
+}
+
+.status {
+    padding: 0;
+    color: white;
+    text-align: center;
+}
+
+.status span{
+    position: relative;
+    left: 12px;
+    display: block;
+    width: 55px;
+    height: 30px;
+    border-radius: 22px;
+    font-size: 12px;
+    padding-top: 5px;
+    
+}
+
+.status.open span{
+    color: #007bff;
+    background-color: #F0F1FA;
+    
+}
+
+.status.paid span{
+    color: #28a745;
+    background-color: #E1FCEF;
+}
+
+.status.inactive span{
+    color: #6c757d;
+    background-color: #E9EDF5;
+}
+
+.status.due span{
+    color: #dc3545;
+    background-color: #FAF0F3;
+}
+
+.negative {
+    color: red;
+}
+
+.positive {
+    color: green;
+}
+
+.pagination {
+    position: fixed;
+    font-size: 14px;
+    bottom: 0;
+    width: 1112px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    backdrop-filter: blur(6px); /* blur effect */
+    -webkit-backdrop-filter: blur(2px);
+    border-top: 2px solid whitesmoke;
+    z-index: 1000;
+}
+
+.pagination .left {
+    flex: 1;
+    text-align: left;
+}
+
+.pagination .right{
+    margin-right: 50px;
+}
+
+
+.leftbtn{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    position: relative;
+    bottom: 1.5px;
+}
+
+.rightbtn{
+    width: 25px;
+    height: 26px;
+    margin-left: 10px;
+}
+
+.downbtn{
+    width: 20px;
+    height: 20px;
+}
+
+.columnsort{
+    width: 18px;
+    height: 18px;
+    position: relative;
+    bottom: 2px;
+}
+
+.columnsort2{
+    width: 18px;
+    height: 18px;
+    position: relative;
+    bottom: 2px;
+}
+.description
+{
+    width: 310px;
+    line-height: 20px;
+    font-size: 14px;
+}
+tr:nth-child(3){
+    width: 900px;
+}
+
+td span{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+td p{
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom: 0;
+}

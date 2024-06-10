@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="headermain">
+      <button class="filterbutton"><i class="fa fa-filter"></i></button>
+      <div class="textfield">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Search...">
+      </div>
+      <button class="addcustomerbtn"><img src="./Assets/Images/add.png" alt=""> Add customer</button>
+  </header>
+  <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th># <img class="columnsort" src="./Assets/Images/column-sorting.png"></th>
+                <th>Name <img class="columnsort2" src="./Assets/Images/column-sorting (1).png"></th>
+                <th>Description</th>
+                <th>Status <img class="columnsort2" src="./Assets/Images/column-sorting (1).png"></th>
+                <th>Rate</th>
+                <th>Balance</th>
+                <th>Deposit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="white">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">1</td>
+                <td class="namewithnumber"><span>Ann Culhanes</span><p>5684236526</p></td>
+                <td  class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status open"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="negative">-$270.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="grey">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">2</td>
+                <td><span>Ahmad Rosser</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status paid"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="positive">$270.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="white">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">3</td>
+                <td><span>Zain Calzoni</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status open"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="negative">-$20.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="grey">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">4</td>
+                <td><span>Leo Stanton</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status inactive"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="positive">$600.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="white">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">5</td>
+                <td><span>Kaiya Vetrov</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status open"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="negative">-$350.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="grey">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">6</td>
+                <td><span>Ryan Westervelt</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status paid"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="negative">-$270.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="white">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">7</td>
+                <td><span>Corey Stanton</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status due"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="positive">$30.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="grey">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">8</td>
+                <td><span>Adison Aminoff</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status open"><span>Open</span></td>
+                <td>$70.00</td>
+                <td class="negative">-$270.00</td>
+                <td>$500.00</td>
+            </tr>
+            <tr class="white">
+                <td><input type="checkbox"></td>
+                <td style="font-weight: bold;">9</td>
+                <td><span>Alfredo Aminoff</span><p>5684236526</p></td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla...</td>
+                <td class="status inactive"><span>Open</span></td>
+                <td class="positive">$460.00</td>
+                <td>$500.00</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="left">1-10 of 97</span>
+        <span class="right">Rows per page : 10 <img class="downbtn" src="./Assets/Images/down.png"></span>
+        <span class="right"><img class="leftbtn" src="./Assets/Images/Buttonleft.png"> 1/10 <img class="rightbtn" src="./Assets/Images/Buttonright.png"></span>
+    </div>
+  </div>
+  </div>
+    
+</body>
+</html>
