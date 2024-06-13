@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Data</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="script.js">
+        // Function understandingRestOperator
+        // var understandingRestOperator = () => {
+        //     let numbers = [1, 2, 3, 4, 5];
+        //     let sum = calculate('add', 1, 2, 3, 4, 53, 2);
+        //     let product = calculate('multiply', 30, 45, 78, 90);
+        //     console.log('Sum:', sum);
+        //     console.log('Product:', product);  
+        // }
+
+        // var calculate = (operation, ...numbers) => {
+        //     let result = 0;
+        //     if(operation === 'add'){
+        //         for(let i = 0; i < numbers.length; i++){
+        //             result += numbers[i];
+        //         }
+        //     } 
+        //     else if(operation === 'multiply'){
+        //         result = 1;
+        //         for(let i = 0; i < numbers.length; i++){
+        //             result *= numbers[i];
+        //         }
+        //     } 
+        //     return result;
+        // }
+    </script>
+</head>
+<body>
+    <center>
+        <div class="form-container">
+            <h2>Add Product</h2>
+            <form class="addproductform" action="" onsubmit="appendRecord(event)">
+                <div class="input-field">
+                    <h2>Id : </h2>
+                    <input type="text" name="id" id="id" placeholder="Enter Id" required>
+                </div>
+                <div class="input-field">
+                    <h2>Name : </h2>
+                    <input type="text" name="name" id="name" placeholder="Enter Name" required>
+                </div>
+                <div class="input-field">
+                    <h2>Price : </h2>
+                    <input type="text" name="price" id="price" placeholder="Enter Price" required>
+                </div>
+                <div class="input-field">
+                    <h2>Quantity : </h2>
+                    <input type="number" name="quantity" id="quantity" placeholder="Enter Quantity" required>
+                </div>
+                <button class="submitbutton" type="submit">Submit</button>
+            </form>
+        </div>
+    </center>
+    <h1>Product Data</h1>
+    <div>
+        <button onclick="understandingRestOperator()">Understanding Rest Operator</button>  
+    </div>
+    <table class="record-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Product 1</td>
+            <td>$10.00</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Product 2</td>
+            <td>$15.00</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Product 3</td>
+            <td>$20.00</td>
+            <td>3</td>
+        </tr>
+    </table>
+</body>
+</html>
