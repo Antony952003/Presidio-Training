@@ -1,0 +1,97 @@
+<!-- A registration page with 
+Name, Phone, Date Of birth, Email,  Age(Auto calculated based on Date of birth),
+Gender(Radio), Qualification(Check), Profession(Drop Down - Data list)
+Load data list with predefined values from array(string)
+If a new entry is made apart from the given value, then include in the array
+
+Add validation using JavaScript - use CSS/bootstrap/tailwind for styling as well as the error highlights
+On lost focus please validate the controls. 
+On click of submit show the consolidated errors beside the submit button -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registeration</title>
+    <script defer src="./script.js" ></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>  
+    <div class="container">
+        <h1>Registeration</h1>
+        <div class="form">
+            <form onsubmit="submitform()" action="">
+                <div class="field">
+                    <label class="placeholder" for="name">Name</label>
+                    <input type="text" id="name">
+                </div>
+                <p class="errorname message"></p>
+                <div class="field">
+                    <label class="placeholder" for="mail">Email</label>
+                    <input type="email" id="mail">
+                </div>
+                <p class="errormail message"></p>
+                <div class="field">
+                    <label class="placeholder" for="phone">Phone</label>
+                    <input type="text" id="phone">
+                </div>
+                <p class="errorphone message"></p>
+                <div class="field">
+                    <label class="placeholder" for="dob">Date Of Birth</label>
+                <input type="date" id="dob">
+                </div>
+                <p class="errordob message"></p>
+                <div class="field">
+                    <label class="placeholder" for="age">Age</label>
+                    <input type="text" id="age">
+                </div>
+                <p class="errorage message"></p>
+                <div class="field">
+                    <label class="placeholder">Gender</label>
+                    <div class="radio">
+                        <div>
+                            <input type="radio" name = "gender" id="male">
+                            <label for="male">Male</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="gender" id="female">
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+                </div>
+                <p class="message"></p>
+                <div class="field">
+                    <label class="placeholder" for="name">Qualification</label>
+                    <div class="checkbox">
+                        <input type="checkbox" id="be" name="be" value="B.E">
+                        <label class="option" for="be">B.E</label><br>
+                        <input type="checkbox" id="btech" name="btech" value="B.Tech">
+                        <label class="option" for="btech">B.Tech</label><br>
+                        <input type="checkbox" id="masters" name="masters" value="masters">
+                        <label class="option" for="masters">Masters</label><br>
+                    </div>
+                </div>
+                <p class="message"></p>
+                <div class="field">
+                    <label class="placeholder" for="Profession">Profession : </label>
+                    <input list="professions" name="Profession" id="Profession">
+
+                    <datalist id="professions">
+                        <option value="Software Developer">
+                        <option value="Data Scientist">
+                        <option value="Network Engineer">
+                        <option value="Cybersecurity Analyst">
+                        <option value="Database Administrator">
+                    </datalist>
+                </div>
+                <div class="displaymessages">
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
