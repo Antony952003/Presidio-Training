@@ -42,13 +42,9 @@ body{
     margin-top: 10px;
 }
 
-.displaymessages p{
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 5px;
-}
+ .displaymessages p{
+    color: red;
+} 
 
 .error{
     border:0.5px solid red;

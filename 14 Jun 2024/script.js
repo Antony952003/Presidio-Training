@@ -1,88 +1,32 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
-    var errormessages = document.querySelectorAll('.message');
-    console.log(errormessages);
-    var displaymessages = document.querySelector('.displaymessages');
-    for(var errormessage in errormessages){
-        if(errormessage.innerHTML === undefined){
-            continue;
-        }
-        var ptag = document.createElement('p');
-        ptag.innerHTML = errormessage.innerHTML;
-        displaymessages.appendChild(ptag);
-    }
-})
+    const professions = new Set();
 
-document.addEventListener('DOMContentLoaded', () => {
+    const updateDisplayMessages = () => {
+        const errormessages = document.querySelectorAll('.message');
+        const displaymessages = document.querySelector('.displaymessages');
 
+        // Clear existing messages
+        while (displaymessages.firstChild) {
+            displaymessages.removeChild(displaymessages.firstChild);
+        }
 
-    var name = document.getElementById('name');
-    name.addEventListener('blur' , () => {
-        var isValid = validateField(name);
-        var errormessage = document.querySelector(`.error${name.id}`);
-        if(!isValid){
-            errormessage.style.color = 'red';
-            errormessage.innerHTML = "Name cannot be empty !!";
-        }
-        else{
-            errormessage.innerHTML = '';
-        }
-    })
-    var mail = document.getElementById('mail');
-    mail.addEventListener('blur' , () => {
-        var isValid = validateField(mail);
-        var errormessage = document.querySelector(`.error${mail.id}`);
-        if(!isValid){
-            errormessage.style.color = 'red';
-            errormessage.innerHTML = "Invalid Mail format!!";
-        }
-        else{
-            errormessage.innerHTML = '';
-        }
-    })
-    var phone = document.getElementById('phone');
-    phone.addEventListener('blur' , () => {
-        var isValid = validateField(phone);
-        var errormessage = document.querySelector(`.error${phone.id}`);
-        if(!isValid){
-            errormessage.style.color = 'red';
-            errormessage.innerHTML = "Invalid Phone number (must be 10 digits)";
-        }
-        else{
-            errormessage.innerHTML = '';
-        }
-    })
-    var dob = document.getElementById('dob');
-    dob.addEventListener('blur' , () => {
-        var isValid = validateField(dob);
-        var errormessage = document.querySelector(`.error${dob.id}`);
-        if(!isValid){
-            errormessage.style.color = 'red';
-            errormessage.innerHTML = "Dob is invalid (chack the year)!!";
-        }
-        else{
-            errormessage.innerHTML = '';
-        }
-    })
-    var profession = document.getElementById('Profession');
-    profession.addEventListener('blur' , () => {
-        var isValid = validateField(profession);
-        var errormessage = document.querySelector(`.error${profession.id}`);
-        if(!isValid){
-            errormessage.style.color = 'red';
-            errormessage.innerHTML = "Profession is invalid !!";
-        }
-        else{
-            errormessage.innerHTML = '';
-        }
-    })
-    
-
+        // Add current error messages
+        errormessages.forEach(errormessage => {
+            if (errormessage.innerHTML.trim() === '') {
+                return;
+            }
+            const ptag = document.createElement('p');
+            ptag.classList.add(errormessage.classList.item(0));
+            ptag.classList.add('message');
+            ptag.innerHTML = errormessage.innerHTML;
+            displaymessages.appendChild(ptag);
+        });
+    };
 
     const validateField = (input) => {
         const value = input.value.trim();
         let isValid = true;
+        const errormessage = document.querySelector(`.error${input.id}`);
 
         switch (input.id) {
             case 'name':
@@ -95,18 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 isValid = /^[0-9]{10}$/.test(value);
                 break;
             case 'dob':
-                console.log("dob");
                 isValid = value !== '';
                 if (isValid) {
                     const dob = new Date(value);
                     const age = new Date().getFullYear() - dob.getFullYear();
-                    if(age === 0){
-                        console.log('notvalid')
+                    if (age === 0) {
                         isValid = false;
-                    }
-                    else{
-                        console.log('valid here')
-                        var ageinput = document.getElementById('age');
+                    } else {
+                        const ageinput = document.getElementById('age');
                         ageinput.value = age;
                     }
                 }
@@ -122,15 +62,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 break;
         }
-        if(!isValid){
-            console.log(`error${input.id}`);
+
+        if (!isValid) {
             input.classList.add('error');
             input.classList.remove('active');
-        }
-        else{
+        } else {
             input.classList.remove('error');
             input.classList.add('active');
         }
+
         return isValid;
-    }
-})
+    };
+
+    const attachValidationEvent = (id, errorMessage, validationFunction) => {
+        const input = document.getElementById(id);
+        input.addEventListener('blur', () => {
+            const isValid = validationFunction(input);
+            const errormessage = document.querySelector(`.error${id}`);
+            if (!isValid) {
+                errormessage.style.color = 'red';
+                errormessage.innerHTML = errorMessage;
+            } else {
+                errormessage.innerHTML = '';
+            }
+            updateDisplayMessages();
+        });
+    };
+
+    attachValidationEvent('name', "Name cannot be empty !!", validateField);
+    attachValidationEvent('mail', "Invalid Mail format!!", validateField);
+    attachValidationEvent('phone', "Invalid Phone number (must be 10 digits)", validateField);
+    attachValidationEvent('dob', "Dob is invalid (check the year)!!", validateField);
+    attachValidationEvent('Profession', "Profession is invalid !!", validateField);
+});

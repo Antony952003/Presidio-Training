@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/seat.css" />
+    <script defer src="./js/seat.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Movie Seat Booking</title>
+  </head>
+  <body>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+        var startChar = 'A'.charCodeAt(0);
+        var endChar = 'T'.charCodeAt(0);
+        var colcount = 16;
+        var container = document.querySelector('.container');
+
+        for(let i = startChar; i <= endChar; i++) {
+            var newrow = document.createElement('div');
+            newrow.classList.add('row');
+            var rownum = document.createElement('p');
+            rownum.classList.add('rownum');
+            rownum.innerHTML = String.fromCharCode(i);
+            newrow.appendChild(rownum);
+            for(let j = 1; j <= colcount; j++) {
+                var newcol = document.createElement('div');
+                newcol.classList.add('seat');
+                newcol.innerHTML = `${j}`;
+                newrow.appendChild(newcol);
+            }
+            container.appendChild(newrow);
+        }
+    });
+    </script>
+    <div class="movie-container">
+        <!-- Movie Studio logo -->
+        <a href="#" class="logo">
+            <i class='bx bx-movie-play bx-tada main-color'></i><span class="main-color">M</span>ovie <span class="main-color">S</span>tudio
+        </a>
+      <div class="mcontainer">
+        <label>Movie:</label>
+      <select id="movie">
+        <option value="220">Godzilla vs Kong (RS.220)</option>
+        <option value="320">Radhe (RS.320)</option>
+        <option value="250">RRR (RS.250)</option>
+        <option value="260">F9 (RS.260)</option>
+      </select>
+      </div>
+      <div class="mcontainer">
+        <label>Language:</label>
+      <select id="movie">
+        <option value="220">English</option>
+        <option value="320">Tamil</option>
+        <option value="250">Kannada</option>
+        <option value="260">Malayalam</option>
+      </select>
+      </div>
+      <div class="mcontainer">
+        <label>Format:</label>
+      <select id="movie">
+        <option value="220">2D</option>
+        <option value="320">3D</option>
+        <option value="250">IMAX 3D</option>
+      </select>
+      </div>
+      <div class="mcontainer">
+        <label>Screen:</label>
+      <select id="movie">
+        <option value="220">Audi 1</option>
+        <option value="320">Audi 2</option>
+        <option value="250">Audi 3</option>
+        <option value="260">Audi 4</option>
+      </select>
+      </div>
+      <div class="mcontainer">
+        <label>Showtime:</label>
+      <select id="movie">
+        <option value="220">3:10 PM</option>
+        <option value="320">4:00 PM</option>
+        <option value="250">11:00 AM</option>
+        <option value="260">12:00 PM</option>
+      </select>
+      </div>
+    </div>
+
+    <ul class="showcase">
+      <li>
+        <div class="seat"></div>
+        <small>Available</small>
+      </li>
+      <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+      </li>
+      <li>
+        <div class="seat sold"></div>
+        <small>Sold</small>
+      </li>
+    </ul>
+    <div class="container">
+    </div>
+    <div>
+        <p class="text">
+      Selected : <span id="count"> 0 </span>Total price : <span
+        id="total"
+        > 0 </span
+      >
+    </div>
+    </p>
+    <script src="script.js"></script>
+  </body>
+</html>
