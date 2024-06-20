@@ -343,7 +343,7 @@ a.movie-item:hover {
     transition-delay: 0.8s;
 }
 
-.owl-item.active .top-down {
+.owl-item.active.top-down {
     transform: translateY(0);
     visibility: visible;
     opacity: 1;

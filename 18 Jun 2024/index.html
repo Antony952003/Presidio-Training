@@ -1,0 +1,134 @@
+-------------------------------------------
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script>
+        const clickButton =()=>{
+            alert('Button Clicked'  )
+            const txtUid = document.getElementById('txtUid').value *1;
+            const txtPass = document.getElementById('txtPass').value;
+            fetch('http://localhost:5091/api/User/Login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+                },
+            body: JSON.stringify({
+                "userId": txtUid,
+                "password": txtPass
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.token){
+                localStorage.setItem('authtoken', data.token);
+                alert('logged in')
+            }
+            else{
+                alert('wrong username or password');
+            }
+        });
+
+        }
+        const getusers = () => {
+            fetch('http://localhost:5091/api/Movie/GetMostReviewedMovies', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authtoken')}`
+                    },
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data){
+                    console.log(data);
+                    Maptofrontend(data);
+                }
+                else{
+                    alert('something went wrong');
+                }
+        });
+        }
+        const Maptofrontend = (data) => {
+
+            var div = document.getElementById('divResult');
+            data.forEach(element => {
+                var newcard = document.createElement('div');
+                newcard.classList.add('card');
+                newcard.classList.add("flex-column");
+                newcard.classList.add("align-items-center");
+                newcard.classList.add("justify-content-center");
+                var title = document.createElement('h2');
+                title.innerHTML = ""+element.title;
+                var genre = document.createElement('p');
+                genre.innerHTML = "Genre : "+element.genre;
+                var description = document.createElement('p');
+                description.innerHTML = "Description : "+element.description;
+                var averageRating = document.createElement('p');
+                averageRating.innerHTML = "averageRating : "+element.averageRating;
+                newcard.appendChild(title);
+                newcard.appendChild(genre);
+                newcard.appendChild(description);
+                newcard.appendChild(averageRating);
+                div.appendChild(newcard);
+            });
+        }
+        const updateLocation = () => {
+            var theaterid = document.getElementById('theaterid').value;
+            var newlocation = document.getElementById('newlocation').value;
+            var oldtheaterlocation = "";
+            fetch(`http://localhost:5091/api/Theater/GetTheaterById?theaterid=${theaterid}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${localStorage.getItem('authtoken')}`
+            },
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.location)
+                oldtheaterlocation = data.location;
+            });
+
+
+            fetch(`http://localhost:5091/api/Theater/UpdateTheaterLocation?theaterid=${theaterid}&location=${newlocation}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${localStorage.getItem('authtoken')}`
+            },
+            body: JSON.stringify({
+                body: {
+                },
+            })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                var divresult = document.getElementById('divResult');
+                divresult.innerHTML = `<p>Theater Id : ${data.theaterId}</p>
+                <p>Theater Name : ${data.name}</p>
+                <p>OldLocation : ${oldtheaterlocation}</p>
+                <p>Location : ${data.location}</p>`;
+                divresult.classList.add('card');
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Product Details</h1>
+    <input type="file" id="fileInput" name="fileInput">
+    <input class="form-control" type ="number" id="txtUid" placeholder="000"/>
+    <input class="form-control" type ="password" id="txtPass" placeholder="xxx"/>
+    <button class="btn btn-success" onclick="clickButton()">Login</button>
+
+    <button class="btn btn-outline-primary" onclick="getusers()">Get All Users</button>
+
+    <input class="form-control" type="number" id="theaterid" placeholder="Theater Id">
+    <input class="form-control" type="text" id="newlocation" placeholder="New Location">
+    <button class="btn btn-outline-primary" onclick="updateLocation()" >Update Theater Location</button>
+
+
+    <div id="divResult" class="row gap-2 mt-2">
+    </div>
+
+</body>
+</html>

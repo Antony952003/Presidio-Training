@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Spirax&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img width="64" height="64" src="https://img.icons8.com/sf-black/64/FFFFFF/quote.png" alt="quote"/>
+            <span>Quotaholic</span>
+        </div>
+        <ul class="nav-items">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#quotes">Quotes</a></li>
+        </ul>
+        <!-- MOBILE MENU TOGGLE -->
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="hamburger"></div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <h1 class="top-down delay-2">Welcome to the Quotaholic</h1>
+        <p class="top-down delay-4">Welcome to the Quotaholic Project, a digital sanctuary where wisdom meets elegance. This dynamic web application beautifully showcases a curated collection of profound quotes from some of the greatest minds and souls in history. Immerse yourself in a serene, aesthetically pleasing environment where each quote card comes alive with a graceful animation, offering a moment of reflection and inspiration.</p>
+    </section>
+
+    <section id="quotes" style="display:none;">
+        <div class="head">
+            <h1>Quotes</h1>
+            <input type="text" id="searchauthor" placeholder="Search Author">
+            <select name="sort" id="sort">
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+            </select>
+        </div>
+        <div id="quotes-container"></div>
+        <div id="pagination">
+            <button id="prev-btn" disabled> < </button>
+            <span id="page-info"></span>
+            <button id="next-btn">></button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
