@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded' , () => {
     locationdown.addEventListener('click', () => {
         var popuplocation = document.querySelector('.popup-location');
         if(popuplocation.classList.contains('active')){
-            document.querySelector('.container').style.opacity = '1.0';
+            document.querySelector('.main-container').style.opacity = '1.0';
             popuplocation.classList.remove('active');
         }
         else{
-            document.querySelector('.container').style.opacity = '0.3';
+            document.querySelector('.main-container').style.opacity = '0.3';
             popuplocation.classList.add('active');
         }
     })
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     cityButtons.forEach(button => {
         button.addEventListener('click', () => {
             var popuplocation = document.querySelector('.popup-location');
-            document.querySelector('.container').style.opacity = '1.0';
+            document.querySelector('.main-container').style.opacity = '1.0';
             popuplocation.classList.remove('active');
             locationSpan.innerHTML = button.innerHTML;
         });
