@@ -53,6 +53,62 @@ img {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.hamburger-menu {
+  --size: 30px;
+  height: var(--size);
+  width: var(--size);
+  cursor: pointer;
+  z-index: 101;
+  position: relative;
+  display: none;
+  align-items: center;
+}
+
+.hamburger {
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  width: var(--size);
+  height: 3px;
+  border-radius: 0.5rem;
+  background-color: var(--text-color);
+  transition: 0.4s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.hamburger::before {
+  top: -10px;
+}
+
+.hamburger::after {
+  bottom: -10px;
+}
+
+.hamburger-menu.active .hamburger {
+  background-color: transparent;
+}
+
+.hamburger-menu.active .hamburger::before {
+  transform-origin: top left;
+  transform: rotate(45deg);
+  left: 6px;
+}
+
+.hamburger-menu.active .hamburger::after {
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+  left: 6px;
+}
+
 .nav-wrapper {
   position: fixed;
   top: 0;
@@ -482,7 +538,7 @@ a.movie-item:hover {
   background-color: var(--body-bg);
   flex: 1 1 0%;
   width: 100%;
-  max-width: calc(100% - 324px);
+  max-width: calc(100% - 224px);
   overflow: auto hidden;
   height: 100%;
   padding-top: 0px;
@@ -499,6 +555,10 @@ a.movie-item:hover {
 .component-2 {
   padding-bottom: 50px;
   border-bottom: 2px solid grey;
+  margin-bottom: 30px;
+}
+
+.component-3 {
   margin-bottom: 30px;
 }
 
@@ -654,6 +714,7 @@ a.movie-item:hover {
   left: 0px;
   z-index: 2;
   width: 40px;
+  border-bottom-right-radius: 20px;
 }
 
 .left-btn-content {
@@ -725,7 +786,7 @@ a.movie-item:hover {
 .opinion {
   display: flex;
   align-items: center;
-  width: 20vw;
+  max-width: 40vw;
   gap: 1.2rem;
 }
 
@@ -777,7 +838,7 @@ a.movie-item:hover {
 }
 
 .date-share {
-  width: 20vw;
+  max-width: 40vw;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -786,4 +847,176 @@ a.movie-item:hover {
 
 .posted-date {
   color: rgb(204, 204, 204);
+}
+
+@media screen and (max-width: 1000px) {
+  .hamburger-menu {
+    display: grid;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #000000;
+    flex-direction: column;
+    width: 60%;
+    height: 100vh;
+    padding: 20px;
+    border-bottom-left-radius: 20px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-menu li {
+    margin: 10px 30px;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .popup-location {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .hero-image {
+    width: 80%;
+    height: 596px;
+    overflow: visible;
+  }
+
+  .hero-subcontainer {
+    background-image: none;
+  }
+  .incinemas {
+    height: 80px;
+  }
+
+  .hero-elements {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .synopsis {
+    max-width: calc(100% - 124px);
+  }
+
+  .hero-details {
+    margin-top: 20px;
+    padding-left: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+    flex: 1;
+    flex-grow: 1;
+  }
+
+  .hero-format-details {
+    display: none;
+  }
+
+  .movie-details {
+    flex-wrap: wrap;
+  }
+  .movie-details ul {
+    flex-wrap: wrap;
+  }
+  .booknow {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .booknow a {
+    width: 100%;
+    justify-content: center;
+    padding: 0.25rem 1.5rem;
+  }
+  .swiper-slide {
+    width: 202px !important;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .hero-image {
+    width: 90%;
+    height: 456px;
+    overflow: visible;
+  }
+
+  .hero-subcontainer {
+    background-image: none;
+  }
+  .incinemas {
+    height: 80px;
+  }
+
+  .synopsis {
+    max-width: calc(100% - 24px);
+  }
+
+  .hero-elements {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .hero-details {
+    padding-left: 0;
+    width: 90%;
+    margin-top: 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-details h1 {
+    font-size: 29px;
+  }
+
+  .hero-rating {
+    gap: 1.2rem;
+    max-width: 380px;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .hero-rating button {
+    width: 100%;
+  }
+  .hero-rating-left {
+    max-width: 100%;
+  }
+
+  .hero-format-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .movie-languages {
+    flex-wrap: wrap;
+  }
+  .movie-details ul {
+    margin-left: 20px;
+    gap: 1.8rem;
+  }
+  .booknow {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .booknow a {
+    width: 100%;
+    justify-content: center;
+    padding: 0.25rem 1.5rem;
+  }
 }

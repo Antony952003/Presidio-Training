@@ -1,4 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
+  async function fetchMovieData() {
+    try {
+      const response = await fetch(
+        "http://localhost:5091/api/Movie/GetAllMovies",
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching movie data:", error);
+    }
+  }
+
+  fetchMovieData();
+
+  document.querySelector(".hamburger-menu").addEventListener("click", () => {
+    if (
+      !document.querySelector(".hamburger-menu").classList.contains("active")
+    ) {
+      document.querySelector(".hamburger-menu").classList.add("active");
+      document.querySelector(".nav-menu").classList.add("active");
+    } else {
+      document.querySelector(".hamburger-menu").classList.remove("active");
+      document.querySelector(".nav-menu").classList.remove("active");
+      if (
+        document.querySelector(".popup-location").classList.contains("active")
+      ) {
+        document.querySelector(".popup-location").classList.remove("active");
+        document.querySelector(".main-container").style.opacity = "1.0";
+      }
+    }
+  });
+
   var swiper = new Swiper(".swiper-container", {
     slidesPerView: 1,
     spaceBetween: 10,
