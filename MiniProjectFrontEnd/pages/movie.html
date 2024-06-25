@@ -1,152 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie</title>
-    <link rel="stylesheet" href="../css/movie.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
+    <link rel="stylesheet" href="../css/movie.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </head>
+  <body>
     <script defer src="../js/movie.js"></script>
     <!-- NavBar -->
     <div class="nav-wrapper">
-        <div class="container">
-            <div class="nav">
-                <a href="#" class="logo">
-                    <i class='bx bx-movie-play bx-tada main-color'></i><span class="main-color">M</span>ovie <span class="main-color">S</span>tudio
-                </a>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">Shows</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">About</a></li>
-                    <li>
-                        <a href="login.html" class="btn btn-hover">
-                            <span>Sign in</span>
-                        </a>
-                    </li>
-                    <li class="location">
-                        <span>Chennai</span>
-                        <i class='bx bx-chevron-down down-button'></i>
-                    </li>
-                </ul>
-                <!-- MOBILE MENU TOGGLE -->
-                <div class="hamburger-menu" id="hamburger-menu">
-                    <div class="hamburger"></div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="nav">
+          <a href="#" class="logo">
+            <i class="bx bx-movie-play bx-tada main-color"></i
+            ><span class="main-color">M</span>ovie
+            <span class="main-color">S</span>tudio
+          </a>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Shows</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="login.html" class="btn btn-hover">
+                <span>Sign in</span>
+              </a>
+            </li>
+            <li class="location">
+              <span>Chennai</span>
+              <i class="bx bx-chevron-down down-button"></i>
+            </li>
+          </ul>
+          <!-- MOBILE MENU TOGGLE -->
+          <div class="hamburger-menu" id="hamburger-menu">
+            <div class="hamburger"></div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- NavBar End -->
     <!-- Location Popup -->
     <div class="popup-location top-down">
-        <div class="search-field">
-            <i class='bx bx-search'></i>
-            <input type="text" placeholder="Search for your city">
-        </div>
-        <div class="detect-my-location">
-            <i class='bx bx-current-location'></i>
-            <p>Detect my location</p>
-        </div>
-        <div class="popular-cities">
-            <p>Popular Cities</p>
-            <ul class="pcities">
-                <li><button>Mumbai</button></li>
-                <li><button>Delhi</button></li>
-                <li><button>Bengaluru</button></li>
-                <li><button>Hydrabad</button></li>
-                <li><button>Ahmedabad</button></li>
-                <li><button>Trichy</button></li>
-                <li><button>Chandigarh</button></li>
-                <li><button>Chennai</button></li>
-                <li><button>Pune</button></li>
-                <li><button>Kolkata</button></li>
-                <li><button>Kochi</button></li>
-                <li><button>Villupuram</button></li>
-                <li><button>Cheyyar</button></li>
-            </ul>
-            <button class="view-all-btn">View All Cities</button>
-        </div>
+      <div class="search-field">
+        <i class="bx bx-search"></i>
+        <input type="text" placeholder="Search for your city" />
+      </div>
+      <div class="detect-my-location">
+        <i class="bx bx-current-location"></i>
+        <p>Detect my location</p>
+      </div>
+      <div class="popular-cities">
+        <p>Popular Cities</p>
+        <ul class="pcities">
+          <li><button>Mumbai</button></li>
+          <li><button>Delhi</button></li>
+          <li><button>Bengaluru</button></li>
+          <li><button>Hydrabad</button></li>
+          <li><button>Ahmedabad</button></li>
+          <li><button>Trichy</button></li>
+          <li><button>Chandigarh</button></li>
+          <li><button>Chennai</button></li>
+          <li><button>Pune</button></li>
+          <li><button>Kolkata</button></li>
+          <li><button>Kochi</button></li>
+          <li><button>Villupuram</button></li>
+          <li><button>Cheyyar</button></li>
+        </ul>
+        <button class="view-all-btn">View All Cities</button>
+      </div>
     </div>
     <!-- End Location Popup -->
 
     <!-- Main Container -->
-     <section class="main-container">
-        <!-- Hero-container -->
-        <section class="hero-container">
-            <div class="hero-subcontainer">
-                <div class="hero-elements">
-                    <div class="hero-image">
-                        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/furiosa-a-mad-max-saga-et00377865-1712650113.jpg"
-                        alt="Furiosa: A Mad Max Saga" width="100%" height="100%">
-                        <div class="incinemas">In Cinemas</div>
-                    </div>
-                    <div class="hero-details">
-                        <h1>Furiosa: A Mad Max Saga</h1>
-                        <div class="hero-rating">
-                            <div class="hero-rating-left">
-                                <span class="star">
-                                    <i class='bx bxs-star'></i>
-                                </span>
-                                <span class="imdb-rating">
-                                    8.4/10
-                                </span>
-                                <span class="votes">
-                                    (25.1k votes) <span>></span>
-                                </span>
-                            </div>
-                            <button>Rate Now</button>
-                        </div>
-                        <div class="hero-format-details">
-                            <div class="movie-formats">
-                                <a href="">2D</a>,
-                                <a href="">2D SCREEN X</a>,
-                                <a href="">mx4d</a>,
-                                <a href="">4dx</a>,
-                                <a href="">Imax 2d</a>,
-                                <a href="">ice</a>
-                            </div>
-                            <div class="movie-languages">
-                                <a href="">Tamil</a>,
-                                <a href="">English</a>,
-                                <a href="">Telugu</a>,
-                                <a href="">Malayalam</a>,
-                                <a href="">Kannada</a>,
-                                <a href="">Hindi</a>
-                            </div>
-                        </div>
-                        <div class="movie-details">
-                            <span class="time">
-                                2h 28m
-                            </span>
-                            <ul>
-                                <li>Action, Sci-Fi, Thriller</li>
-                                <li>A</li>
-                                <li>23 May 2024</li>
-                            </ul>
-                        </div>
-                        <div class="booknow">
-                            <a href="" class="btn btn-hover">
-                                <span>Book Now</span>
-                            </a>
-                        </div>
-                    </div>
+    <section class="main-container">
+      <!-- Hero-container -->
+      <section class="hero-container">
+        <div class="hero-subcontainer">
+          <div class="hero-elements">
+            <div class="hero-image">
+              <img
+                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/furiosa-a-mad-max-saga-et00377865-1712650113.jpg"
+                alt="Furiosa: A Mad Max Saga"
+                width="100%"
+                height="100%"
+              />
+              <div class="incinemas">In Cinemas</div>
+            </div>
+            <div class="hero-details">
+              <h1>Furiosa: A Mad Max Saga</h1>
+              <div class="hero-rating">
+                <div class="hero-rating-left">
+                  <span class="star">
+                    <i class="bx bxs-star"></i>
+                  </span>
+                  <span class="imdb-rating"> 8.4/10 </span>
+                  <span class="votes"> (25.1k votes) <span>></span> </span>
                 </div>
+                <button>Rate Now</button>
+              </div>
+              <div class="hero-format-details">
+                <div class="movie-formats">
+                  <a href="">2D</a>, <a href="">2D SCREEN X</a>,
+                  <a href="">mx4d</a>, <a href="">4dx</a>,
+                  <a href="">Imax 2d</a>,
+                  <a href="">ice</a>
+                </div>
+                <div class="movie-languages">
+                  <a href="">Tamil</a>, <a href="">English</a>,
+                  <a href="">Telugu</a>, <a href="">Malayalam</a>,
+                  <a href="">Kannada</a>,
+                  <a href="">Hindi</a>
+                </div>
+              </div>
+              <div class="movie-details">
+                <span class="time"> 2h 28m </span>
+                <ul>
+                  <li>Action, Sci-Fi, Thriller</li>
+                  <li>A</li>
+                  <li>23 May 2024</li>
+                </ul>
+              </div>
+              <div class="booknow">
+                <a href="" class="btn btn-hover">
+                  <span>Book Now</span>
+                </a>
+              </div>
             </div>
-        </section>
-        <!-- End Hero Container -->
-         <section class="synopsis-container">
-            <div class="synopsis">
-                
+          </div>
+        </div>
+      </section>
+      <!-- End Hero Container -->
+      <section class="synopsis-container">
+        <div class="synopsis">
+          <div class="component-1">
+            <h2 class="about-1">About the movie</h2>
+            <p class="about-2">
+              As the world fell, young Furiosa is snatched from the Green Place
+              of Many Mothers and falls into the hands of a great Biker Horde
+              led by the Warlord Dementus. Sweeping through the Wasteland,they
+              come across the Citadel presided over by The Immortan Joe.
+              <br /><br />
+              While the two Tyrants fight for dominance, Furiosa must survive
+              many trials as she puts together the means to find her way home.
+            </p>
+          </div>
+          <!-- Cast -->
+          <div class="component-2">
+            <h2>Cast</h2>
+            <div class="cast-container swiper-container">
+              <div class="swiper-wrapper">
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+                <div class="cast-card swiper-slide">
+                  <img
+                    alt="Anya Taylor-Joy"
+                    src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/anya-taylor-joy-1064961-1659523438.jpg"
+                  />
+                  <div class="cast-info">
+                    <p>Anya Taylor Joy</p>
+                    <span>as Furiosa</span>
+                  </div>
+                </div>
+              </div>
             </div>
-         </section>
-     </section>
+          </div>
+          <!-- End Cast Container -->
+          <!-- Reviews -->
+          <div class="component-3">
+            <div class="review-wrapper">
+              <div class="review-head">
+                <h2>Top Reviews</h2>
+                <span>11.3k reviews <a href="#">></a></span>
+              </div>
 
+              <div class="summary-reviews">
+                <p>Summmary of 11.3k reviews.</p>
+                <div class="hashtag-container swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="hashtag-card swiper-slide">
+                      <span
+                        >#SuperDirection
+                        <span class="hashtag-count">5663</span></span
+                      >
+                    </div>
+                    <div class="hashtag-card swiper-slide">
+                      <span
+                        >#SuperDirection
+                        <span class="hashtag-count">5663</span></span
+                      >
+                    </div>
+                    <div class="hashtag-card swiper-slide">
+                      <span
+                        >#SuperDirection
+                        <span class="hashtag-count">5663</span></span
+                      >
+                    </div>
+                    <div class="hashtag-card swiper-slide">
+                      <span
+                        >#SuperDirection
+                        <span class="hashtag-count">5663</span></span
+                      >
+                    </div>
+                    <div class="hashtag-card swiper-slide">
+                      <span
+                        >#SuperDirection
+                        <span class="hashtag-count">5663</span></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-</body>
+              <div class="top-review-wrapper">
+                <div class="review-card-container">
+                  <div class="review-card">
+                    <div class="review-profile">
+                      <div class="user-profile">
+                        <i class="bx bxs-user-circle"></i>
+                        <span>Jeswin</span>
+                      </div>
+                      <div class="review-rating">
+                        <i class="bx bxs-star"></i>
+                        <span>8/10</span>
+                      </div>
+                    </div>
+                    <h2>#SuperDirection #Wellmade</h2>
+                    <p class="review-description">
+                      Fury Road is a masterpiece in action films especially for
+                      the Mad Max franchise. It took me by surprise so I was
+                      eager to watch this prequel. It didn’t disappoint. For
+                      those unfamiliar, the Mad Max franchise is an Australian
+                      dystopian action series created by George Miller and Byron
+                      Kennedy. The story centers on Max Rockatansky, a man
+                      fighting to stay alive in a post-apocalyptic Australia
+                      devastated by societal collapse caused by war and resource
+                      depletion. This film explores Furiosa's origin story
+                      detailing her journey as a renegade warrior in a dystopian
+                      Australia before she meets and joins forces with Mad Max.
+                      The story takes place around 15 years before Fury Road,
+                      where young Furiosa (Anya Taylor Joy) is being taken from
+                      her village. Captured by a biker horde under the command
+                      of warlord Dementus (Chris Hemsworth), Furiosa finds
+                      herself navigating the chaotic “Wasteland”. The storyline
+                      is developed with characters slightly more fleshed out
+                      than the previous film, however; at times, the complexity
+                      feels unjustified and becomes noticeably frustrating when
+                      character development tries to overshadow the action. Anya
+                      Taylor Joy shines, dominating the screen with her depth
+                      and quiet strength. Experiencing Furiosa's transformation
+                      throughout the story was a genuine pleasure. Also the
+                      girl, Alyla Browne, who plays young Furiosa did an
+                      incredible job, even with minimal dialogue. Chris
+                      Hemsworth tries to steal the show as Dementus, the
+                      villainous gang leader, a stark contrast from his usual
+                      portrayals as the hero. In a couple of scenes, by the
+                      costumes and hairstyling, he even looks like Thor, yeah
+                      Thor, his Marvel counterpart. Coming to the visuals, the
+                      entire place is vividly stunning, captivating your eyes
+                      and likely sending your heart rate into pretty much
+                      overdrive. The gritty, decayed settings reminiscent of
+                      Fury Road pound you with rich rusty hues of orange, red,
+                      and yellow, all the while immersing you in a world heavy
+                      with metal and gasoline. Fury Road set a high standard
+                      with its gripping editing, and this movie comes close,
+                      complemented by strong sound design. Cinematography is
+                      superb, real delightful. It truly elevates the film in the
+                      art of staging, framing action and characters. The action
+                      sequences are expertly choreographed keeping you on the
+                      edge of your seat throughout. There are moments of
+                      unexpected beauty that leave an impression and yeah this
+                      film is IMAX recommended. As for the VFX, another Fury
+                      Road mastery, I expected more as some of the CGI sequences
+                      looked a bit fake along with some of the action physics
+                      being totally off. However, the fine production design,
+                      intense editing and cinematography overcomes this. George
+                      Miller impresses. His ability to build immersive worlds
+                      and characters is incomparable. The seamless integration
+                      of action set pieces into his storytelling leaves you
+                      marveling at how he even begins to craft such a film.
+                      Certainly, he knows what to do with a valuable franchise
+                      and take it forward. While the action in Furiosa is
+                      undoubtedly thrilling, it might not reach the same
+                      intensity as Fury Road. However, if you're willing to
+                      embrace Miller's dystopian vision fully, you'll still find
+                      plenty to enjoy in this cinematic adventure. Worth
+                      watching.
+                    </p>
+                    <span class="read-more" id="readMore">more...</span>
+                    <div class="card-footer">
+                      <div class="opinion">
+                        <div class="like">
+                          <i class="bx bx-like"></i>
+                          <span class="like-count">200</span>
+                        </div>
+                        <div class="dislike">
+                          <i class="bx bx-dislike"></i>
+                          <span class="dislike-count"></span>
+                        </div>
+                      </div>
+                      <div class="date-share">
+                        <span class="posted-date">31 Days Ago</span>
+                        <i class="bx bx-share-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-card">
+                    <div class="review-profile">
+                      <div class="user-profile">
+                        <i class="bx bxs-user-circle"></i>
+                        <span>Jeswin</span>
+                      </div>
+                      <div class="review-rating">
+                        <i class="bx bxs-star"></i>
+                        <span>8/10</span>
+                      </div>
+                    </div>
+                    <h2>#SuperDirection #Wellmade</h2>
+                    <p class="review-description">
+                      Fury Road is a masterpiece in action films especially for
+                      the Mad Max franchise. It took me by surprise so I was
+                      eager to watch this prequel. It didn’t disappoint. For
+                      those unfamiliar, the Mad Max franchise is an Australian
+                      dystopian action series created by George Miller and Byron
+                      Kennedy. The story centers on Max Rockatansky, a man
+                      fighting to stay alive in a post-apocalyptic Australia
+                      devastated by societal collapse caused by war and resource
+                      depletion. This film explores Furiosa's origin story
+                      detailing her journey as a renegade warrior in a dystopian
+                      Australia before she meets and joins forces with Mad Max.
+                      The story takes place around 15 years before Fury Road,
+                      where young Furiosa (Anya Taylor Joy) is being taken from
+                      her village. Captured by a biker horde under the command
+                      of warlord Dementus (Chris Hemsworth), Furiosa finds
+                      herself navigating the chaotic “Wasteland”. The storyline
+                      is developed with characters slightly more fleshed out
+                      than the previous film, however; at times, the complexity
+                      feels unjustified and becomes noticeably frustrating when
+                      character development tries to overshadow the action. Anya
+                      Taylor Joy shines, dominating the screen with her depth
+                      and quiet strength. Experiencing Furiosa's transformation
+                      throughout the story was a genuine pleasure. Also the
+                      girl, Alyla Browne, who plays young Furiosa did an
+                      incredible job, even with minimal dialogue. Chris
+                      Hemsworth tries to steal the show as Dementus, the
+                      villainous gang leader, a stark contrast from his usual
+                      portrayals as the hero. In a couple of scenes, by the
+                      costumes and hairstyling, he even looks like Thor, yeah
+                      Thor, his Marvel counterpart. Coming to the visuals, the
+                      entire place is vividly stunning, captivating your eyes
+                      and likely sending your heart rate into pretty much
+                      overdrive. The gritty, decayed settings reminiscent of
+                      Fury Road pound you with rich rusty hues of orange, red,
+                      and yellow, all the while immersing you in a world heavy
+                      with metal and gasoline. Fury Road set a high standard
+                      with its gripping editing, and this movie comes close,
+                      complemented by strong sound design. Cinematography is
+                      superb, real delightful. It truly elevates the film in the
+                      art of staging, framing action and characters. The action
+                      sequences are expertly choreographed keeping you on the
+                      edge of your seat throughout. There are moments of
+                      unexpected beauty that leave an impression and yeah this
+                      film is IMAX recommended. As for the VFX, another Fury
+                      Road mastery, I expected more as some of the CGI sequences
+                      looked a bit fake along with some of the action physics
+                      being totally off. However, the fine production design,
+                      intense editing and cinematography overcomes this. George
+                      Miller impresses. His ability to build immersive worlds
+                      and characters is incomparable. The seamless integration
+                      of action set pieces into his storytelling leaves you
+                      marveling at how he even begins to craft such a film.
+                      Certainly, he knows what to do with a valuable franchise
+                      and take it forward. While the action in Furiosa is
+                      undoubtedly thrilling, it might not reach the same
+                      intensity as Fury Road. However, if you're willing to
+                      embrace Miller's dystopian vision fully, you'll still find
+                      plenty to enjoy in this cinematic adventure. Worth
+                      watching.
+                    </p>
+                    <span class="read-more" id="readMore">more...</span>
+                    <div class="card-footer">
+                      <div class="opinion">
+                        <div class="like">
+                          <i class="bx bx-like"></i>
+                          <span class="like-count">200</span>
+                        </div>
+                        <div class="dislike">
+                          <i class="bx bx-dislike"></i>
+                          <span class="dislike-count"></span>
+                        </div>
+                      </div>
+                      <div class="date-share">
+                        <span class="posted-date">31 Days Ago</span>
+                        <i class="bx bx-share-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-card">
+                    <div class="review-profile">
+                      <div class="user-profile">
+                        <i class="bx bxs-user-circle"></i>
+                        <span>Jeswin</span>
+                      </div>
+                      <div class="review-rating">
+                        <i class="bx bxs-star"></i>
+                        <span>8/10</span>
+                      </div>
+                    </div>
+                    <h2>#SuperDirection #Wellmade</h2>
+                    <p class="review-description">
+                      Fury Road is a masterpiece in action films especially for
+                      the Mad Max franchise. It took me by surprise so I was
+                      eager to watch this prequel. It didn’t disappoint. For
+                      those unfamiliar, the Mad Max franchise is an Australian
+                      dystopian action series created by George Miller and Byron
+                      Kennedy. The story centers on Max Rockatansky, a man
+                      fighting to stay alive in a post-apocalyptic Australia
+                      devastated by societal collapse caused by war and resource
+                      depletion. This film explores Furiosa's origin story
+                      detailing her journey as a renegade warrior in a dystopian
+                      Australia before she meets and joins forces with Mad Max.
+                      The story takes place around 15 years before Fury Road,
+                      where young Furiosa (Anya Taylor Joy) is being taken from
+                      her village. Captured by a biker horde under the command
+                      of warlord Dementus (Chris Hemsworth), Furiosa finds
+                      herself navigating the chaotic “Wasteland”. The storyline
+                      is developed with characters slightly more fleshed out
+                      than the previous film, however; at times, the complexity
+                      feels unjustified and becomes noticeably frustrating when
+                      character development tries to overshadow the action. Anya
+                      Taylor Joy shines, dominating the screen with her depth
+                      and quiet strength. Experiencing Furiosa's transformation
+                      throughout the story was a genuine pleasure. Also the
+                      girl, Alyla Browne, who plays young Furiosa did an
+                      incredible job, even with minimal dialogue. Chris
+                      Hemsworth tries to steal the show as Dementus, the
+                      villainous gang leader, a stark contrast from his usual
+                      portrayals as the hero. In a couple of scenes, by the
+                      costumes and hairstyling, he even looks like Thor, yeah
+                      Thor, his Marvel counterpart. Coming to the visuals, the
+                      entire place is vividly stunning, captivating your eyes
+                      and likely sending your heart rate into pretty much
+                      overdrive. The gritty, decayed settings reminiscent of
+                      Fury Road pound you with rich rusty hues of orange, red,
+                      and yellow, all the while immersing you in a world heavy
+                      with metal and gasoline. Fury Road set a high standard
+                      with its gripping editing, and this movie comes close,
+                      complemented by strong sound design. Cinematography is
+                      superb, real delightful. It truly elevates the film in the
+                      art of staging, framing action and characters. The action
+                      sequences are expertly choreographed keeping you on the
+                      edge of your seat throughout. There are moments of
+                      unexpected beauty that leave an impression and yeah this
+                      film is IMAX recommended. As for the VFX, another Fury
+                      Road mastery, I expected more as some of the CGI sequences
+                      looked a bit fake along with some of the action physics
+                      being totally off. However, the fine production design,
+                      intense editing and cinematography overcomes this. George
+                      Miller impresses. His ability to build immersive worlds
+                      and characters is incomparable. The seamless integration
+                      of action set pieces into his storytelling leaves you
+                      marveling at how he even begins to craft such a film.
+                      Certainly, he knows what to do with a valuable franchise
+                      and take it forward. While the action in Furiosa is
+                      undoubtedly thrilling, it might not reach the same
+                      intensity as Fury Road. However, if you're willing to
+                      embrace Miller's dystopian vision fully, you'll still find
+                      plenty to enjoy in this cinematic adventure. Worth
+                      watching.
+                    </p>
+                    <span class="read-more" id="readMore">more...</span>
+                    <div class="card-footer">
+                      <div class="opinion">
+                        <div class="like">
+                          <i class="bx bx-like"></i>
+                          <span class="like-count">200</span>
+                        </div>
+                        <div class="dislike">
+                          <i class="bx bx-dislike"></i>
+                          <span class="dislike-count"></span>
+                        </div>
+                      </div>
+                      <div class="date-share">
+                        <span class="posted-date">31 Days Ago</span>
+                        <i class="bx bx-share-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="left-button"></div>
+                  <div class="right-button"></div>
+                </div>
+                <div class="left-btn">
+                  <div class="left-btn-content">
+                    <i class="bx bx-chevron-left"></i>
+                  </div>
+                </div>
+                <div class="right-btn">
+                  <div class="right-btn-content">
+                    <i class="bx bx-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Of Reviews -->
+        </div>
+      </section>
+    </section>
+  </body>
 </html>
