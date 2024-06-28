@@ -4,7 +4,7 @@ $(document).ready(() => {
     $("#nav-menu").toggleClass("active");
   });
 
-  const fetchdetails = () => {
+  const fetchuserdetails = () => {
     fetch(
       `http://localhost:5091/api/User/GetUserById?userid=${localStorage.getItem(
         "uid"
@@ -22,9 +22,183 @@ $(document).ready(() => {
         document.querySelectorAll(".name-field").forEach((e) => {
           e.innerHTML = data.name;
         });
+        var imageeles = document.querySelectorAll(".user-profile-image");
+        imageeles.forEach((imageele) => {
+          imageele.src = data.image;
+          imageele.onerror = function () {
+            imageele.src = "../Assets/Images/user_image.png";
+          };
+        });
       });
   };
-  fetchdetails();
+
+  document.getElementById("edit-profile").addEventListener("click", () => {
+    window.location.href = "EditProfile.html";
+  });
+
+  function createSlideItem(movie) {
+    const heroslideitem = document.createElement("div");
+    heroslideitem.classList.add("hero-slide-item");
+
+    heroslideitem.innerHTML = `
+            <img src="${movie.bannerImage}" alt="${movie.title}" />
+            <div class="overlay"></div>
+            <div class="hero-slide-item-content">
+                <div class="item-content-wraper">
+                    <div class="item-content-title top-down">${
+                      movie.title
+                    }</div>
+                    <div class="movie-infos top-down delay-2">
+                        <div class="movie-info">
+                            <i class="bx bxs-star"></i>
+                            <span>${movie.averageRating}</span>
+                        </div>
+                        <div class="movie-info">
+                            <i class="bx bxs-time"></i>
+                            <span>${movie.durationInHours * 60} mins</span>
+                        </div>
+                        <div class="movie-info">
+                            <span>${movie.genre}</span>
+                        </div>
+                        <div class="movie-info">
+                            <span>${movie.certification}</span>
+                        </div>
+                    </div>
+                    <div class="item-content-description top-down delay-4">
+                        ${movie.description}
+                    </div>
+                    <div class="item-action top-down delay-6">
+                        <a href="#" class="btn btn-hover">
+                            <i class="bx bxs-right-arrow"></i>
+                            <span>Book Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    `;
+    return heroslideitem;
+  }
+  const fetchmovies = () => {
+    fetch(`http://localhost:5091/api/Movie/GetAllMovies`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const moviesContainer = document.querySelector(".running-movies");
+
+        const heroCarousel = document.getElementById("hero-carousel");
+
+        data.forEach((movie) => {
+          const slideItem = createSlideItem(movie);
+          heroCarousel.append(slideItem);
+        });
+
+        $("#hero-carousel").owlCarousel({
+          items: 1,
+          dots: false,
+          loop: true,
+          nav: true,
+          navText: navText,
+          autoplay: true,
+          autoplayHoverPause: true,
+        });
+
+        data.forEach((movie) => {
+          const movieItem = document.createElement("a");
+          movieItem.href = "#";
+          movieItem.className = "movie-item";
+
+          const img = document.createElement("img");
+          img.src = movie.mainImage; // Assuming mainImage is the correct property
+          img.alt = ""; // Set appropriate alt text
+
+          const movieItemContent = document.createElement("div");
+          movieItemContent.className = "movie-item-content";
+
+          const movieTitle = document.createElement("div");
+          movieTitle.className = "movie-item-title";
+          movieTitle.textContent = movie.title;
+
+          const movieInfos = document.createElement("div");
+          movieInfos.className = "movie-infos";
+
+          // Example movie info: Rating
+          const ratingInfo = document.createElement("div");
+          ratingInfo.className = "movie-info";
+          const ratingIcon = document.createElement("i");
+          ratingIcon.className = "bx bxs-star";
+          const ratingValue = document.createElement("span");
+          ratingValue.textContent = movie.averageRating.toFixed(1); // Assuming averageRating is available
+          ratingInfo.appendChild(ratingIcon);
+          ratingInfo.appendChild(ratingValue);
+
+          // Example movie info: Duration
+          const durationInfo = document.createElement("div");
+          durationInfo.className = "movie-info";
+          const durationIcon = document.createElement("i");
+          durationIcon.className = "bx bxs-time";
+          const durationValue = document.createElement("span");
+          durationValue.textContent = `${movie.durationInHours * 60} mins`; // Convert hours to minutes
+          durationInfo.appendChild(durationIcon);
+          durationInfo.appendChild(durationValue);
+
+          const qualityInfo = document.createElement("div");
+          qualityInfo.className = "movie-info";
+          const qualityValue = document.createElement("span");
+          qualityValue.textContent = `HD`;
+          qualityInfo.appendChild(qualityValue);
+
+          const certificateInfo = document.createElement("div");
+          certificateInfo.className = "movie-info";
+          const certificateValue = document.createElement("span");
+          certificateValue.textContent = `${movie.certification}`;
+          certificateInfo.appendChild(certificateValue);
+
+          // Append elements together
+          movieInfos.appendChild(ratingInfo);
+          movieInfos.appendChild(durationInfo);
+          movieInfos.appendChild(qualityInfo);
+          movieInfos.appendChild(certificateInfo);
+
+          movieItemContent.appendChild(movieTitle);
+          movieItemContent.appendChild(movieInfos);
+
+          movieItem.appendChild(img);
+          movieItem.appendChild(movieItemContent);
+          moviesContainer.appendChild(movieItem);
+        });
+
+        var $owl = $(".movies-slide").owlCarousel({
+          items: 2,
+          dots: false,
+          nav: true,
+          navText: navText,
+          margin: 15,
+          responsive: {
+            500: {
+              items: 2,
+            },
+            1280: {
+              items: 4,
+            },
+            1600: {
+              items: 6,
+            },
+          },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
+      });
+  };
+
+  fetchmovies();
+
+  fetchuserdetails();
 
   document.querySelector(".user").addEventListener("click", () => {
     if (!document.querySelector(".user").classList.contains("active")) {
@@ -56,16 +230,6 @@ $(document).ready(() => {
     "<i class='bx bx-chevron-right'></i>",
   ];
 
-  $("#hero-carousel").owlCarousel({
-    items: 1,
-    dots: false,
-    loop: true,
-    nav: true,
-    navText: navText,
-    autoplay: true,
-    autoplayHoverPause: true,
-  });
-
   $("#top-movies-slide").owlCarousel({
     items: 2,
     dots: false,
@@ -75,25 +239,6 @@ $(document).ready(() => {
     responsive: {
       500: {
         items: 3,
-      },
-      1280: {
-        items: 4,
-      },
-      1600: {
-        items: 6,
-      },
-    },
-  });
-
-  $(".movies-slide").owlCarousel({
-    items: 2,
-    dots: false,
-    nav: true,
-    navText: navText,
-    margin: 15,
-    responsive: {
-      500: {
-        items: 2,
       },
       1280: {
         items: 4,

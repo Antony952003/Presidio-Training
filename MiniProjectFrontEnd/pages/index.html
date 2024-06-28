@@ -56,7 +56,7 @@
             </li>
             <li>
               <div class="user">
-                <img src="../Assets/Images/user_image.png" alt="" />
+                <img class="user-profile-image" src="" alt="" />
                 <h4>Hey <span class="name-field"></span> !!</h4>
               </div>
             </li>
@@ -65,10 +65,10 @@
             <div class="ad-nav-header">
               <div class="ad-nav-header-comp-1">
                 <h3>Hey !!</h3>
-                <span>Edit Profile</span>
+                <span id="edit-profile">Edit Profile</span>
               </div>
               <div class="ad-nav-header-comp-2">
-                <img src="../Assets/Images/user_image.png" alt="" />
+                <img class="user-profile-image" src="" alt="" />
                 <h4 class="name-field"></h4>
               </div>
             </div>
@@ -116,125 +116,7 @@
     <div class="hero-section">
       <!-- HERO SLIDE -->
       <div class="hero-slide">
-        <div class="owl-carousel carousel-nav-center" id="hero-carousel">
-          <!-- SLIDE ITEM -->
-          <div class="hero-slide-item">
-            <img src="../images/black-banner.png" alt="" />
-            <div class="overlay"></div>
-            <div class="hero-slide-item-content">
-              <div class="item-content-wraper">
-                <div class="item-content-title top-down">Black Panther</div>
-                <div class="movie-infos top-down delay-2">
-                  <div class="movie-info">
-                    <i class="bx bxs-star"></i>
-                    <span>9.5</span>
-                  </div>
-                  <div class="movie-info">
-                    <i class="bx bxs-time"></i>
-                    <span>120 mins</span>
-                  </div>
-                  <div class="movie-info">
-                    <span>HD</span>
-                  </div>
-                  <div class="movie-info">
-                    <span>16+</span>
-                  </div>
-                </div>
-                <div class="item-content-description top-down delay-4">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
-                  possimus eius. Deserunt non odit, cum vero reprehenderit
-                  laudantium odio vitae autem quam, incidunt molestias ratione
-                  mollitia accusantium, facere ab suscipit.
-                </div>
-                <div class="item-action top-down delay-6">
-                  <a href="#" class="btn btn-hover">
-                    <i class="bx bxs-right-arrow"></i>
-                    <span>Book Now</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END SLIDE ITEM -->
-          <!-- SLIDE ITEM -->
-          <div class="hero-slide-item">
-            <img src="../images/supergirl-banner.jpg" alt="" />
-            <div class="overlay"></div>
-            <div class="hero-slide-item-content">
-              <div class="item-content-wraper">
-                <div class="item-content-title top-down">Supergirl</div>
-                <div class="movie-infos top-down delay-2">
-                  <div class="movie-info">
-                    <i class="bx bxs-star"></i>
-                    <span>9.5</span>
-                  </div>
-                  <div class="movie-info">
-                    <i class="bx bxs-time"></i>
-                    <span>120 mins</span>
-                  </div>
-                  <div class="movie-info">
-                    <span>HD</span>
-                  </div>
-                  <div class="movie-info">
-                    <span>16+</span>
-                  </div>
-                </div>
-                <div class="item-content-description top-down delay-4">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
-                  possimus eius. Deserunt non odit, cum vero reprehenderit
-                  laudantium odio vitae autem quam, incidunt molestias ratione
-                  mollitia accusantium, facere ab suscipit.
-                </div>
-                <div class="item-action top-down delay-6">
-                  <a href="#" class="btn btn-hover">
-                    <i class="bx bxs-right-arrow"></i>
-                    <span>Book now</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END SLIDE ITEM -->
-          <!-- SLIDE ITEM -->
-          <div class="hero-slide-item">
-            <img src="../images/wanda-banner.jpg" alt="" />
-            <div class="overlay"></div>
-            <div class="hero-slide-item-content">
-              <div class="item-content-wraper">
-                <div class="item-content-title top-down">Wanda Vision</div>
-                <div class="movie-infos top-down delay-2">
-                  <div class="movie-info">
-                    <i class="bx bxs-star"></i>
-                    <span>9.5</span>
-                  </div>
-                  <div class="movie-info">
-                    <i class="bx bxs-time"></i>
-                    <span>120 mins</span>
-                  </div>
-                  <div class="movie-info">
-                    <span>HD</span>
-                  </div>
-                  <div class="movie-info">
-                    <span>16+</span>
-                  </div>
-                </div>
-                <div class="item-content-description top-down delay-4">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
-                  possimus eius. Deserunt non odit, cum vero reprehenderit
-                  laudantium odio vitae autem quam, incidunt molestias ratione
-                  mollitia accusantium, facere ab suscipit.
-                </div>
-                <div class="item-action top-down delay-6">
-                  <a href="#" class="btn btn-hover">
-                    <i class="bx bxs-right-arrow"></i>
-                    <span>Book now</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END SLIDE ITEM -->
-        </div>
+        <div class="owl-carousel carousel-nav-center" id="hero-carousel"></div>
       </div>
       <!-- END HERO SLIDE -->
       <!-- TOP MOVIES SLIDE -->
@@ -394,176 +276,9 @@
     <div class="section">
       <div class="container">
         <div class="section-header">running movies</div>
-        <div class="movies-slide carousel-nav-center owl-carousel">
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/theatre-dead.jpg" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Theatre of the dead</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/transformer.jpg" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Transformer</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/resident-evil.jpg" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Resident Evil</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/captain-marvel.png" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Captain Marvel</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/hunter-killer.jpg" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Hunter Killer</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/blood-shot.jpg" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Bloodshot</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-          <!-- MOVIE ITEM -->
-          <a href="#" class="movie-item">
-            <img src="../images/movies/call.jpg" alt="" />
-            <div class="movie-item-content">
-              <div class="movie-item-title">Call</div>
-              <div class="movie-infos">
-                <div class="movie-info">
-                  <i class="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div class="movie-info">
-                  <i class="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div class="movie-info">
-                  <span>HD</span>
-                </div>
-                <div class="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- END MOVIE ITEM -->
-        </div>
+        <div
+          class="movies-slide carousel-nav-center owl-carousel running-movies"
+        ></div>
       </div>
     </div>
     <!-- END LATEST MOVIES SECTION -->
@@ -939,10 +654,15 @@
               </div>
             </div>
             <div class="item-content-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
-              possimus eius. Deserunt non odit, cum vero reprehenderit
-              laudantium odio vitae autem quam, incidunt molestias ratione
-              mollitia accusantium, facere ab suscipit.
+              High-school student Sam Witwicky buys his first car, who is
+              actually the Autobot Bumblebee. Bumblebee defends Sam and his
+              girlfriend Mikaela Banes from the Decepticon Barricade, before the
+              other Autobots arrive on Earth. They are searching for the
+              Allspark, and the war on Earth heats up as the Decepticons attack
+              a United States military base in Qatar. Sam and Mikaela are taken
+              by the top-secret agency Sector 7 to help stop the Decepticons,
+              but when they learn the agency also intends to destroy the
+              Autobots, they formulate their own plan to save the world
             </div>
             <div class="item-action">
               <a href="#" class="btn btn-hover">
