@@ -358,8 +358,10 @@ input::file-selector-button {
 }
 
 #user-image img {
-  width: 70px;
+  width: 90px;
   margin: auto;
+  border-radius: 100px;
+  height: 90px;
 }
 .form-header {
   display: flex;
@@ -458,6 +460,10 @@ input::file-selector-button {
     font-size: 12px;
   }
 
+  .form-container {
+    width: 70vw;
+  }
+
   .container {
     padding: 0 15px;
   }
@@ -488,5 +494,10 @@ input::file-selector-button {
 
   .nav-menu.active {
     left: 0;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .edit-container .form-container {
+    width: 90vw;
   }
 }

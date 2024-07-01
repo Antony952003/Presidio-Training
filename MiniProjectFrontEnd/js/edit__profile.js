@@ -114,33 +114,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   saveButton.addEventListener("click", async () => {
     const formData = new FormData(form);
-    var data = Object.fromEntries(formData.entries());
-    data = {
-      ...data,
+    let imageUrl = formData.get("imageurl");
+    const imageFile = formData.get("image");
+
+    if (imageFile && imageFile.size > 0) {
+      const base64Image = await convertToBase64(imageFile);
+      imageUrl = base64Image;
+    }
+
+    const data = {
       id: localStorage.getItem("uid"),
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      image: imageUrl,
     };
-    const editedData = {
-      id: "",
-      name: "",
-      email: "",
-      image: "",
-      phone: "",
-    };
-    Object.entries(data).forEach(([key, value]) => {
-      console.log(key);
-      if (key == "id") {
-        editedData["id"] = value;
-      } else if (key == "name") {
-        editedData["name"] = value;
-      } else if (key == "email") {
-        editedData["email"] = value;
-      } else if (key == "image") {
-        if (value.file == "") editedData["image"] = value;
-      } else if (key == "phone") {
-        editedData["phone"] = value;
-      }
-    });
-    console.log(editedData);
 
     try {
       const response = await fetch(
@@ -150,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(editedData),
+          body: JSON.stringify(data),
         }
       );
 
@@ -183,4 +171,13 @@ document.addEventListener("DOMContentLoaded", () => {
   clearButton.addEventListener("click", () => {
     inputs.forEach((input) => (input.value = ""));
   });
+
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
 });
