@@ -1,0 +1,12 @@
+1) Python class - done
+
+2) Inheritance in python - done
+
+3) Polymorphism in python - done
+
+4) Modules in python - done 
+
+5) Exception Handling(Try Except)
+
+6) File handling - Read and Write
+ 

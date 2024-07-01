@@ -41,6 +41,7 @@ $(document).ready(() => {
     heroslideitem.classList.add("hero-slide-item");
 
     heroslideitem.innerHTML = `
+          
             <img src="${movie.bannerImage}" alt="${movie.title}" />
             <div class="overlay"></div>
             <div class="hero-slide-item-content">
@@ -109,7 +110,9 @@ $(document).ready(() => {
 
         data.forEach((movie) => {
           const movieItem = document.createElement("a");
-          movieItem.href = "#";
+          movieItem.href = `movie.html?title=${encodeURIComponent(
+            movie.title
+          )}`;
           movieItem.className = "movie-item";
 
           const img = document.createElement("img");
