@@ -1,22 +1,18 @@
-
-def norepeating_chars(s):
-    visited = (256) * [False]
-    for i in range(len(s)):
-        if(visited[ord(s[i])] == True):
-            return False
-        visited[ord(s[i])] = True
-    return True
-
 def longestsubstring(s):
-    res = 0
-    for i in range(len(s)):
-        for j in range(i, len(s)):
-            if(norepeating_chars(s[i:j+1])):
-                if(len(s[i:j+1]) > res):
-                    res = len(s[i:j+1])
-                    str = s[i:j+1]
-    return str
-
+    n = len(s)
+    char_index = {}
+    max_len = 0
+    start = 0
+    
+    for end in range(n):
+        if s[end] in char_index:
+            # Move the start to the right of the same character last seen
+            start = max(start, char_index[s[end]] + 1)
+        
+        char_index[s[end]] = end
+        max_len = max(max_len, end - start + 1)
+    
+    return max_len
 s = input("Enter a string : ")
 ans = longestsubstring(s)
-print(f"{ans} is the string of length : {len(ans)}")
+print(ans)

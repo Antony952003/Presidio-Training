@@ -610,6 +610,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  if (localStorage.getItem("token")) {
+    document.getElementById("logged-in").innerHTML = "Log Out";
+  }
+
+  document.getElementById("logged-in").addEventListener("click", () => {
+    if (document.getElementById("logged-in").innerHTML == "Log Out") {
+      document.getElementById("logged-in").innerHTML = "Sign In";
+      window.localStorage.removeItem("token");
+    }
+  });
+
   var locationdown = document.querySelector(".down-button");
   locationdown.addEventListener("click", () => {
     var popuplocation = document.querySelector(".popup-location");

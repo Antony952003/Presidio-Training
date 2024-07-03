@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Listing</title>
+    <title>Theater and Showtime Selection</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
@@ -12,7 +12,11 @@
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/movie_listing.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/showtimelisting.css" />
   </head>
   <body>
     <div class="nav-wrapper">
@@ -123,37 +127,42 @@
         <button class="view-all-btn">View All Cities</button>
       </div>
     </div>
-    <section class="movie-listing-container">
-      <div class="filter-container">
-        <div class="languages">
-          <span>English</span>
-          <span>Tamil</span>
-          <span>Kannada</span>
-          <span>Telugu</span>
-          <span>Malayalam</span>
-          <span>Hindi</span>
-          <span>Bengali</span>
+    <div class="showtimecontainer">
+      <h1>Select Showtimes for <span id="movie-title">Movie Title</span></h1>
+
+      <div class="filters">
+        <div class="filter">
+          <label>Date:</label>
+          <div class="day-buttons" id="day-buttons">
+            <!-- Day buttons will be injected here -->
+          </div>
         </div>
-        <div class="filters">
-          <select id="genre-filter">
-            <option value="">All Genres</option>
-            <option value="Action">Action</option>
-            <option value="Drama">Drama</option>
+        <div class="filter">
+          <label for="format-filter">Format:</label>
+          <select id="format-filter">
+            <option value="">All Formats</option>
+            <option value="2D">2D</option>
+            <option value="3D">3D</option>
+            <option value="IMAX">IMAX</option>
           </select>
-          <select id="certification-filter">
-            <option value="">All Certifications</option>
-            <option value="PG-13">PG-13</option>
-            <option value="R">R</option>
-            <option value="A">A</option>
-            <option value="TV-PG">TV-PG</option>
-            <option value="U/A">U/A</option>
+        </div>
+        <div class="filter">
+          <label for="time-filter">Time:</label>
+          <select id="time-filter">
+            <option value="">All Times</option>
+            <option value="morning">Morning (8AM - 12PM)</option>
+            <option value="afternoon">Afternoon (12PM - 4PM)</option>
+            <option value="evening">Evening (4PM - 8PM)</option>
+            <option value="night">Night (8PM - 12AM)</option>
           </select>
         </div>
       </div>
-      <div id="loader" class="loader"></div>
-      <div id="movie-list"></div>
-      <h1 id="noresult">No Result for applied filter...</h1>
-    </section>
-    <script src="../js/movie__listing.js"></script>
+
+      <div id="theater-list">
+        <!-- Theater and showtime details will be injected here -->
+      </div>
+    </div>
+
+    <script src="../js/showtimelisting.js"></script>
   </body>
 </html>
