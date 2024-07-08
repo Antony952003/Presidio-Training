@@ -714,56 +714,6 @@ Response Body: extendReturnDTO
 
 ---
 
-### FD Account Entity
-
-```csharp
-public class FDAccount
-{
-    public int FDAccountId { get; set; }
-    public int AccountId { get; set; }
-    public decimal DepositAmount { get; set; }
-    public double InterestRate { get; set; }
-    public string InterestType { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime MaturityDate { get; set; }
-    public string Status { get; set; }// "Active", "Matured", "Closed", "Renewed"
-}
-
-
-+-----------------------+
-|       FDAccount       |
-+-----------------------+
-| - FDAccountId: int    |
-| - AccountId: int      |
-| - DepositAmount: decimal |
-| - InterestRate: double|
-| - InterestType: string|
-| - StartDate: DateTime |
-| - MaturityDate: DateTime |
-| - Status: string      |
-+-----------------------+
-
-+--------------------------+
-|      FDAccountService    |
-+--------------------------+
-| + CreateFDAccountAsync(accountId: int, depositAmount: decimal, interestRate: double, duration: int): Task<FDAccountResponse> |
-| + GetFDAccountDetailsAsync(fdAccountId: int): Task<FDAccountResponse> |
-| + WithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
-| + GetThePenaltyAndWithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
-|+ RenewFDAccountAsync(fdAccountId: int, newDuration: int): Task<FDAccountResponse> |
-+--------------------------+
-
-+--------------------------+
-|      IFDAccountService   |
-+--------------------------+
-| + CreateFDAccountAsync(accountId: int, depositAmount: decimal, interestRate: double, duration: int): Task<FDAccountResponse> |
-| + GetFDAccountDetailsAsync(fdAccountId: int): Task<FDAccountResponse> |
-| + WithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
-| + GetThePenaltyAndWithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
-|+ RenewFDAccountAsync(fdAccountId: int, newDuration: int): Task<FDAccountResponse> |
-+--------------------------+
-```
-
 ### LoanApplication
 
 **Description**: Represents a loan application submitted by a customer.
@@ -1333,3 +1283,53 @@ Attributes:
 - `remaining_balance`: Remaining balance of the loan after the repayment.
 - `payment_method`: Method used for repayment (e.g., bank transfer, cash, cheque).
 - `late_fee`: Late Fee charged for missed or delayed payments.
+
+### FD Account Entity
+
+```csharp
+public class FDAccount
+{
+    public int FDAccountId { get; set; }
+    public int AccountId { get; set; }
+    public decimal DepositAmount { get; set; }
+    public double InterestRate { get; set; }
+    public string InterestType { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime MaturityDate { get; set; }
+    public string Status { get; set; }// "Active", "Matured", "Closed", "Renewed"
+}
+
+
++-----------------------+
+|       FDAccount       |
++-----------------------+
+| - FDAccountId: int    |
+| - AccountId: int      |
+| - DepositAmount: decimal |
+| - InterestRate: double|
+| - InterestType: string|
+| - StartDate: DateTime |
+| - MaturityDate: DateTime |
+| - Status: string      |
++-----------------------+
+
++--------------------------+
+|      FDAccountService    |
++--------------------------+
+| + CreateFDAccountAsync(accountId: int, depositAmount: decimal, interestRate: double, duration: int): Task<FDAccountResponse> |
+| + GetFDAccountDetailsAsync(fdAccountId: int): Task<FDAccountResponse> |
+| + WithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
+| + GetThePenaltyAndWithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
+|+ RenewFDAccountAsync(fdAccountId: int, newDuration: int): Task<FDAccountResponse> |
++--------------------------+
+
++--------------------------+
+|      IFDAccountService   |
++--------------------------+
+| + CreateFDAccountAsync(accountId: int, depositAmount: decimal, interestRate: double, duration: int): Task<FDAccountResponse> |
+| + GetFDAccountDetailsAsync(fdAccountId: int): Task<FDAccountResponse> |
+| + WithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
+| + GetThePenaltyAndWithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
+|+ RenewFDAccountAsync(fdAccountId: int, newDuration: int): Task<FDAccountResponse> |
++--------------------------+
+```
