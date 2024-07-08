@@ -128,26 +128,26 @@
       </div>
     </div>
     <div class="showtimecontainer">
-      <h1>Select Showtimes for <span id="movie-title">Movie Title</span></h1>
-
+      <h1><span id="movie-title">Movie Title</span></h1>
+      <div class="title-details">
+        <span id="cetificate-span">U/A</span>
+        <div class="genre-spans"></div>
+      </div>
       <div class="filters">
         <div class="filter">
-          <label>Date:</label>
           <div class="day-buttons" id="day-buttons">
             <!-- Day buttons will be injected here -->
           </div>
         </div>
         <div class="filter">
-          <label for="format-filter">Format:</label>
           <select id="format-filter">
-            <option value="">All Formats</option>
-            <option value="2D">2D</option>
-            <option value="3D">3D</option>
-            <option value="IMAX">IMAX</option>
+            <option class="option-format" value="">All Formats</option>
+            <option class="option-format" value="2D">2D</option>
+            <option class="option-format" value="3D">3D</option>
+            <option class="option-format" value="IMAX">IMAX</option>
           </select>
         </div>
         <div class="filter">
-          <label for="time-filter">Time:</label>
           <select id="time-filter">
             <option value="">All Times</option>
             <option value="morning">Morning (8AM - 12PM)</option>

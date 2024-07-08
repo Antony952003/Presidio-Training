@@ -496,22 +496,84 @@ a.movie-item:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 0;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 3.5rem;
 }
 
 .filters {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
 .filter {
   flex: 1;
   margin-right: 10px;
+}
+
+.title-details {
+  display: flex;
+  gap: 0.8rem;
+  position: relative;
+  bottom: 15px;
+}
+
+#cetificate-span {
+  border: 2px solid darkgrey;
+  border-radius: 20px;
+  padding: 2px;
+  font-size: 10px;
+  width: 30px;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.genre-spans span {
+  background-color: rgb(62, 61, 61);
+  padding: 2px 8px;
+  border-radius: 18px;
+  text-align: center;
+  font-size: 12px;
+  margin-right: 7px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-family: "Cairo";
+}
+
+.genre-spans span:hover {
+  color: #ff5722;
+  background-color: #ffffff;
+}
+
+#format-filter {
+  border-radius: 10px;
+  border: 1px solid #c0392b;
+  padding: 10px;
+  outline: none;
+}
+
+#time-filter {
+  border-radius: 10px;
+  border: 1px solid #c0392b;
+  padding: 10px;
+  outline: none;
+}
+
+#format-filter option {
+  background-color: #ff5722;
+  border-radius: 10px;
+}
+
+#time-filter option {
+  background-color: #ff5722;
+  border-radius: 10px;
 }
 
 /* .filters {
@@ -528,23 +590,55 @@ h1 {
 
 .day-buttons {
   display: flex;
-  gap: 5px;
+  gap: 0.6rem;
+  background-color: rgb(38, 37, 37);
+  padding: 10px;
+  border-radius: 12px;
 }
 
 .day-button {
-  background-color: #333333;
+  background-color: rgb(75, 79, 75);
+  min-width: 60px;
   color: #ffffff;
-  padding: 10px;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
+  font-family: "Cairo", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px 20px;
+  transition: 0.3s ease-in;
+}
+.day-button:hover {
+  color: #ff5722;
+  background-color: #ffffff;
+}
+.day-button.active:hover {
+  color: unset;
+}
+
+.day-button span {
+  padding: 0;
+  margin: 0;
+}
+
+.dayspan {
+  font-size: 15px;
+}
+
+.monthspan {
+  font-size: 15px;
+}
+
+.datespan {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .day-button.active {
   background-color: #ff5722;
-}
-
-.filter:last-child {
-  margin-right: 0;
 }
 
 label {
@@ -567,8 +661,50 @@ select {
 
 .theater {
   background-color: #222;
+  border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
+  opacity: 0;
+  animation: slideDown 0.5s forwards;
+  box-shadow: 0 4px 8px rgba(165, 19, 19, 0.2);
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.theater.delay-1 {
+  animation-delay: 0.1s;
+}
+.theater.delay-2 {
+  animation-delay: 0.2s;
+}
+.theater.delay-3 {
+  animation-delay: 0.3s;
+}
+.theater.delay-4 {
+  animation-delay: 0.4s;
+}
+.theater.delay-5 {
+  animation-delay: 0.5s;
+}
+.theater.delay-6 {
+  animation-delay: 0.7s;
+}
+.theater.delay-7 {
+  animation-delay: 0.8s;
+}
+.theater.delay-8 {
+  animation-delay: 0.9s;
+}
+.theater.delay-9 {
+  animation-delay: 0.1s;
 }
 
 .theater h2 {
@@ -626,5 +762,30 @@ select {
 
   .nav-menu.active {
     left: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .filters {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .filter {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  filter:last-child {
+    margin-left: 0;
+  }
+  .day-buttons {
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .option-format {
+    width: 30px;
+  }
+  h1 {
+    margin-bottom: 10px;
   }
 }

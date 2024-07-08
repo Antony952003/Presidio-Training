@@ -120,7 +120,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ul>
               </div>
               <div class="booknow">
-                <a href="" class="btn btn-hover">
+                <a href="showtimelisting.html?moviename=${encodeURIComponent(
+                  data.title
+                )}" class="btn btn-hover">
                   <span>Book Now</span>
                 </a>
               </div>
