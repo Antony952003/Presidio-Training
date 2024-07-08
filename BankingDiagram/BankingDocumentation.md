@@ -764,8 +764,6 @@ public class FDAccount
 +--------------------------+
 ```
 
----
-
 ### LoanApplication
 
 **Description**: Represents a loan application submitted by a customer.
