@@ -762,10 +762,9 @@ public class FDAccount
 | + GetThePenaltyAndWithdrawFromFDAccountAsync(fdAccountId: int): Task<FDAccountResponse> |
 |+ RenewFDAccountAsync(fdAccountId: int, newDuration: int): Task<FDAccountResponse> |
 +--------------------------+
+```
 
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+---
 
 ### LoanApplication
 
@@ -1336,5 +1335,3 @@ Attributes:
 - `remaining_balance`: Remaining balance of the loan after the repayment.
 - `payment_method`: Method used for repayment (e.g., bank transfer, cash, cheque).
 - `late_fee`: Late Fee charged for missed or delayed payments.
-
-```
