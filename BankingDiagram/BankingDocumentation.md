@@ -728,75 +728,27 @@ Response Body: extendReturnDTO
 
 ## Service methods for loan Application
 
-### 1. Validating Borrower Details
+Method: `processLoanApplicationByType(application_id, loan_type)`
+Description: Processes the loan application based on the loan type (secured or unsecured).
 
-#### Method: `validateBorrowerDetails(borrower_details)`
+Parameters:
 
-- **Description**: Validates the details of the borrower.
-- **Parameters**: `borrower_details` (dictionary containing borrower's information)
-- **Steps**:
-  1. Check the borrower’s credit score.
-  2. Verify the borrower’s identity and financial status.
-  3. Ensure all required documents are submitted.
+`application_id` (identifier of the loan application)
 
----
+`loan_type` (type of loan: Secured or UnSecured)
 
-### 2. Processing the Loan Application
+Steps:
 
-#### Method: `processLoanApplication(application_id, status)`
+Retrieve the application details using the application_id.
 
-- **Description**: Processes the loan application by a loan officer (approve/reject).
-- **Parameters**:
-  - `application_id` (identifier of the loan application)
-  - `status` (new status of the application, e.g., approved, rejected)
-- **Steps**:
-  1. Retrieve the application from the database.
-  2. Perform necessary checks and validations.
-  3. Update the status of the application based on the loan officer’s decision.
+Check the loan type (loan_type).
 
-### 3. Generating Loan Terms
+Process the loan application based on the loan type:
 
-#### Method: `generateLoanTerms(loan_amount, loan_duration, interest_rate)`
-
-- **Description**: Generates the loan terms based on the loan amount, duration, and interest rate.
-- **Parameters**:
-  - `loan_amount` (amount of the loan)
-  - `loan_duration` (duration of the loan repayment)
-  - `interest_rate` (interest rate applicable)
-- **Steps**:
-  1. Calculate the monthly installment.
-  2. Create a repayment schedule.
-  3. Document the terms and conditions.
-
----
-
-### 4. Notifying the Customer
-
-#### Method: `notifyCustomer(application_id, status, remarks)`
-
-- **Description**: Notifies the customer about the status of their loan application.
-- **Parameters**:
-  - `application_id` (identifier of the loan application)
-  - `status` (status of the application)
-  - `remarks` (additional remarks or notes)
-- **Steps**:
-  1. Retrieve customer contact details.
-  2. Prepare the notification message.
-  3. Send the notification (e.g., email, SMS).
-
----
-
-### 5. Disbursing the Loan
-
-#### Method: `disburseLoan(loanDTO)`
-
-- **Description**: Disburses the approved loan to the customer’s account.
-- **Parameters**: `loanDTO` (contains details of the loan)
-- **Steps**:
-
-  1. Validate the final loan details.
-  2. Transfer the loan amount to the customer’s account.
-  3. Update the loan status to disbursed.
+If Secured:
+Call the method `processSecuredLoanApplication(application_id)`.
+If UnSecured:
+Call the method `processUnsecuredLoanApplication(application_id)`.
 
 ### UnsecuredLoanApplication(Loan-Sub-Class)
 
@@ -827,10 +779,22 @@ Response Body: extendReturnDTO
 **Interface: UnsecuredLoanApplicationController**
 
 - **Methods**:
+
   - `applyForUnsecuredLoan(UnsecuredLoanApplicationDTO applicationDTO)`: Endpoint for submitting a new unsecured loan application.
   - `getUnsecuredLoanApplicationById(String applicationId)`: Endpoint for retrieving a specific unsecured loan application by its ID.
   - `updateUnsecuredLoanApplicationStatus(String applicationId, String status)`: Endpoint for updating the status of a loan application.
   - `getAllUnsecuredLoanApplications()`: Endpoint for retrieving all unsecured loan applications.
+  - Validating Borrower Details -`validateBorrowerDetails(borrower_details)`:
+    Validates the details of the borrower. -`processLoanApplication(application_id, status)`
+    : Processes the loan application by a loan officer.
+
+  - `generateLoanTerms(loan_amount, loan_duration, interest_rate)`
+    Generates the loan terms based on financial details.
+  - `notifyCustomer(application_id, status, remarks)`
+    Notifies the customer about the status of their loan application.
+
+  - `disburseLoan(loanDTO)`
+    Disburses the approved loan amount to the customer.
 
 ### Service Layer
 
