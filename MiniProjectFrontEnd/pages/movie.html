@@ -19,10 +19,16 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>
   <body>
-    <script defer src="../js/movie.js"></script>
+    <div id="loader" class="loader">
+      <div class="loader-inner"></div>
+    </div>
     <!-- NavBar -->
     <div class="nav-wrapper">
       <div class="container">
@@ -48,6 +54,48 @@
               </a>
             </li>
           </ul>
+          <div class="account-details-nav">
+            <div class="ad-nav-header">
+              <div class="ad-nav-header-comp-1">
+                <h3>Hey !!</h3>
+                <span id="edit-profile">Edit Profile</span>
+              </div>
+              <div class="ad-nav-header-comp-2">
+                <img class="user-profile-image" src="" alt="" />
+                <h4 class="name-field"></h4>
+              </div>
+            </div>
+            <ul class="ad-nav-details">
+              <li>
+                <i class="bx bxs-shopping-bags"></i>
+                <div class="ad-nav-content">
+                  <h4>Your Orders</h4>
+                  <span>View all your bookings, purchases</span>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-message-dots"></i>
+                <div class="ad-nav-content">
+                  <h4>Help & Support</h4>
+                  <span>View commonly asked questions</span>
+                </div>
+              </li>
+              <li>
+                <i class="bx bxs-gift"></i>
+                <div class="ad-nav-content">
+                  <h4>Rewards</h4>
+                  <span>View reward points & unlock new ones</span>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-cog"></i>
+                <div class="ad-nav-content">
+                  <h4>Account & Settings</h4>
+                  <span>Location, Payments, Permissions & More</span>
+                </div>
+              </li>
+            </ul>
+          </div>
           <!-- MOBILE MENU TOGGLE -->
           <div class="hamburger-menu" id="hamburger-menu">
             <div class="hamburger"></div>
@@ -89,5 +137,43 @@
     <!-- End Location Popup -->
     <!-- Main Container -->
     <section class="main-container"></section>
+    <div class="popup-rating top-down" id="popup">
+      <div class="ratings">
+        <p>How would you rate this movie?</p>
+        <div class="rate-stars" id="rateStars">
+          <i class="bx bx-star" data-value="1"></i>
+          <i class="bx bx-star" data-value="2"></i>
+          <i class="bx bx-star" data-value="3"></i>
+          <i class="bx bx-star" data-value="4"></i>
+          <i class="bx bx-star" data-value="5"></i>
+          <i class="bx bx-star" data-value="6"></i>
+          <i class="bx bx-star" data-value="7"></i>
+          <i class="bx bx-star" data-value="8"></i>
+          <i class="bx bx-star" data-value="9"></i>
+          <i class="bx bx-star" data-value="10"></i>
+        </div>
+      </div>
+      <div class="hashtags">
+        <input
+          type="text"
+          id="hashtagInput"
+          placeholder="Type hashtag and click Add Hashtag"
+        />
+        <button id="addHashtag">Add Hashtag</button>
+      </div>
+      <div class="hashtag-list" id="hashtagList"></div>
+      <div class="comment">
+        <p>Explore more, Can elaborately explain your experience !!</p>
+        <textarea
+          id="comment"
+          placeholder="Give your thoughts about the movie!!"
+        ></textarea>
+      </div>
+      <a href="#" class="btn btn-hover">
+        <span id="review-submit">Submit Review</span>
+      </a>
+    </div>
+    <script defer src="../js/movie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

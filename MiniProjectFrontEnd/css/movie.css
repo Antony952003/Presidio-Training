@@ -175,6 +175,134 @@ a.movie-item:hover {
   color: unset;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+}
+.user-image {
+  overflow: hidden;
+}
+
+.user-image img {
+  scale: 2;
+}
+
+.user h4 {
+  font-size: 18px;
+}
+
+.user h4 span {
+  color: #c0392b;
+}
+
+.user img {
+  border: 3px solid #c0392b;
+  width: 3em;
+  height: 3em;
+  border-radius: 30px;
+}
+
+.account-details-nav {
+  position: absolute;
+  top: 100%;
+  right: -200%;
+  background-color: var(--body-bg);
+  flex-direction: column;
+  width: 54vh;
+  height: 100vh;
+  padding: 20px;
+  padding-top: 0px;
+  transition: 0.3s ease-in-out;
+}
+
+.account-details-nav.active {
+  right: 0;
+}
+
+.ad-nav-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+  border-bottom: 2px solid grey;
+}
+
+.ad-nav-header-comp-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-nav-header-comp-1 span {
+  font-size: 13px;
+  color: lightgrey;
+  cursor: pointer;
+}
+
+.ad-nav-header-comp-2 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.ad-nav-header-comp-2 img {
+  width: 2.7em;
+  height: 2.7em;
+  border: 3px solid #c0392b;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.ad-nav-header-comp-2 h4 {
+  font-size: 18px;
+}
+
+.ad-nav-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-top: 1.7em;
+}
+
+.ad-nav-details li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 15px;
+}
+
+.ad-nav-details li i {
+  font-size: 30px;
+  color: lightslategray;
+}
+.ad-nav-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.user-profile-image {
+}
+
+.ad-nav-content h4 {
+  font-size: 15px;
+}
+
+.ad-nav-content:hover.ad-nav-content h4 {
+  color: #c0392b;
+}
+
+.ad-nav-content span {
+  font-size: 12px;
+}
+
 .btn {
   color: #ffffff;
   padding: 0.25rem 1.5rem;
@@ -812,7 +940,6 @@ a.movie-item:hover {
 .user-profile {
   display: flex;
   align-items: center;
-  width: 5.5rem;
 }
 
 .user-profile i {
@@ -850,6 +977,145 @@ a.movie-item:hover {
 
 .posted-date {
   color: rgb(204, 204, 204);
+}
+
+.popup-rating {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  opacity: 0;
+  position: absolute;
+  background-color: #221f1f;
+  z-index: 999;
+  padding: 15px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 20px;
+  border-width: 5px;
+  border-color: #c0392b;
+  border-style: groove;
+  visibility: hidden;
+}
+
+.ratings i {
+  cursor: pointer;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.rate-stars i:hover,
+.rate-stars i.selected {
+  color: #c0392b;
+}
+
+.hashtags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hashtags input {
+  width: 180px;
+  height: 30px;
+  margin-right: 20px;
+  padding: 10px;
+  outline: none;
+}
+
+.hashtags button {
+  padding: 6px;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #c0392b;
+  background-color: #ffffff;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.hashtags button:hover {
+  background-color: #c0392b;
+  color: #ffffff;
+}
+
+.hashtag-list {
+  margin: 10px 0;
+}
+
+.hashtag {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #c0392b;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+.loader {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader.active {
+  display: flex;
+}
+
+.loader-inner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  animation: spin 1s linear infinite;
+}
+
+.comment textarea {
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  transition: 0.2s ease-in;
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+.comment textarea:hover {
+  border: 2px solid #c0392b;
+}
+
+#review-submit {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.popup-rating.active {
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s ease-out;
+}
+
+.review-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  border: 4px solid #c0392b;
 }
 
 @media screen and (max-width: 1000px) {

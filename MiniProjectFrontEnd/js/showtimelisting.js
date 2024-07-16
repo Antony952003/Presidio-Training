@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".logo").addEventListener("click", () => {
     window.location.href = "index.html";
   });
+  document.querySelector(".ad-nav-content").addEventListener("click", () => {
+    window.location.href = "booking_orders.html";
+  });
 
   // Function to fetch user details
   const fetchUserDetails = () => {
@@ -14,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -150,7 +154,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const genreSpans = document.querySelector(".genre-spans");
 
   const fetchmoviedetails = () => {
-    fetch(`http://localhost:5091/api/Movie/GetMovieByName?name=${movieTitle}`)
+    fetch(`http://localhost:5091/api/Movie/GetMovieByName?name=${movieTitle}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -179,16 +188,20 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(
       `http://localhost:5091/api/Showtime/GetAllShowtimesofMovie?moviename=${encodeURIComponent(
         movieTitle
-      )}`
+      )}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
     )
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched showtimes:", data);
 
         const theaters = data.reduce((acc, showtime) => {
-          const showtimeDate = new Date(showtime.startTime)
-            .toISOString()
-            .split("T")[0];
+          const showtimeDate = showtime.startTime.split("T")[0];
 
           // Only include showtimes for the selected date
           if (showtimeDate === selectedDate) {

@@ -3,6 +3,24 @@ $(document).ready(() => {
     $("#hamburger-menu").toggleClass("active");
     $("#nav-menu").toggleClass("active");
   });
+  const decodeToken = (token) => {
+    return jwt_decode(token);
+  };
+
+  // Function to check if the token is expired
+  const isTokenExpired = (token) => {
+    const decodedToken = decodeToken(token);
+    const currentTime = Date.now() / 1000; // Current time in seconds
+    return decodedToken.exp < currentTime;
+  };
+  if (isTokenExpired(localStorage.getItem("token"))) {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+  }
+
+  document.querySelector(".ad-nav-content").addEventListener("click", () => {
+    window.location.href = "booking_orders.html";
+  });
 
   const fetchuserdetails = () => {
     fetch(
@@ -13,6 +31,7 @@ $(document).ready(() => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -69,7 +88,9 @@ $(document).ready(() => {
                         ${movie.description}
                     </div>
                     <div class="item-action top-down delay-6">
-                        <a href="#" class="btn btn-hover">
+                        <a href="movie.html?title=${encodeURIComponent(
+                          movie.title
+                        )}" class="btn btn-hover">
                             <i class="bx bxs-right-arrow"></i>
                             <span>Book Now</span>
                         </a>
@@ -84,6 +105,7 @@ $(document).ready(() => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
       .then((response) => response.json())

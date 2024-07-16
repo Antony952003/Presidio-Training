@@ -26,28 +26,6 @@ document
       showToast("Invalid email format.");
       return;
     }
-
-    fetch("https://your-endpoint-here.com/forgot-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Failed to send reset password email.");
-        }
-      })
-      .then((data) => {
-        showToast("Password reset email sent successfully!");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        showToast(error.message || "Failed to send reset password email.");
-      });
   });
 
 document
@@ -87,6 +65,7 @@ document
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(data),
     })

@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".logo").addEventListener("click", () => {
     window.location.href = "index.html";
   });
+  document.querySelector(".ad-nav-content").addEventListener("click", () => {
+    window.location.href = "booking_orders.html";
+  });
 
   // Function to fetch user details
   const fetchUserDetails = () => {
@@ -13,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -168,7 +172,13 @@ observer.observe(seatselected, { childList: true });
 
 function fetchSeats(showtimeId) {
   fetch(
-    `http://localhost:5091/api/ShowtimeSeat/GetShowtimeSeats?showtimeid=${showtimeId}`
+    `http://localhost:5091/api/ShowtimeSeat/GetShowtimeSeats?showtimeid=${showtimeId}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
   )
     .then((response) => response.json())
     .then((data) => {
@@ -214,7 +224,7 @@ function generateSeats(seats) {
     seatDiv.textContent = seatNum;
     seatDiv.setAttribute("data-price", `Price: ${seatPrice} Rs`);
 
-    if (seat.status === "Sold") {
+    if (seat.status === "Booked") {
       seatDiv.classList.add("sold");
     } else if (seat.status === "Selected") {
       seatDiv.classList.add("selected");

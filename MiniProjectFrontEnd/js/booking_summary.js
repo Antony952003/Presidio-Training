@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".logo").addEventListener("click", () => {
     window.location.href = "index.html";
   });
+  document.querySelector(".ad-nav-content").addEventListener("click", () => {
+    window.location.href = "booking_orders.html";
+  });
 
   // Function to fetch user details
   const fetchUserDetails = () => {
@@ -13,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -114,7 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const snackItemsContainer = document.getElementById("snack-items");
 
   const fetchSnacks = () => {
-    fetch("http://localhost:5091/api/Snack/GetAllSnacks")
+    fetch("http://localhost:5091/api/Snack/GetAllSnacks", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -337,4 +346,114 @@ document.addEventListener("DOMContentLoaded", () => {
       value.textContent = `₹ ${total + snacksTotal + conveniencefees}`;
     });
   }
+
+  const fetchScreenandTheater = () => {
+    fetch(
+      `http://localhost:5091/api/Showtime/GetShowtimeById?showtimeid=${parseInt(
+        showtimeId
+      )}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("It came in");
+        const screenname = document.querySelector(".screen-name");
+        screenname.innerHTML = data.screenName;
+      });
+  };
+  fetchScreenandTheater();
+
+  const fetchMovie = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5091/api/Showtime/GetMovieByShowtimeId?showtimeid=${parseInt(
+          showtimeId
+        )}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data.movieId);
+      return data.movieId;
+    } catch (error) {
+      console.error("Error fetching movie:", error);
+      return null;
+    }
+  };
+
+  document
+    .getElementById("confirm-booking")
+    .addEventListener("click", async () => {
+      const userId = parseInt(localStorage.getItem("uid"));
+      const pointsToRedeem = 0;
+      const movieId = await fetchMovie();
+      console.log(movieId);
+
+      let bookingSnacks = {};
+      selectedSnacks.forEach((snack) => {
+        if (bookingSnacks[snack.name]) {
+          bookingSnacks[snack.name]++;
+        } else {
+          bookingSnacks[snack.name] = 1;
+        }
+      });
+
+      console.log(bookingSnacks);
+      console.log(movieId);
+      console.log(seats);
+
+      var seatsboo = seats.split(",").map((seat) => seat.trim());
+      console.log(seatsboo);
+
+      const bookingData = {
+        userId,
+        showtimeId: parseInt(showtimeId),
+        movieId: 1,
+        bookingSeats: seatsboo,
+        bookingSnacks,
+      };
+      console.log(bookingData);
+
+      fetch("http://localhost:5091/api/Booking/AddBooking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(bookingData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Booking successful:", data);
+          if (data.bookingId !== undefined) {
+            sessionStorage.setItem("seats", seatsboo.join(", "));
+            sessionStorage.setItem("snacks", JSON.stringify(selectedSnacks));
+            window.location.href = `payment.html?showtimeId=${showtimeId}&bookingId=${encodeURIComponent(
+              data.bookingId
+            )}`;
+          } else {
+            Toastify({
+              text: "Something went wrong!!",
+              duration: 3000,
+              close: true,
+              gravity: "top",
+              position: "right",
+              backgroundColor: "linear-gradient(to right, #FF7F7F, #E4003A)",
+            }).showToast();
+          }
+        })
+        .catch((error) => {
+          console.error("Error booking tickets:", error);
+          // Display an error message to the user
+        });
+    });
 });

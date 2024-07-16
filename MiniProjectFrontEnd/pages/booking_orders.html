@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/booking_summary.css" />
+    <link rel="stylesheet" href="../css/booking_orders.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
@@ -132,57 +132,11 @@
         <button class="view-all-btn">View All Cities</button>
       </div>
     </div>
-    <div class="bscontainer">
-      <div class="snacks-list">
-        <h2>Grab a <span>Bite</span> !!</h2>
-        <p>Prebook your meal and save <span>more</span> !!</p>
-        <h2>Food & Beverages</h2>
-        <div id="snack-items"></div>
-      </div>
-      <div class="order-summary">
-        <h2><span>Booking</span> Summary</h2>
-        <div class="seats-price">
-          <p><span id="summary-seats"></span>( <span>2</span> Tickets )</p>
-          <p>Rs. <span id="summary-total"></span></p>
-        </div>
-        <span class="screen-name">AUDI 5</span>
-        <div class="convinence-fees">
-          <h3>Convenience Fees <i class="bx bx-chevron-down"></i></h3>
-          <div class="collapsed-content">
-            <p>Rs. <span>153.40</span></p>
-            <div class="inside-collapsed">
-              <p>Base Amount : Rs. <span>130</span></p>
-              <p>GST (18%) : Rs. <span>23.40</span></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="snacks-total">
-          <div class="collapsible foodbeverage">
-            <h3>Food & Beverage<i class="bx bx-chevron-down foodicon"></i></h3>
-            <p>Rs. <span id="snacks-total">0</span></p>
-          </div>
-        </div>
-        <div class="content" id="food-beverage-content">
-          <ul class="" id="selected-snacks"></ul>
-        </div>
-        <div class="subtotal">
-          <h5>Subtotal</h5>
-          <p>
-            Rs.
-            <span style="color: #c0392b !important" class="grand-total">0</span>
-          </p>
-        </div>
-        <div class="payable-amount">
-          <h3>Amount Payable</h3>
-          <p>Rs. <span class="grand-total">0</span></p>
-        </div>
-        <button id="confirm-booking">
-          Pay Amount : <span class="grand-total">0</span>
-        </button>
-      </div>
+    <div id="loader" class="loader">
+      <div class="loader-inner"></div>
     </div>
-    <script src="../js/booking_summary.js"></script>
+    <div class="bo-container"></div>
+    <script src="../js/booking_orders.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

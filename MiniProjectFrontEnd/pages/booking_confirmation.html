@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/booking_summary.css" />
+    <title>Booking Confirmed</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
@@ -13,15 +12,7 @@
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <title>Booking Summary</title>
+    <link rel="stylesheet" href="../css/booking_confirmation.css" />
   </head>
   <body>
     <div class="nav-wrapper">
@@ -132,57 +123,41 @@
         <button class="view-all-btn">View All Cities</button>
       </div>
     </div>
-    <div class="bscontainer">
-      <div class="snacks-list">
-        <h2>Grab a <span>Bite</span> !!</h2>
-        <p>Prebook your meal and save <span>more</span> !!</p>
-        <h2>Food & Beverages</h2>
-        <div id="snack-items"></div>
-      </div>
-      <div class="order-summary">
-        <h2><span>Booking</span> Summary</h2>
-        <div class="seats-price">
-          <p><span id="summary-seats"></span>( <span>2</span> Tickets )</p>
-          <p>Rs. <span id="summary-total"></span></p>
-        </div>
-        <span class="screen-name">AUDI 5</span>
-        <div class="convinence-fees">
-          <h3>Convenience Fees <i class="bx bx-chevron-down"></i></h3>
-          <div class="collapsed-content">
-            <p>Rs. <span>153.40</span></p>
-            <div class="inside-collapsed">
-              <p>Base Amount : Rs. <span>130</span></p>
-              <p>GST (18%) : Rs. <span>23.40</span></p>
-            </div>
+    <section class="bc-container">
+      <div class="ticket">
+        <div class="movie-details-1">
+          <h1 id="movie-name">Black Panther</h1>
+          <div class="tikets-div">
+            <span id="noofticket">4</span>
+            <span>Tickets</span>
           </div>
         </div>
-
-        <div class="snacks-total">
-          <div class="collapsible foodbeverage">
-            <h3>Food & Beverage<i class="bx bx-chevron-down foodicon"></i></h3>
-            <p>Rs. <span id="snacks-total">0</span></p>
+        <div class="movie-details-2">
+          <div class="theater-screen">
+            <span id="theater-name">PVR - Sky Walk</span>
+            <span id="screen-name">(Sapphire)</span>
+            <span id="showtime">10th July 5 pm</span>
           </div>
         </div>
-        <div class="content" id="food-beverage-content">
-          <ul class="" id="selected-snacks"></ul>
+        <div class="movie-details-3">
+          <span id="booked-tickets">A1,A2,A4</span>
+          <div id="booked-snacks">Coke-2</div>
         </div>
-        <div class="subtotal">
-          <h5>Subtotal</h5>
-          <p>
-            Rs.
-            <span style="color: #c0392b !important" class="grand-total">0</span>
-          </p>
+        <div class="movie-details-4">
+          <div class="status">
+            <span id="booking-status"
+              >Booking : <span class="confirmed">Confirmed</span></span
+            >
+            <span id="payment-status"
+              >Payment : <span class="confirmed">Confirmed</span></span
+            >
+          </div>
+          <div class="payment-amount">
+            <span>Total Amount <span id="amount">Rs. 2034</span></span>
+          </div>
         </div>
-        <div class="payable-amount">
-          <h3>Amount Payable</h3>
-          <p>Rs. <span class="grand-total">0</span></p>
-        </div>
-        <button id="confirm-booking">
-          Pay Amount : <span class="grand-total">0</span>
-        </button>
       </div>
-    </div>
-    <script src="../js/booking_summary.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    </section>
+    <script src="../js/confirmation_page.js"></script>
   </body>
 </html>

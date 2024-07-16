@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".ad-nav-content").addEventListener("click", () => {
+    window.location.href = "booking_orders.html";
+  });
   document.querySelector(".hamburger-menu").addEventListener("click", () => {
     if (
       !document.querySelector(".hamburger-menu").classList.contains("active")
@@ -71,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -137,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(data),
         }
