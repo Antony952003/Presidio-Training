@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.letters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 200px;
+  margin: 0 auto;
+  position: relative;
+  position: absolute;
+  top: 33.3333333333%;
+  left: 30%;
+  width: 40%;
+  height: 33.3333333333%;
+}
+
+.letter {
+  background: lightgray;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 50%;
+  text-transform: capitalize;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 33.3333333333%;
+  width: 40%;
+  height: 33.3333333333%;
+}
+
+.compulsory {
+  background: orange;
+  color: white;
+}
+
+.current-word {
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.found-words {
+  margin-top: 20px;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+/* Hexagon pattern */
+.letters .letter:nth-child(1) {
+  transform: translate(0, 0);
+}
+
+.letters .letter:nth-child(2) {
+  transform: translate(-75%, -50%);
+}
+
+.letters .letter:nth-child(3) {
+  transform: translate(0, -100%);
+}
+
+.letters .letter:nth-child(4) {
+  transform: translate(75%, -50%);
+}
+
+.letters .letter:nth-child(5) {
+  transform: translate(75%, 50%);
+}
+
+.letters .letter:nth-child(6) {
+  transform: translate(0, 100%);
+}
+
+.letters .letter:nth-child(7) {
+  transform: translate(-75%, 50%);
+}

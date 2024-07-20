@@ -14,11 +14,14 @@ namespace EmployeeRequestTrackerAPI.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
-        public EmployeeController(IEmployeeService employeeService) {
+        private readonly KeyVaultService _keyVaultService;
+
+        public EmployeeController(IEmployeeService employeeService, KeyVaultService keyVaultService) {
              _employeeService = employeeService;
+            _keyVaultService = keyVaultService;
+
         }
         [Route("GetAllEmployees")]
-        [Authorize]
         [HttpGet]
         [ProducesResponseType(typeof(IList<Employee>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status404NotFound)]
@@ -28,6 +31,7 @@ namespace EmployeeRequestTrackerAPI.Controllers
             try
             {
                 var employees = await _employeeService.GetEmployees();
+                Console.WriteLine(_keyVaultService.GetSecretAsync("constringdb3"));
                 return Ok(employees.ToList());
             }
             catch (NoEmployeesFoundException nefe)

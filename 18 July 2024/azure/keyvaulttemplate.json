@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-02-01-preview",
+      "name": "sql-server007",
+      "location": "westus2",
+      "properties": {
+        "administratorLogin": "sqladmin",
+        "administratorLoginPassword": "Sqlwebserver@123",
+        "version": "12.0"
+      },
+      "resources": [
+        {
+          "type": "firewallRules",
+          "apiVersion": "2021-02-01-preview",
+          "name": "AllowAllWindowsAzureIps",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', 'sql-server007')]"
+          ],
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+          }
+        },
+        {
+          "type": "databases",
+          "apiVersion": "2021-02-01-preview",
+          "name": "employeedb",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', 'sql-server007')]"
+          ],
+          "location": "westus2",
+          "properties": {
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "maxSizeBytes": "2147483648",
+            "sampleName": "AdventureWorksLT"
+          },
+          "sku": {
+            "name": "S0",
+            "tier": "Standard",
+            "capacity": 10
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2019-09-01",
+      "name": "keyvaultconstring",
+      "location": "westus2",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "standard"
+        },
+        "tenantId": "[subscription().tenantId]",
+        "accessPolicies": [],
+        "enabledForDeployment": true,
+        "enabledForTemplateDeployment": true
+      },
+      "resources": [
+        {
+          "type": "secrets",
+          "apiVersion": "2019-09-01",
+          "name": "constring",
+          "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', 'keyvaultconstring')]",
+            "[resourceId('Microsoft.Sql/servers', 'sql-server007')]"
+          ],
+          "properties": {
+            "value": "[concat('Server=tcp:', 'sql-server007.database.windows.net,1433;Initial Catalog=dbRequestTracker14May24;Persist Security Info=False;User ID=sqladmin;Password=Sqlwebserver@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]"
+          }
+        }
+      ]
+    }
+  ],
+  "parameters": {}
+}
