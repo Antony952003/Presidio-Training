@@ -1,89 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  width: 100%;
+  height: 100%;
   padding: 20px;
+  font-family: "Cairo", sans-serif;
 }
-
-.letters {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  width: 200px;
-  margin: 0 auto;
-  position: relative;
-  position: absolute;
-  top: 33.3333333333%;
-  left: 30%;
-  width: 40%;
-  height: 33.3333333333%;
-}
-
-.letter {
-  background: lightgray;
-  line-height: 50px;
+.heading {
+  font-size: 40px;
   text-align: center;
-  font-size: 24px;
-  border-radius: 50%;
-  text-transform: capitalize;
-  display: inline-flex;
-  justify-content: center;
+}
+.main-div {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(158, 104, 4, 0.84) 0px 3px 8px;
+}
+
+.leftdiv {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
   align-items: center;
-  position: absolute;
-  top: 33.3333333333%;
-  width: 40%;
-  height: 33.3333333333%;
-}
-
-.compulsory {
-  background: orange;
-  color: white;
-}
-
-.current-word {
-  margin-bottom: 20px;
-}
-
-button {
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
 }
 
 .found-words {
-  margin-top: 20px;
+  width: 50%;
+  padding: 20px;
+  border-left: 1px solid orange;
 }
 
-.message {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  color: green;
+.found-words span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  text-transform: none;
+}
+.fwhead {
+  font-size: 30px !important;
+}
+.contrast {
+  color: orange;
+  font-size: inherit;
+  margin-left: 10px;
+}
+.found-words div {
+  display: flex;
+  gap: 1rem;
 }
 
-/* Hexagon pattern */
-.letters .letter:nth-child(1) {
-  transform: translate(0, 0);
+.perfect-pangram {
+  color: rgb(142, 1, 1);
 }
 
-.letters .letter:nth-child(2) {
-  transform: translate(-75%, -50%);
+.wordsfounded {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  align-items: center;
+  text-transform: uppercase;
 }
 
-.letters .letter:nth-child(3) {
-  transform: translate(0, -100%);
+.current-word {
+  display: flex;
+  gap: 1rem;
+}
+.current-word input {
+  outline: none;
+  border: 2px solid lightgrey;
+  border-radius: 7px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 7px;
+}
+.current-word button {
+  padding: 7px;
+  border-radius: 10px;
+  border: 2px solid darkgoldenrod;
+  background-color: orange;
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.popup {
+  position: fixed;
+  top: 10%;
+  right: 42%;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
-.letters .letter:nth-child(4) {
-  transform: translate(75%, -50%);
+.hex-container {
+  position: relative;
+  width: 50%;
+  height: 250px;
+  margin-bottom: 30px;
 }
 
-.letters .letter:nth-child(5) {
-  transform: translate(75%, 50%);
+.hex {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  text-align: center;
 }
 
-.letters .letter:nth-child(6) {
-  transform: translate(0, 100%);
+.hex::before {
+  content: "\2B22";
+  color: lightgray;
+  font-size: 70px;
+  display: block;
+  cursor: pointer;
+}
+.hex span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-38%, 50%);
+  font-size: 23px;
+  color: black;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
-.letters .letter:nth-child(7) {
-  transform: translate(-75%, 50%);
+/* Positioning the hexagons in a circular pattern */
+.hex1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hex1::before {
+  color: orange;
+}
+
+.hex2 {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.hex3 {
+  top: 25%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+}
+
+.hex4 {
+  top: 75%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+}
+
+.hex5 {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.hex6 {
+  top: 75%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.hex7 {
+  top: 25%;
+  left: 15%;
+  transform: translate(-50%, -50%);
 }
