@@ -1,0 +1,9 @@
+Login and Register Page
+Home page with carousel and popular or recommended movies
+Indivitual Movie Page of trailer, rating, cast info
+indivitual Cast Page to showcase the cast info
+Theater and ShowTime listing Page
+no of seats input container
+seat selection page
+booking summary page
+Payment Page
